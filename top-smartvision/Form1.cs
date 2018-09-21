@@ -35,7 +35,7 @@ namespace top_smartvision
             OpenFileDialog open = new OpenFileDialog();
             
             // Filters the types of files that can be opened
-            open.Filter = "*.jpg; *jpeg; *.bmp; *.png|*.jpg; *jpeg; *.bmp; *.png";
+            open.Filter = "*.jpg; *.jpeg; *.bmp; *.png|*.jpg; *.jpeg; *.bmp; *.png";
             if (open.ShowDialog() != DialogResult.OK)
                 return;
             
