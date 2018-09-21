@@ -13,6 +13,9 @@ namespace top_smartvision.recognition
 {
     public class Recognition
     {
+        private Capture _capture;
+        private CascadeClassifier _cascadeClassifier = new CascadeClassifier("haarcascade_frontalface_alt_tree.xml");
+
         public void Recognizer()
         {
             Image<Hsv, byte> bitmap = new Image<Hsv, byte>(@"C:\Users\Deividas\source\plate.bmp");
@@ -22,8 +25,10 @@ namespace top_smartvision.recognition
 
             var imageHSVDest = bitmap.InRange(lowerLimit, upperLimit);
 
-            CvInvoke.cvShowImage("imageHSVDest", imageHSVDest);
-            CvInvoke.cvWaitKey(1000);
+            //CvInvoke.cvShowImage("imageHSVDest", imageHSVDest);
+            //CvInvoke.cvWaitKey(1000);
         }
+
+        
     }
 }

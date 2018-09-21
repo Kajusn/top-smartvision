@@ -261,3 +261,5 @@ __pycache__/
 *.pyc
 
 top-smartvision/tessdata/
+top-smartvision/OpenTK.dll.config
+top-smartvision/Resources/
