@@ -25,7 +25,7 @@ namespace top_smartvision
         #region Upload image
 
         /// <summary>
-        /// Browsw system for image to upload and display
+        /// Browse system for image to upload and display
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -38,9 +38,15 @@ namespace top_smartvision
             open.Filter = "*.jpg; *.jpeg; *.bmp; *.png|*.jpg; *.jpeg; *.bmp; *.png";
             if (open.ShowDialog() != DialogResult.OK)
                 return;
-            
+
+            // Creates new bitmap object
+            Bitmap Image = new Bitmap(open.FileName);
+
             // Loads and displays image
             ImgBox.LoadAsync (open.FileName);
+
+            // Changes image box maximum size to uploaded image size
+            ImgBox.MaximumSize = Image.Size;
 
             // Displays image path
             ImageNameLabel.Text = open.FileName;
@@ -57,19 +63,60 @@ namespace top_smartvision
             UploadImgLabel.Visible = false;
             UploadImgButton.Text = "Upload another image";
         }
-
-        #endregion
-
+          
         /// <summary>
-        /// Runs image recognizer
+        /// Uploads image 2
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AnalyzeButton_Click(object sender, EventArgs e)
+        private void UploadImgToCompareButton_Click(object sender, EventArgs e)
         {
-            // TO-DO: Runs Recognizer with opened image
+            // Open file dialog
+            OpenFileDialog open = new OpenFileDialog();
+
+            // Filters the types of files that can be opened
+            open.Filter = "*.jpg; *.jpeg; *.bmp; *.png|*.jpg; *.jpeg; *.bmp; *.png";
+            if (open.ShowDialog() != DialogResult.OK)
+                return;
+
+            // Loads and displays image
+            ImgBox2.LoadAsync(open.FileName);
+
+            // Creates new bitmap object
+            Bitmap Image = new Bitmap(open.FileName);
+
+            // Displays image path
+            ImageNameLabel2.Text = open.FileName;
+
+            // Changes image box maximum size to uploaded image size
+            ImgBox2.MaximumSize = Image.Size;
+
+            UploadImgToCompareButton.Text = "Upload another image";
+           
         }
 
-        
+        #endregion
+
+        private void CompareButton_Click(object sender, EventArgs e)
+        {
+            // TO-DO: Runs Recognizer with opened image
+
+
+           /* if ()
+                MessageBox.Show ("Images are similar ");
+             else
+                MessageBox.Show ("Images are not similar");*/
+                
+        }
+
+        /// <summary>
+        /// exits application 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
