@@ -96,6 +96,5 @@ namespace top_smartvision
         }
 
         #endregion
-
     }
 }

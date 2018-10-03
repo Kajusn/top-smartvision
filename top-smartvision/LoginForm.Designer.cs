@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.NameLabel = new System.Windows.Forms.Label();
             this.UsernameText = new System.Windows.Forms.TextBox();
             this.PasswordText = new System.Windows.Forms.TextBox();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.LoginBtn = new System.Windows.Forms.Button();
-            this.RegsiterBtn = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.RegisterLabel = new System.Windows.Forms.Label();
+            this.NotMemLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +56,7 @@
             this.UsernameText.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.UsernameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UsernameText.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.UsernameText.Location = new System.Drawing.Point(69, 151);
+            this.UsernameText.Location = new System.Drawing.Point(69, 132);
             this.UsernameText.Name = "UsernameText";
             this.UsernameText.Size = new System.Drawing.Size(144, 22);
             this.UsernameText.TabIndex = 0;
@@ -70,7 +69,7 @@
             this.PasswordText.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PasswordText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordText.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.PasswordText.Location = new System.Drawing.Point(69, 195);
+            this.PasswordText.Location = new System.Drawing.Point(69, 160);
             this.PasswordText.Name = "PasswordText";
             this.PasswordText.Size = new System.Drawing.Size(144, 22);
             this.PasswordText.TabIndex = 1;
@@ -82,7 +81,7 @@
             // 
             this.LoginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.LoginLabel.Location = new System.Drawing.Point(12, 60);
+            this.LoginLabel.Location = new System.Drawing.Point(12, 46);
             this.LoginLabel.Name = "LoginLabel";
             this.LoginLabel.Size = new System.Drawing.Size(260, 28);
             this.LoginLabel.TabIndex = 2;
@@ -96,47 +95,54 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.RegsiterBtn, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.LoginBtn, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(66, 256);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(69, 224);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(150, 102);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(144, 45);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // LoginBtn
             // 
+            this.LoginBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LoginBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LoginBtn.Location = new System.Drawing.Point(3, 3);
             this.LoginBtn.Name = "LoginBtn";
-            this.LoginBtn.Size = new System.Drawing.Size(144, 29);
+            this.LoginBtn.Size = new System.Drawing.Size(138, 39);
             this.LoginBtn.TabIndex = 0;
             this.LoginBtn.Text = "Login";
             this.LoginBtn.UseVisualStyleBackColor = true;
             // 
-            // RegsiterBtn
+            // RegisterLabel
             // 
-            this.RegsiterBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RegsiterBtn.Location = new System.Drawing.Point(3, 38);
-            this.RegsiterBtn.Name = "RegsiterBtn";
-            this.RegsiterBtn.Size = new System.Drawing.Size(144, 29);
-            this.RegsiterBtn.TabIndex = 1;
-            this.RegsiterBtn.Text = "Register";
-            this.RegsiterBtn.UseVisualStyleBackColor = true;
+            this.RegisterLabel.AutoSize = true;
+            this.RegisterLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegisterLabel.Location = new System.Drawing.Point(132, 377);
+            this.RegisterLabel.Name = "RegisterLabel";
+            this.RegisterLabel.Size = new System.Drawing.Size(139, 13);
+            this.RegisterLabel.TabIndex = 4;
+            this.RegisterLabel.Text = "Create a new account here!";
             // 
-            // contextMenuStrip1
+            // NotMemLabel
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.NotMemLabel.AutoSize = true;
+            this.NotMemLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NotMemLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.NotMemLabel.Location = new System.Drawing.Point(13, 377);
+            this.NotMemLabel.Name = "NotMemLabel";
+            this.NotMemLabel.Size = new System.Drawing.Size(117, 13);
+            this.NotMemLabel.TabIndex = 5;
+            this.NotMemLabel.Text = "Not A Member Yet?";
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 421);
+            this.Controls.Add(this.NotMemLabel);
+            this.Controls.Add(this.RegisterLabel);
             this.Controls.Add(this.UsernameText);
             this.Controls.Add(this.PasswordText);
             this.Controls.Add(this.tableLayoutPanel2);
@@ -162,8 +168,8 @@
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button LoginBtn;
-        private System.Windows.Forms.Button RegsiterBtn;
         private System.Windows.Forms.TextBox UsernameText;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label RegisterLabel;
+        private System.Windows.Forms.Label NotMemLabel;
     }
 }
