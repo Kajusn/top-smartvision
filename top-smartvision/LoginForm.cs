@@ -96,5 +96,33 @@ namespace top_smartvision
         }
 
         #endregion
+
+        private void LoginBtn_Click(object sender, EventArgs e)
+        {
+            // TO-DO:
+            // Login button takes you to homescreen/main menu
+
+            NamePassNotEmpty();
+        }
+        
+        /// <summary>
+        /// Makes sure Username and Password fields are not empty
+        /// </summary>
+        private void NamePassNotEmpty()
+        {
+            // Message box if Username and Password are not entered
+            if ((UsernameText.Text == "" && PasswordText.Text == "") || (UsernameText.Text == "Username" && PasswordText.Text == "Password"))
+                MessageBox.Show("Please enter your username and password");
+
+            // Message box if Username is not entered
+            else if (UsernameText.Text == "" || UsernameText.Text == "Username")
+                MessageBox.Show("Please enter your username");
+
+            // Message box if Password is not entered
+            else if (PasswordText.Text == "" || PasswordText.Text == "Password")
+                MessageBox.Show("Please enter your password");
+
+            else return;
+        }
     }
 }
