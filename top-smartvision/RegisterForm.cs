@@ -141,7 +141,11 @@ namespace top_smartvision
 
         #endregion
 
-        // Helps set and remove watermarks for text boxes
+        /// <summary>
+        /// Helps set and remove watermarks for text boxes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="text"></param>
         private void WatermarkHelper(TextBox sender, string text)
         {
             // Removes watermark from text box
