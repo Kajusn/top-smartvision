@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -141,6 +142,8 @@ namespace top_smartvision
 
         #endregion
 
+        #region Helpers
+
         /// <summary>
         /// Helps set and remove watermarks for text boxes
         /// </summary>
@@ -173,6 +176,44 @@ namespace top_smartvision
                 // Unmasks the text if it's a password text box
                 if ((sender == PasswordText) || (sender == PasswordText2)) sender.PasswordChar = (Char)0;
             }
+        }
+
+        /// <summary>
+        /// Checks if all fields have been filled out, message box if false
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FieldsFilledOut()
+        {
+            // Checks if all fields have been filled out, message box if false
+            if (UsernameText.Text == "Username" || FirstNameText.Text == "First Name" || LastNameText.Text == "Last Name" || PasswordText.Text == "Password" || PasswordText2.Text == "Re-enter Password" || EmailText.Text == "Email")
+            {
+                MessageBox.Show("Please fill out all fields");
+            }
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            String EmailPattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+                                  + "@"
+                                  + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
+            return Regex.IsMatch(email, EmailPattern);
+        }
+
+        #endregion
+
+        private void RegisterButton_Click(object sender, EventArgs e)
+        {
+            // TO-DO:
+            // Actually registering the person with specified info
+            FieldsFilledOut(); 
+        }
+
+        private void EmailText_Validating(object sender, CancelEventArgs e)
+        {
+            if (!IsValidEmail(EmailText.Text))
+                EmailValidLbl.Visible = true;
+            EmailValidLbl.Visible = false;
         }
     }
 
