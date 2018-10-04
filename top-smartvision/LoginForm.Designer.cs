@@ -125,6 +125,7 @@
             this.RegisterLabel.Size = new System.Drawing.Size(139, 13);
             this.RegisterLabel.TabIndex = 4;
             this.RegisterLabel.Text = "Create a new account here!";
+            this.RegisterLabel.Click += new System.EventHandler(this.RegisterLabel_Click);
             // 
             // NotMemLabel
             // 

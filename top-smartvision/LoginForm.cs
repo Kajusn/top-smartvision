@@ -124,5 +124,12 @@ namespace top_smartvision
 
             else return;
         }
+
+        private void RegisterLabel_Click(object sender, EventArgs e)
+        {
+            RegisterForm RegisterForm = new RegisterForm();
+            RegisterForm.Show();
+            this.Hide();
+        }
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.NameLabel = new System.Windows.Forms.Label();
             this.CreateAccLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.FirstNameText = new System.Windows.Forms.TextBox();
@@ -40,23 +39,11 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // NameLabel
-            // 
-            this.NameLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.NameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.NameLabel.Location = new System.Drawing.Point(0, 0);
-            this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(284, 23);
-            this.NameLabel.TabIndex = 1;
-            this.NameLabel.Text = "Lost && Found\r\n";
-            this.NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // CreateAccLabel
             // 
             this.CreateAccLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateAccLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.CreateAccLabel.Location = new System.Drawing.Point(12, 33);
+            this.CreateAccLabel.Location = new System.Drawing.Point(12, 22);
             this.CreateAccLabel.Name = "CreateAccLabel";
             this.CreateAccLabel.Size = new System.Drawing.Size(260, 28);
             this.CreateAccLabel.TabIndex = 3;
@@ -100,6 +87,8 @@
             this.FirstNameText.Size = new System.Drawing.Size(144, 22);
             this.FirstNameText.TabIndex = 1;
             this.FirstNameText.Text = "First Name";
+            this.FirstNameText.Enter += new System.EventHandler(this.FirstNameText_Enter);
+            this.FirstNameText.Leave += new System.EventHandler(this.FirstNameText_Leave);
             // 
             // LastNameText
             // 
@@ -111,6 +100,8 @@
             this.LastNameText.Size = new System.Drawing.Size(144, 22);
             this.LastNameText.TabIndex = 2;
             this.LastNameText.Text = "Last Name";
+            this.LastNameText.Enter += new System.EventHandler(this.LastNameText_Enter);
+            this.LastNameText.Leave += new System.EventHandler(this.LastNameText_Leave);
             // 
             // UsernameText
             // 
@@ -122,6 +113,8 @@
             this.UsernameText.Size = new System.Drawing.Size(144, 22);
             this.UsernameText.TabIndex = 3;
             this.UsernameText.Text = "Username";
+            this.UsernameText.Enter += new System.EventHandler(this.UsernameText_Enter);
+            this.UsernameText.Leave += new System.EventHandler(this.UsernameText_Leave);
             // 
             // PasswordText
             // 
@@ -133,6 +126,8 @@
             this.PasswordText.Size = new System.Drawing.Size(144, 22);
             this.PasswordText.TabIndex = 4;
             this.PasswordText.Text = "Password";
+            this.PasswordText.Enter += new System.EventHandler(this.PasswordText_Enter);
+            this.PasswordText.Leave += new System.EventHandler(this.PasswordText_Leave);
             // 
             // PasswordText2
             // 
@@ -144,6 +139,8 @@
             this.PasswordText2.Size = new System.Drawing.Size(144, 22);
             this.PasswordText2.TabIndex = 5;
             this.PasswordText2.Text = "Re-enter Password";
+            this.PasswordText2.Enter += new System.EventHandler(this.PasswordText2_Enter);
+            this.PasswordText2.Leave += new System.EventHandler(this.PasswordText2_Leave);
             // 
             // EmailText
             // 
@@ -155,6 +152,8 @@
             this.EmailText.Size = new System.Drawing.Size(144, 22);
             this.EmailText.TabIndex = 6;
             this.EmailText.Text = "Email";
+            this.EmailText.Enter += new System.EventHandler(this.EmailText_Enter);
+            this.EmailText.Leave += new System.EventHandler(this.EmailText_Leave);
             // 
             // RegisterForm
             // 
@@ -163,11 +162,11 @@
             this.ClientSize = new System.Drawing.Size(284, 421);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.CreateAccLabel);
-            this.Controls.Add(this.NameLabel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "RegisterForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sign up";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -176,8 +175,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label CreateAccLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox FirstNameText;
