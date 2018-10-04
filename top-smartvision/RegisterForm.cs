@@ -26,14 +26,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void FirstNameText_Enter(object sender, EventArgs e)
         {
-            if (FirstNameText.Text == "First Name")
-            {
-                // Removes watermark
-                FirstNameText.Text = "";
-
-                // Sets text color to default
-                FirstNameText.ForeColor = SystemColors.WindowText;
-            }
+            WatermarkHelper(FirstNameText, "First Name");
         }
 
         /// <summary>
@@ -43,14 +36,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void FirstNameText_Leave(object sender, EventArgs e)
         {
-            if (FirstNameText.TextLength == 0)
-            {
-                // Sets watermark
-                FirstNameText.Text = "First Name";
-
-                // Sets watermark color
-                FirstNameText.ForeColor = SystemColors.GrayText;
-            }
+            WatermarkHelper(FirstNameText, "First Name");
         }
 
         /// <summary>
@@ -60,14 +46,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void LastNameText_Enter(object sender, EventArgs e)
         {
-            if (LastNameText.Text == "Last Name")
-            {
-                // Removes watermark
-                LastNameText.Text = "";
-
-                // Sets text color to default
-                LastNameText.ForeColor = SystemColors.WindowText;
-            }
+            WatermarkHelper(LastNameText, "Last Name");
         }
 
         /// <summary>
@@ -77,14 +56,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void LastNameText_Leave(object sender, EventArgs e)
         {
-            if (LastNameText.TextLength == 0)
-            {
-                // Sets watermark
-                LastNameText.Text = "Last Name";
-
-                // Sets watermark color
-                LastNameText.ForeColor = SystemColors.GrayText;
-            }
+            WatermarkHelper(LastNameText, "Last Name");
         }
 
         /// <summary>
@@ -94,14 +66,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void UsernameText_Enter(object sender, EventArgs e)
         {
-            if (UsernameText.Text == "Username")
-            {
-                // Removes watermark
-                UsernameText.Text = "";
-
-                // Sets text color to default
-                UsernameText.ForeColor = SystemColors.WindowText;
-            }
+            WatermarkHelper(UsernameText, "Username");
         }
 
         /// <summary>
@@ -111,14 +76,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void UsernameText_Leave(object sender, EventArgs e)
         {
-            if (UsernameText.TextLength == 0)
-            {
-                // Sets watermark
-                UsernameText.Text = "Username";
-
-                // Sets watermark color
-                UsernameText.ForeColor = SystemColors.GrayText;
-            }
+            WatermarkHelper(UsernameText, "Username");
         }
 
         /// <summary>
@@ -128,17 +86,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void PasswordText_Enter(object sender, EventArgs e)
         {
-            if (PasswordText.Text == "Password")
-            {
-                // Removes watermark
-                PasswordText.Text = "";
-
-                // Sets text color to default
-                PasswordText.ForeColor = SystemColors.WindowText;
-
-                // Masks the password
-                PasswordText.PasswordChar = '*';
-            }
+            WatermarkHelper(PasswordText, "Password");
         }
 
         /// <summary>
@@ -148,19 +96,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void PasswordText_Leave(object sender, EventArgs e)
         {
-            if (PasswordText.TextLength == 0)
-            {
-                // Unmasks the password
-                PasswordText.PasswordChar = (Char)0;
-
-                // Sets watermark
-                PasswordText.Text = "Password";
-
-                // Sets watermark color
-                PasswordText.ForeColor = SystemColors.GrayText;
-
-            }
-
+            WatermarkHelper(PasswordText, "Password");
         }
 
         /// <summary>
@@ -170,17 +106,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void PasswordText2_Enter(object sender, EventArgs e)
         {
-            if (PasswordText2.Text == "Re-enter Password")
-            {
-                // Removes watermark
-                PasswordText2.Text = "";
-
-                // Sets text color to default
-                PasswordText2.ForeColor = SystemColors.WindowText;
-
-                // Masks the password
-                PasswordText2.PasswordChar = '*';
-            }
+            WatermarkHelper(PasswordText2, "Re-enter Password");
         }
 
         /// <summary>
@@ -190,19 +116,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void PasswordText2_Leave(object sender, EventArgs e)
         {
-            if (PasswordText2.TextLength == 0)
-            {
-                // Unmasks the password
-                PasswordText2.PasswordChar = (Char)0;
-
-                // Sets watermark
-                PasswordText2.Text = "Re-enter Password";
-
-                // Sets watermark color
-                PasswordText2.ForeColor = SystemColors.GrayText;
-
-            }
-
+            WatermarkHelper(PasswordText2, "Re-enter Password");
         }
 
         /// <summary>
@@ -212,14 +126,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void EmailText_Enter(object sender, EventArgs e)
         {
-            if (EmailText.Text == "Email")
-            {
-                // Removes watermark
-                EmailText.Text = "";
-
-                // Sets text color to default
-                EmailText.ForeColor = SystemColors.WindowText;
-            }
+            WatermarkHelper(EmailText, "Email");
         }
 
         /// <summary>
@@ -229,17 +136,40 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void EmailText_Leave(object sender, EventArgs e)
         {
-            if (EmailText.TextLength == 0)
-            {
-                // Sets watermark
-                EmailText.Text = "Email";
-
-                // Sets watermark color
-                EmailText.ForeColor = SystemColors.GrayText;
-            }
+            WatermarkHelper(EmailText, "Email");
         }
 
         #endregion
+
+        // Helps set and remove watermarks for text boxes
+        private void WatermarkHelper(TextBox sender, string text)
+        {
+            // Removes watermark from text box
+            if (sender.Text == text)
+            {
+                // Removes watermark
+                sender.Text = "";
+
+                // Sets text color to default
+                sender.ForeColor = SystemColors.WindowText;
+
+                // Masks the text if it's a password text box
+                if ((sender == PasswordText) || (sender == PasswordText2)) sender.PasswordChar = '*';
+            }
+
+            // Creates watermark for text box
+            else if (sender.TextLength == 0)
+            {
+                // Sets watermark
+                sender.Text = text;
+
+                // Sets watermark color
+                sender.ForeColor = SystemColors.GrayText;
+
+                // Unmasks the text if it's a password text box
+                if ((sender == PasswordText) || (sender == PasswordText2)) sender.PasswordChar = (Char)0;
+            }
+        }
     }
 
 }
