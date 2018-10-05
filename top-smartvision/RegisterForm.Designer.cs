@@ -203,6 +203,7 @@
             // RegisterButton
             // 
             this.RegisterButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.RegisterButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RegisterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterButton.Location = new System.Drawing.Point(16, 357);
             this.RegisterButton.Name = "RegisterButton";
@@ -230,6 +231,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sign up";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegisterForm_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

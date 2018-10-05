@@ -12,9 +12,25 @@ namespace top_smartvision
 {
     public partial class LoginForm : Form
     {
+        private static LoginForm instance;
         public LoginForm()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Singleton Instance of form
+        /// </summary>
+        public static LoginForm GetInstance
+        {
+            get
+            {
+                if (instance == null || instance.IsDisposed)
+                {
+                    instance = new LoginForm();
+                }
+                return instance;
+            }
         }
 
         #region Username/Password text
@@ -129,8 +145,7 @@ namespace top_smartvision
 
         private void RegisterLabel_Click(object sender, EventArgs e)
         {
-            RegisterForm RegisterForm = new RegisterForm();
-            RegisterForm.Show();
+            RegisterForm.GetInstance.Show();
             this.Hide();
         }
     }

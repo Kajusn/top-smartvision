@@ -13,9 +13,25 @@ namespace top_smartvision
 {
     public partial class RegisterForm : Form
     {
+        private static RegisterForm instance;
         public RegisterForm()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Singleton Instance of form
+        /// </summary>
+        public static RegisterForm GetInstance
+        {
+            get
+            {
+                if (instance == null || instance.IsDisposed)
+                {
+                    instance = new RegisterForm();
+                }
+                return instance;
+            }
         }
 
         #region Text watermarks
@@ -230,6 +246,10 @@ namespace top_smartvision
             // Actually registering the person with specified info
         }
 
+        private void RegisterForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoginForm.GetInstance.Show();
+        }
     }
 
 }
