@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using top_smartvision.recognition;
 using Emgu.CV;
 using Emgu.CV.Structure;
+using top_smartvision.DB;
 
 namespace top_smartvision
 {
@@ -31,25 +32,24 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void UploadImgButton_Click(object sender, EventArgs e)
         {
-            // Open file dialog
-            OpenFileDialog open = new OpenFileDialog();
-            
-            // Filters the types of files that can be opened
-            open.Filter = "*.jpg; *.jpeg; *.bmp; *.png|*.jpg; *.jpeg; *.bmp; *.png";
-            if (open.ShowDialog() != DialogResult.OK)
-                return;
+            IDB file = new FileIO();
 
+            string img = file.PullImage();
+
+            if (img == null)
+                return;
+            
             // Creates new bitmap object
-            Bitmap Image = new Bitmap(open.FileName);
+            Bitmap Image = new Bitmap(img);
 
             // Loads and displays image
-            ImgBox.LoadAsync (open.FileName);
+            ImgBox.LoadAsync (img);
 
             // Changes image box maximum size to uploaded image size
             ImgBox.MaximumSize = Image.Size;
 
             // Displays image path
-            ImageNameLabel.Text = open.FileName;
+            ImageNameLabel.Text = img;
         }
 
         /// <summary>
@@ -72,21 +72,27 @@ namespace top_smartvision
         private void UploadImgToCompareButton_Click(object sender, EventArgs e)
         {
             // Open file dialog
-            OpenFileDialog open = new OpenFileDialog();
+            /*OpenFileDialog open = new OpenFileDialog();
 
             // Filters the types of files that can be opened
             open.Filter = "*.jpg; *.jpeg; *.bmp; *.png|*.jpg; *.jpeg; *.bmp; *.png";
             if (open.ShowDialog() != DialogResult.OK)
+                return;*/
+            IDB file = new FileIO();
+
+            string img = file.PullImage();
+
+            if (img == null)
                 return;
 
             // Loads and displays image
-            ImgBox2.LoadAsync(open.FileName);
+            ImgBox2.LoadAsync(img);
 
             // Creates new bitmap object
-            Bitmap Image = new Bitmap(open.FileName);
+            Bitmap Image = new Bitmap(img);
 
             // Displays image path
-            ImageNameLabel2.Text = open.FileName;
+            ImageNameLabel2.Text = img;
 
             // Changes image box maximum size to uploaded image size
             ImgBox2.MaximumSize = Image.Size;
