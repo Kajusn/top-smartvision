@@ -122,7 +122,14 @@ namespace top_smartvision
             else if (PasswordText.Text == "" || PasswordText.Text == "Password")
                 MessageBox.Show("Please enter your password");
 
-            else return;
+            else
+            {
+                Form1 fm = new Form1();
+                fm.Show();
+
+                this.Visible = false;
+            }
+            return;
         }
     }
 }
