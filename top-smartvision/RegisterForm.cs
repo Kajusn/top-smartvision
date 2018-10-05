@@ -127,6 +127,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void EmailText_Enter(object sender, EventArgs e)
         {
+            EmailText.BackColor = SystemColors.Window;
             WatermarkHelper(EmailText, "Email");
         }
 
@@ -138,6 +139,7 @@ namespace top_smartvision
         private void EmailText_Leave(object sender, EventArgs e)
         {
             WatermarkHelper(EmailText, "Email");
+            EmailValidation();
         }
 
         #endregion
@@ -192,29 +194,42 @@ namespace top_smartvision
             }
         }
 
-        private bool IsValidEmail(string email)
+        /// <summary>
+        /// Validates email address using regular expressions
+        /// </summary>
+        /// <returns></returns>
+        private bool EmailValidation()
         {
+            // Regular expressions email pattern
             String EmailPattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
                                   + "@"
                                   + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
-            return Regex.IsMatch(email, EmailPattern);
+            // If email doesn't match pattern, background color of text box is changed to red
+            if (!Regex.IsMatch(EmailText.Text, EmailPattern))
+            {
+                EmailText.BackColor = Color.LightCoral;
+                return false;
+            }
+
+            // If email matches pattern, background color is set to default
+            else EmailText.BackColor = SystemColors.Window;
+            return true;
         }
 
         #endregion
 
         private void RegisterButton_Click(object sender, EventArgs e)
         {
+            // Makes sure all fields are filled out
+            FieldsFilledOut();
+
+            // Will return if Email is invalid
+            if (!EmailValidation()) return;
+
             // TO-DO:
             // Actually registering the person with specified info
-            FieldsFilledOut(); 
         }
 
-        private void EmailText_Validating(object sender, CancelEventArgs e)
-        {
-            if (!IsValidEmail(EmailText.Text))
-                EmailValidLbl.Visible = true;
-            EmailValidLbl.Visible = false;
-        }
     }
 
 }

@@ -41,7 +41,6 @@
             this.FemaleRadioBtn = new System.Windows.Forms.RadioButton();
             this.FemaleLabel = new System.Windows.Forms.Label();
             this.RegisterButton = new System.Windows.Forms.Button();
-            this.EmailValidLbl = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +65,7 @@
             this.tableLayoutPanel1.Controls.Add(this.PasswordText, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.PasswordText2, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.EmailText, 0, 5);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(16, 62);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(51, 53);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -88,7 +87,7 @@
             this.FirstNameText.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FirstNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FirstNameText.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.FirstNameText.Location = new System.Drawing.Point(13, 9);
+            this.FirstNameText.Location = new System.Drawing.Point(11, 9);
             this.FirstNameText.Name = "FirstNameText";
             this.FirstNameText.Size = new System.Drawing.Size(156, 22);
             this.FirstNameText.TabIndex = 1;
@@ -101,7 +100,7 @@
             this.LastNameText.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LastNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LastNameText.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.LastNameText.Location = new System.Drawing.Point(13, 50);
+            this.LastNameText.Location = new System.Drawing.Point(11, 50);
             this.LastNameText.Name = "LastNameText";
             this.LastNameText.Size = new System.Drawing.Size(156, 22);
             this.LastNameText.TabIndex = 2;
@@ -114,7 +113,7 @@
             this.UsernameText.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.UsernameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UsernameText.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.UsernameText.Location = new System.Drawing.Point(13, 91);
+            this.UsernameText.Location = new System.Drawing.Point(11, 91);
             this.UsernameText.Name = "UsernameText";
             this.UsernameText.Size = new System.Drawing.Size(156, 22);
             this.UsernameText.TabIndex = 3;
@@ -127,7 +126,7 @@
             this.PasswordText.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PasswordText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordText.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.PasswordText.Location = new System.Drawing.Point(13, 132);
+            this.PasswordText.Location = new System.Drawing.Point(11, 132);
             this.PasswordText.Name = "PasswordText";
             this.PasswordText.Size = new System.Drawing.Size(156, 22);
             this.PasswordText.TabIndex = 4;
@@ -140,7 +139,7 @@
             this.PasswordText2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PasswordText2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordText2.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.PasswordText2.Location = new System.Drawing.Point(13, 173);
+            this.PasswordText2.Location = new System.Drawing.Point(11, 173);
             this.PasswordText2.Name = "PasswordText2";
             this.PasswordText2.Size = new System.Drawing.Size(156, 22);
             this.PasswordText2.TabIndex = 5;
@@ -153,20 +152,19 @@
             this.EmailText.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.EmailText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailText.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.EmailText.Location = new System.Drawing.Point(13, 217);
+            this.EmailText.Location = new System.Drawing.Point(11, 217);
             this.EmailText.Name = "EmailText";
             this.EmailText.Size = new System.Drawing.Size(156, 22);
             this.EmailText.TabIndex = 6;
             this.EmailText.Text = "Email";
             this.EmailText.Enter += new System.EventHandler(this.EmailText_Enter);
             this.EmailText.Leave += new System.EventHandler(this.EmailText_Leave);
-            this.EmailText.Validating += new System.ComponentModel.CancelEventHandler(this.EmailText_Validating);
             // 
             // MaleLabel
             // 
             this.MaleLabel.AutoSize = true;
             this.MaleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaleLabel.Location = new System.Drawing.Point(66, 317);
+            this.MaleLabel.Location = new System.Drawing.Point(80, 311);
             this.MaleLabel.Name = "MaleLabel";
             this.MaleLabel.Size = new System.Drawing.Size(38, 16);
             this.MaleLabel.TabIndex = 7;
@@ -175,7 +173,7 @@
             // MaleRadioBtn
             // 
             this.MaleRadioBtn.AutoSize = true;
-            this.MaleRadioBtn.Location = new System.Drawing.Point(171, 317);
+            this.MaleRadioBtn.Location = new System.Drawing.Point(185, 311);
             this.MaleRadioBtn.Name = "MaleRadioBtn";
             this.MaleRadioBtn.Size = new System.Drawing.Size(14, 13);
             this.MaleRadioBtn.TabIndex = 8;
@@ -185,7 +183,7 @@
             // FemaleRadioBtn
             // 
             this.FemaleRadioBtn.AutoSize = true;
-            this.FemaleRadioBtn.Location = new System.Drawing.Point(171, 338);
+            this.FemaleRadioBtn.Location = new System.Drawing.Point(185, 332);
             this.FemaleRadioBtn.Name = "FemaleRadioBtn";
             this.FemaleRadioBtn.Size = new System.Drawing.Size(14, 13);
             this.FemaleRadioBtn.TabIndex = 9;
@@ -196,7 +194,7 @@
             // 
             this.FemaleLabel.AutoSize = true;
             this.FemaleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FemaleLabel.Location = new System.Drawing.Point(66, 336);
+            this.FemaleLabel.Location = new System.Drawing.Point(80, 330);
             this.FemaleLabel.Name = "FemaleLabel";
             this.FemaleLabel.Size = new System.Drawing.Size(54, 16);
             this.FemaleLabel.TabIndex = 10;
@@ -214,24 +212,11 @@
             this.RegisterButton.UseVisualStyleBackColor = true;
             this.RegisterButton.Click += new System.EventHandler(this.RegisterButton_Click);
             // 
-            // EmailValidLbl
-            // 
-            this.EmailValidLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmailValidLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.EmailValidLbl.Location = new System.Drawing.Point(201, 279);
-            this.EmailValidLbl.MaximumSize = new System.Drawing.Size(80, 30);
-            this.EmailValidLbl.Name = "EmailValidLbl";
-            this.EmailValidLbl.Size = new System.Drawing.Size(80, 30);
-            this.EmailValidLbl.TabIndex = 12;
-            this.EmailValidLbl.Text = "Invalid email address!";
-            this.EmailValidLbl.Visible = false;
-            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 421);
-            this.Controls.Add(this.EmailValidLbl);
             this.Controls.Add(this.RegisterButton);
             this.Controls.Add(this.FemaleLabel);
             this.Controls.Add(this.FemaleRadioBtn);
@@ -266,6 +251,5 @@
         private System.Windows.Forms.RadioButton FemaleRadioBtn;
         private System.Windows.Forms.Label FemaleLabel;
         private System.Windows.Forms.Button RegisterButton;
-        private System.Windows.Forms.Label EmailValidLbl;
     }
 }
