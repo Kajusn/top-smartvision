@@ -13,28 +13,45 @@ namespace top_smartvision.DB
     {
         private string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\References\Images\";
 
+        /// <summary>
+        /// Takes image from local storage
+        /// </summary>
+        /// <returns>image string</returns>
         public string PullImage()
         {
             // Open file dialog
             OpenFileDialog open = new OpenFileDialog
             {
+                // Opens default directory for images
                 InitialDirectory = appPath,
+
                 // Filters the types of files that can be opened
                 Filter = "*.jpg; *.jpeg; *.bmp; *.png|*.jpg; *.jpeg; *.bmp; *.png"
             };
+
+            // returns null if no image was opened
             if (open.ShowDialog() != DialogResult.OK)
                 return null;
             
             return open.FileName;
         }
 
+        /// <summary>
+        /// Saves image from local storage to default directory
+        /// </summary>
         public void PushImage()
         {
-            OpenFileDialog open = new OpenFileDialog();
-            open.InitialDirectory = @"..\Resources\Images\";
-            open.Filter = " *.jpg; *.jpeg; *.bmp; *.png|*.jpg; *.jpeg; *.bmp; *.png";
+            // Open file dialog
+            OpenFileDialog open = new OpenFileDialog
+            {
+                // Opens default directory for images
+                InitialDirectory = appPath,
 
-            
+                // Filters the types of files that can be opened
+                Filter = "*.jpg; *.jpeg; *.bmp; *.png|*.jpg; *.jpeg; *.bmp; *.png"
+            };
+
+            // Creates directory if not present
             if (Directory.Exists(appPath) == false)
             {
                 Directory.CreateDirectory(appPath);
@@ -44,28 +61,35 @@ namespace top_smartvision.DB
             {
                 try
                 {
+                    // Gets the filename and extension
                     string iName = open.SafeFileName;
+
+                    // Gets current file path
                     string filepath = open.FileName;
+
+                    // Copies image to default directory
                     File.Copy(filepath, appPath + iName);
                 }
                 catch (Exception exp)
                 {
+                    // Catches errors if failed
                     MessageBox.Show("Unable to open file " + exp.Message);
                 }
             }
             else
             {
+                // Disposes OpenFileDialog object
                 open.Dispose();
             }
         }
 
+        /// <summary>
+        /// Save displayed image to default directory
+        /// </summary>
+        /// <param name="image"></param>
         public void PushImage(string image)
         {
-            
-
-            Bitmap b = new Bitmap(image);
-            string startupPath = Environment.CurrentDirectory;
-            b.Save(@"..\Resources\Images\img.jpg");
+            // Not yet implemented
         }
     }
 }

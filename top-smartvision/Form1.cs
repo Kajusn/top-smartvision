@@ -32,10 +32,13 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void UploadImgButton_Click(object sender, EventArgs e)
         {
+            // Creates new file handling object
             IDB file = new FileIO();
 
+            // Takes image from local storage
             string img = file.PullImage();
 
+            // Quits method if no image was opened
             if (img == null)
                 return;
             
@@ -71,17 +74,13 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void UploadImgToCompareButton_Click(object sender, EventArgs e)
         {
-            // Open file dialog
-            /*OpenFileDialog open = new OpenFileDialog();
-
-            // Filters the types of files that can be opened
-            open.Filter = "*.jpg; *.jpeg; *.bmp; *.png|*.jpg; *.jpeg; *.bmp; *.png";
-            if (open.ShowDialog() != DialogResult.OK)
-                return;*/
+            // Creates new file handling object
             IDB file = new FileIO();
 
+            // Takes image from local storage
             string img = file.PullImage();
 
+            // Quits method if no image was opened
             if (img == null)
                 return;
 
