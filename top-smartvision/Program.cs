@@ -16,7 +16,7 @@ namespace top_smartvision
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Application.Run(LoginForm.GetInstance);
         }
     }
 }

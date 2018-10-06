@@ -12,9 +12,25 @@ namespace top_smartvision
 {
     public partial class LoginForm : Form
     {
+        private static LoginForm instance;
         public LoginForm()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Singleton Instance of form
+        /// </summary>
+        public static LoginForm GetInstance
+        {
+            get
+            {
+                if (instance == null || instance.IsDisposed)
+                {
+                    instance = new LoginForm();
+                }
+                return instance;
+            }
         }
 
         #region Username/Password text
@@ -26,14 +42,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void UsernameText_Enter(object sender, EventArgs e)
         {
-            if (UsernameText.Text == "Username")
-            {
-                // Removes watermark
-                UsernameText.Text = "";
-
-                // Sets text color to default
-                UsernameText.ForeColor = SystemColors.WindowText;
-            }
+            WatermarkHelper(UsernameText, "Username");
         }
 
         /// <summary>
@@ -43,14 +52,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void UsernameText_Leave(object sender, EventArgs e)
         {
-            if (UsernameText.TextLength == 0)
-            {
-                // Sets watermark
-                UsernameText.Text = "Username";
-
-                // Sets watermark color
-                UsernameText.ForeColor = SystemColors.GrayText;
-            }
+            WatermarkHelper(UsernameText, "Username");
         }
 
         /// <summary>
@@ -60,17 +62,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void PasswordText_Enter(object sender, EventArgs e)
         {
-            if (PasswordText.Text == "Password")
-            {
-                // Removes watermark
-                PasswordText.Text = "";
-
-                // Sets text color to default
-                PasswordText.ForeColor = SystemColors.WindowText;
-
-                // Masks the password
-                PasswordText.PasswordChar = '*';
-            }
+            WatermarkHelper(PasswordText, "Password");
         }
 
         /// <summary>
@@ -80,31 +72,13 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void PasswordText_Leave(object sender, EventArgs e)
         {
-            if (PasswordText.TextLength == 0)
-            {
-                // Unmasks the password
-                PasswordText.PasswordChar = (Char)0;
-
-                // Sets watermark
-                PasswordText.Text = "Password";
-
-                // Sets watermark color
-                PasswordText.ForeColor = SystemColors.GrayText;
-                
-            }
-            
+            WatermarkHelper(PasswordText, "Password");   
         }
 
         #endregion
 
-        private void LoginBtn_Click(object sender, EventArgs e)
-        {
-            // TO-DO:
-            // Login button takes you to homescreen/main menu
+        #region Helpers
 
-            NamePassNotEmpty();
-        }
-        
         /// <summary>
         /// Makes sure Username and Password fields are not empty
         /// </summary>
@@ -130,6 +104,56 @@ namespace top_smartvision
                 this.Visible = false;
             }
             return;
+        }
+
+        /// <summary>
+        /// Helps set and remove watermarks for text boxes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="text"></param>
+        private void WatermarkHelper(TextBox sender, string text)
+        {
+            // Removes watermark from text box
+            if (sender.Text == text)
+            {
+                // Removes watermark
+                sender.Text = "";
+
+                // Sets text color to default
+                sender.ForeColor = SystemColors.WindowText;
+
+                // Masks the text if it's a password text box
+                if (sender == PasswordText) sender.PasswordChar = '*';
+            }
+
+            // Creates watermark for text box
+            else if (sender.TextLength == 0)
+            {
+                // Sets watermark
+                sender.Text = text;
+
+                // Sets watermark color
+                sender.ForeColor = SystemColors.GrayText;
+
+                // Unmasks the text if it's a password text box
+                if (sender == PasswordText) sender.PasswordChar = (Char)0;
+            }
+        }
+
+        #endregion Helpers
+
+        private void LoginBtn_Click(object sender, EventArgs e)
+        {
+            // TO-DO:
+            // Login button takes you to homescreen/main menu
+
+            NamePassNotEmpty();
+        }
+
+        private void RegisterLabel_Click(object sender, EventArgs e)
+        {
+            RegisterForm.GetInstance.Show();
+            this.Hide();
         }
     }
 }
