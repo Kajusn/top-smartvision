@@ -16,10 +16,11 @@ namespace top_smartvision
 {
     public partial class Form1 : Form
     {
+        Recognition test = new Recognition();
+
         public Form1()
         {
             InitializeComponent();
-            Recognition test = new Recognition();
             //test.Recognizer();
         }
 
@@ -41,12 +42,13 @@ namespace top_smartvision
             // Quits method if no image was opened
             if (img == null)
                 return;
-            
+
             // Creates new bitmap object
             Bitmap Image = new Bitmap(img);
-
+            Bitmap rec = test.Skeletonize(Image);
             // Loads and displays image
-            ImgBox.LoadAsync (img);
+            //ImgBox.LoadAsync (img);
+            ImgBox.Image = rec;
 
             // Changes image box maximum size to uploaded image size
             ImgBox.MaximumSize = Image.Size;
