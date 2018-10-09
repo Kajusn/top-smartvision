@@ -18,11 +18,17 @@ namespace UnitTestProject
         [TestMethod]
         public void Skeletonize()
         {
-            string i = "1";
-            Bitmap bitmap = new Bitmap(i);
+            // open image to Bitmap
+            Bitmap bitmap = new Bitmap(@"C:/Users/Deividas/Pictures/Camera Roll/Annotation.png");
+
+            // Runs Skeletonize
             var result = _recognition.Skeletonize(bitmap);
 
+            // Check if Skeletonize returns not null
             Assert.IsNotNull(result);
+
+            // Check if Skeletonize returns Bitmap type
+            Assert.IsInstanceOfType(result, typeof(Bitmap));
         }
     }
 }
