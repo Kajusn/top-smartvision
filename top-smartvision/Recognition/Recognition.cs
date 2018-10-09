@@ -62,23 +62,70 @@ namespace top_smartvision.recognition
             }
             return rects;
         }*/
-                /*
-                private CascadeClassifier _cascadeClassifier = new CascadeClassifier(Application.StartupPath + "/haarcascade_frontalface_alt_tree.xml");
-                using (var imageFrame = _capture.QueryFrame().ToImage())
+        /*
+        private CascadeClassifier _cascadeClassifier = new CascadeClassifier(Application.StartupPath + "/haarcascade_frontalface_alt_tree.xml");
+        using (var imageFrame = _capture.QueryFrame().ToImage())
+        {
+            if (imageFrame != null)
+            {
+                var grayframe = imageFrame.Convert();
+                var faces = _cascadeClassifier.DetectMultiScale(grayframe, 1.1, 10, Size.Empty); //the actual face detection happens here
+                foreach (var face in faces)
                 {
-                    if (imageFrame != null)
-                    {
-                        var grayframe = imageFrame.Convert();
-                        var faces = _cascadeClassifier.DetectMultiScale(grayframe, 1.1, 10, Size.Empty); //the actual face detection happens here
-                        foreach (var face in faces)
-                        {
-                            imageFrame.Draw(face, new Bgr(Color.BurlyWood), 3); //the detected face(s) is highlighted here using a box that is drawn around it/them
-                           
-                        }
-                    }
-                    imgCamUser.Image = imageFrame;                    
-                }*/
+                    imageFrame.Draw(face, new Bgr(Color.BurlyWood), 3); //the detected face(s) is highlighted here using a box that is drawn around it/them
 
-        
+                }
+            }
+            imgCamUser.Image = imageFrame;                    
+        }*/
+
+        /// <summary>
+        /// Converts image to white contours in a black background
+        /// </summary>
+        /// <param name="image">Bitmap</param>
+        /// <returns>Bitmap</returns>
+        public Bitmap Skeletonize(Bitmap image)
+        {
+            // Makes bunch of image objects for futher execution
+            Image<Gray, byte> imgOld = new Image<Gray, byte>(image);
+            Image<Gray, byte> img2 = (new Image<Gray, byte>(imgOld.Width, imgOld.Height, new Gray(255))).Sub(imgOld);
+            Image<Gray, byte> eroded = new Image<Gray, byte>(img2.Size);
+            Image<Gray, byte> temp = new Image<Gray, byte>(img2.Size);
+            Image<Gray, byte> skel = new Image<Gray, byte>(img2.Size);
+
+            // Sets skel image value to 0
+            skel.SetValue(0);
+
+            // Makes img2 from grayscale to binary
+            CvInvoke.Threshold(img2, img2, 127, 256, 0);
+
+            // Makes structuring element for morphological operations
+            var element = CvInvoke.GetStructuringElement(ElementShape.Cross, new Size(3, 3), new Point(-1, -1));
+
+            // Check if done in while loop
+            bool done = false;
+
+            while (!done)
+            {
+                // Erodes the img2 image
+                CvInvoke.Erode(img2, eroded, element, new Point(-1, -1), 1, BorderType.Reflect, default(MCvScalar));
+
+                // Dilates the eroded image
+                CvInvoke.Dilate(eroded, temp, element, new Point(-1, -1), 1, BorderType.Reflect, default(MCvScalar));
+
+                // Subtracts proccessed temp image from binary img2 image
+                CvInvoke.Subtract(img2, temp, temp);
+
+                // Calcs bit disjunction between images
+                CvInvoke.BitwiseOr(skel, temp, skel);
+
+                // Copies eroded to img2 for while loop
+                eroded.CopyTo(img2);
+
+                // Checks whether all img2 was proccessed
+                if (CvInvoke.CountNonZero(img2) == 0) done = true;
+            }
+            return skel.Bitmap;
+        }
     }
 }
