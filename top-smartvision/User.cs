@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace top_smartvision
 {
+    /// <summary>
+    /// User information for future database
+    /// </summary>
     class User
     {
         private string name;
@@ -13,15 +16,22 @@ namespace top_smartvision
         private string username;
         private string email;
         private string password;
+        private string gender;
 
-        public User(string user, string Pass, string Email, string Name, string LastName)
+        public User(string user, string Pass, string Email, string Name, string LastName, string gender)
         {
             this.email = Email;
             this.username = user;
             this.password = Pass;
             this.name = Name;
             this.lastName = LastName;
+            this.gender = gender;
         }
+        /// <summary>
+        /// User setters and getters
+        /// </summary>
+        /// <returns></returns>
+        #region get/set
 
         public string getEmail()
         {
@@ -56,5 +66,14 @@ namespace top_smartvision
         {
             this.password = password;
         }
+        public string getGender()
+        {
+            return gender;
+        }
+        public void setGender (string gender)
+        {
+            this.gender = gender;
+        }
+        #endregion
     }
 }
