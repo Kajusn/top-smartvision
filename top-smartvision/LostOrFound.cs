@@ -17,7 +17,11 @@ namespace top_smartvision
             InitializeComponent();
         }
 
-
+        /// <summary>
+        /// This method should open form to look for lost item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Lost_Button_Click(object sender, EventArgs e)
         {
             //TO-DO:
@@ -25,7 +29,11 @@ namespace top_smartvision
 
 
         }
-
+        /// <summary>
+        /// Opens form to upload found ID pictures
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Found_Button_Click(object sender, EventArgs e)
         {
             Form1 fm = new Form1();
