@@ -98,10 +98,10 @@ namespace top_smartvision
 
             else
             {
-                Form1 fm = new Form1();
+                LostOrFound fm = new LostOrFound();
                 fm.Show();
 
-                this.Visible = false;
+                this.Visible=false;
             }
             return;
         }
