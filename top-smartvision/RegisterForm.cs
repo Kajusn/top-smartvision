@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using top_smartvision.DB;
 
 namespace top_smartvision
 {
@@ -241,6 +242,15 @@ namespace top_smartvision
 
             // Will return if Email is invalid
             if (!EmailValidation()) return;
+
+            User newUser = new User ( FirstNameText.Text,LastNameText.Text, EmailText.Text, UsernameText.Text, PasswordText.Text);
+
+            FileIO file = new FileIO();
+
+            file.WriteToFile(newUser.name, newUser.lastName, newUser.username, newUser.email, newUser.password);
+
+            this.Close();
+            LoginForm.GetInstance.Show();
 
             // TO-DO:
             // Actually registering the person with specified info

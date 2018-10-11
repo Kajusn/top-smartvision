@@ -91,5 +91,27 @@ namespace top_smartvision.DB
         {
             // Not yet implemented
         }
+        public void WriteToFile(string name, string lastname, string username, string email, string pass /*string gender*/)
+        {
+            appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\";
+
+            /* if (Directory.Exists(appPath)==false || File.Exists(appPath)==false)
+             {
+                 Directory.CreateDirectory(appPath);
+                 appPath = appPath + @"users.txt";
+                 File.Create(appPath);
+
+             }
+             */
+            appPath = appPath + @"users.txt";
+            string line = $"{name },{lastname},{username},{email},{pass}\r\n";
+           
+            File.AppendAllText (appPath, line);
+   
+        }
+        public void ReadFromFile(string a, string b)
+        {
+
+        }
     }
 }

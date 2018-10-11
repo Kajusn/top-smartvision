@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace top_smartvision.DB
 {
-    interface IDB
+    public interface IDB
     {
         /// <summary>
         /// Takes image from local storage
@@ -24,5 +24,8 @@ namespace top_smartvision.DB
         /// </summary>
         /// <param name="image"></param>
         void PushImage(string image);
+
+       void WriteToFile(string name, string lastname, string username, string email, string pass/*, string gender*/);
+       void ReadFromFile(string username, string email);
     }
 }
