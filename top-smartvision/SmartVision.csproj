@@ -60,6 +60,12 @@
   <ItemGroup>
     <Compile Include="DB\FileIO.cs" />
     <Compile Include="DB\IDB.cs" />
+    <Compile Include="LostForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LostForm.Designer.cs">
+      <DependentUpon>LostForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FoundForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LostForm.resx">
+      <DependentUpon>LostForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LostOrFound.resx">
       <DependentUpon>LostOrFound.cs</DependentUpon>

@@ -24,10 +24,10 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void Lost_Button_Click(object sender, EventArgs e)
         {
-            //TO-DO:
-            //Fill information about lost item 
+            LostForm fm = new LostForm();
+            fm.Show();
 
-
+            this.Dispose();
         }
 
         /// <summary>
@@ -42,5 +42,6 @@ namespace top_smartvision
 
             this.Dispose();
         }
+
     }
 }

@@ -53,6 +53,7 @@
             this.Lost_Button.TabIndex = 1;
             this.Lost_Button.Text = "I lost something";
             this.Lost_Button.UseVisualStyleBackColor = true;
+            this.Lost_Button.Click += new System.EventHandler(this.Lost_Button_Click);
             // 
             // TitleLabel
             // 
