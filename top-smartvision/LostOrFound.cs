@@ -36,7 +36,7 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void Found_Button_Click(object sender, EventArgs e)
         {
-            Form1 fm = new Form1();
+            FoundForm fm = new FoundForm();
             fm.Show();
 
            Visible = false;

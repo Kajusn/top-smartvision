@@ -14,11 +14,11 @@ using top_smartvision.DB;
 
 namespace top_smartvision
 {
-    public partial class Form1 : Form
+    public partial class FoundForm : Form
     {
         Recognition test = new Recognition();
 
-        public Form1()
+        public FoundForm()
         {
             InitializeComponent();
             //test.Recognizer();
@@ -65,8 +65,8 @@ namespace top_smartvision
         private void ImgBox_LoadCompleted(object sender, AsyncCompletedEventArgs e)
         {
             // Hides "Upload image" prompt
-            UploadImgLabel.Visible = false;
-            UploadImgButton.Text = "Upload another image";
+            //UploadImgLabel.Visible = false;
+            TakePicBtn.Text = "Upload another image";
         }
           
         /// <summary>
@@ -87,7 +87,7 @@ namespace top_smartvision
                 return;
 
             // Loads and displays image
-            ImgBox2.LoadAsync(img);
+            //ImgBox2.LoadAsync(img);
 
             // Creates new bitmap object
             Bitmap Image = new Bitmap(img);
@@ -96,7 +96,7 @@ namespace top_smartvision
             ImageNameLabel2.Text = img;
 
             // Changes image box maximum size to uploaded image size
-            ImgBox2.MaximumSize = Image.Size;
+            //ImgBox2.MaximumSize = Image.Size;
 
             UploadImgToCompareButton.Text = "Upload another image";
            
