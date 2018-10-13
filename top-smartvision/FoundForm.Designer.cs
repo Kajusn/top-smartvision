@@ -45,7 +45,7 @@
             this.TypeLbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.ID_InfoLbl = new System.Windows.Forms.TableLayoutPanel();
             this.IDLbl = new System.Windows.Forms.Label();
             this.LastNameLbl = new System.Windows.Forms.Label();
             this.FirstNameLbl = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImgBox)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.ID_InfoLbl.SuspendLayout();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -234,30 +234,30 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Last Name:";
             // 
-            // tableLayoutPanel2
+            // ID_InfoLbl
             // 
-            this.tableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66F));
-            this.tableLayoutPanel2.Controls.Add(this.IDLbl, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.LastNameLbl, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.FirstNameLbl, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.TypeLbl, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.IDTypeLbl, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(396, 121);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(281, 143);
-            this.tableLayoutPanel2.TabIndex = 11;
-            this.tableLayoutPanel2.Visible = false;
+            this.ID_InfoLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ID_InfoLbl.ColumnCount = 2;
+            this.ID_InfoLbl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
+            this.ID_InfoLbl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66F));
+            this.ID_InfoLbl.Controls.Add(this.IDLbl, 1, 3);
+            this.ID_InfoLbl.Controls.Add(this.LastNameLbl, 1, 2);
+            this.ID_InfoLbl.Controls.Add(this.FirstNameLbl, 1, 1);
+            this.ID_InfoLbl.Controls.Add(this.label1, 0, 0);
+            this.ID_InfoLbl.Controls.Add(this.label2, 0, 2);
+            this.ID_InfoLbl.Controls.Add(this.TypeLbl, 0, 1);
+            this.ID_InfoLbl.Controls.Add(this.label3, 0, 3);
+            this.ID_InfoLbl.Controls.Add(this.IDTypeLbl, 1, 0);
+            this.ID_InfoLbl.Location = new System.Drawing.Point(396, 121);
+            this.ID_InfoLbl.Name = "ID_InfoLbl";
+            this.ID_InfoLbl.RowCount = 4;
+            this.ID_InfoLbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ID_InfoLbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ID_InfoLbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ID_InfoLbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ID_InfoLbl.Size = new System.Drawing.Size(281, 143);
+            this.ID_InfoLbl.TabIndex = 11;
+            this.ID_InfoLbl.Visible = false;
             // 
             // IDLbl
             // 
@@ -312,7 +312,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 461);
-            this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.ID_InfoLbl);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.ImageNameLabel2);
@@ -328,8 +328,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImgBox)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.ID_InfoLbl.ResumeLayout(false);
+            this.ID_InfoLbl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,7 +354,7 @@
         private System.Windows.Forms.Label TypeLbl;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel ID_InfoLbl;
         private System.Windows.Forms.Label IDLbl;
         private System.Windows.Forms.Label LastNameLbl;
         private System.Windows.Forms.Label FirstNameLbl;

@@ -56,6 +56,9 @@ namespace top_smartvision
             if (img == null)
                 return;
 
+            // Displays information about the ID
+            Show_Info();
+
             // Creates new bitmap object
             Bitmap Image = new Bitmap(img);
             Bitmap rec = test.Skeletonize(Image);
@@ -68,6 +71,18 @@ namespace top_smartvision
 
             // Displays image path
             ImageNameLabel.Text = img;
+        }
+
+        /// <summary>
+        /// Displays information about the ID
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Show_Info()
+        {
+            ID_InfoLbl.Visible = true;
+
+            // TODO: Takes the information from the image and displays it in the appropriate fields
         }
 
         #endregion
