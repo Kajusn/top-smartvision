@@ -86,9 +86,12 @@
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.Lost_Button);
             this.Controls.Add(this.Found_Button);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "LostOrFound";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Smart Vision";
+            this.Text = "Lost&Found";
             this.ResumeLayout(false);
 
         }

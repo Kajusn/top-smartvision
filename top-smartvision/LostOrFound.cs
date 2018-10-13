@@ -29,6 +29,7 @@ namespace top_smartvision
 
 
         }
+
         /// <summary>
         /// Opens form to upload found ID pictures
         /// </summary>

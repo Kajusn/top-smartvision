@@ -31,10 +31,7 @@
             this.TitleLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.TakePicBtn = new System.Windows.Forms.Button();
-            this.UploadImgToCompareButton = new System.Windows.Forms.Button();
-            this.CompareButton = new System.Windows.Forms.Button();
             this.ImageNameLabel = new System.Windows.Forms.Label();
-            this.ImageNameLabel2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,7 +39,7 @@
             this.updatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImgBox = new System.Windows.Forms.PictureBox();
-            this.TypeLbl = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ID_InfoLbl = new System.Windows.Forms.TableLayoutPanel();
@@ -51,6 +48,7 @@
             this.FirstNameLbl = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.IDTypeLbl = new System.Windows.Forms.Label();
+            this.UploadIDbtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImgBox)).BeginInit();
@@ -77,9 +75,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Controls.Add(this.TakePicBtn, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.UploadImgToCompareButton, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.CompareButton, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.UploadIDbtn, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.TakePicBtn, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 396);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -91,34 +88,13 @@
             // TakePicBtn
             // 
             this.TakePicBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TakePicBtn.Location = new System.Drawing.Point(224, 3);
+            this.TakePicBtn.Location = new System.Drawing.Point(3, 3);
             this.TakePicBtn.Name = "TakePicBtn";
             this.TakePicBtn.Size = new System.Drawing.Size(215, 47);
             this.TakePicBtn.TabIndex = 2;
             this.TakePicBtn.Text = "Take photo";
             this.TakePicBtn.UseVisualStyleBackColor = true;
             this.TakePicBtn.Click += new System.EventHandler(this.UploadImgButton_Click);
-            // 
-            // UploadImgToCompareButton
-            // 
-            this.UploadImgToCompareButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UploadImgToCompareButton.Location = new System.Drawing.Point(445, 3);
-            this.UploadImgToCompareButton.Name = "UploadImgToCompareButton";
-            this.UploadImgToCompareButton.Size = new System.Drawing.Size(217, 47);
-            this.UploadImgToCompareButton.TabIndex = 3;
-            this.UploadImgToCompareButton.Text = "Upload image to compare";
-            this.UploadImgToCompareButton.UseVisualStyleBackColor = true;
-            // 
-            // CompareButton
-            // 
-            this.CompareButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CompareButton.Location = new System.Drawing.Point(3, 3);
-            this.CompareButton.Name = "CompareButton";
-            this.CompareButton.Size = new System.Drawing.Size(215, 47);
-            this.CompareButton.TabIndex = 4;
-            this.CompareButton.Text = "Compare";
-            this.CompareButton.UseVisualStyleBackColor = true;
-            this.CompareButton.Click += new System.EventHandler(this.CompareButton_Click);
             // 
             // ImageNameLabel
             // 
@@ -131,15 +107,6 @@
             this.ImageNameLabel.Size = new System.Drawing.Size(273, 24);
             this.ImageNameLabel.TabIndex = 4;
             this.ImageNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ImageNameLabel2
-            // 
-            this.ImageNameLabel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ImageNameLabel2.Location = new System.Drawing.Point(366, 369);
-            this.ImageNameLabel2.Name = "ImageNameLabel2";
-            this.ImageNameLabel2.Size = new System.Drawing.Size(273, 24);
-            this.ImageNameLabel2.TabIndex = 6;
-            this.ImageNameLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // menuStrip1
             // 
@@ -201,16 +168,16 @@
             this.ImgBox.TabIndex = 2;
             this.ImgBox.TabStop = false;
             // 
-            // TypeLbl
+            // label4
             // 
-            this.TypeLbl.AutoSize = true;
-            this.TypeLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TypeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TypeLbl.Location = new System.Drawing.Point(3, 35);
-            this.TypeLbl.Name = "TypeLbl";
-            this.TypeLbl.Size = new System.Drawing.Size(89, 35);
-            this.TypeLbl.TabIndex = 8;
-            this.TypeLbl.Text = "First Name:";
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 35);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "First Name:";
             // 
             // label1
             // 
@@ -245,7 +212,7 @@
             this.ID_InfoLbl.Controls.Add(this.FirstNameLbl, 1, 1);
             this.ID_InfoLbl.Controls.Add(this.label1, 0, 0);
             this.ID_InfoLbl.Controls.Add(this.label2, 0, 2);
-            this.ID_InfoLbl.Controls.Add(this.TypeLbl, 0, 1);
+            this.ID_InfoLbl.Controls.Add(this.label4, 0, 1);
             this.ID_InfoLbl.Controls.Add(this.label3, 0, 3);
             this.ID_InfoLbl.Controls.Add(this.IDTypeLbl, 1, 0);
             this.ID_InfoLbl.Location = new System.Drawing.Point(396, 121);
@@ -307,6 +274,17 @@
             this.IDTypeLbl.TabIndex = 12;
             this.IDTypeLbl.Text = "-";
             // 
+            // UploadIDbtn
+            // 
+            this.UploadIDbtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UploadIDbtn.Location = new System.Drawing.Point(445, 3);
+            this.UploadIDbtn.Name = "UploadIDbtn";
+            this.UploadIDbtn.Size = new System.Drawing.Size(217, 47);
+            this.UploadIDbtn.TabIndex = 3;
+            this.UploadIDbtn.Text = "Upload found ID";
+            this.UploadIDbtn.UseVisualStyleBackColor = true;
+            this.UploadIDbtn.Click += new System.EventHandler(this.UploadIDbtn_Click);
+            // 
             // FoundForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,7 +293,6 @@
             this.Controls.Add(this.ID_InfoLbl);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.ImageNameLabel2);
             this.Controls.Add(this.ImageNameLabel);
             this.Controls.Add(this.ImgBox);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -340,18 +317,15 @@
         private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button TakePicBtn;
-        private System.Windows.Forms.Button UploadImgToCompareButton;
         private System.Windows.Forms.PictureBox ImgBox;
         private System.Windows.Forms.Label ImageNameLabel;
-        private System.Windows.Forms.Label ImageNameLabel2;
-        private System.Windows.Forms.Button CompareButton;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updatesToolStripMenuItem;
-        private System.Windows.Forms.Label TypeLbl;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel ID_InfoLbl;
@@ -360,6 +334,7 @@
         private System.Windows.Forms.Label FirstNameLbl;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label IDTypeLbl;
+        private System.Windows.Forms.Button UploadIDbtn;
     }
 }
 

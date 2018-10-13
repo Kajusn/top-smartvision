@@ -36,10 +36,31 @@ namespace top_smartvision
             Take_Picture();
         }
 
+        /// <summary>
+        /// Calls method to upload the ID and its information to the database/filesystem
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UploadIDbtn_Click(object sender, EventArgs e)
+        {
+            UploadData();
+        }
 
         #endregion
 
         #region Helpers
+
+        /// <summary>
+        /// Uploads ID data to database/filesystem
+        /// </summary>
+        private void UploadData()
+        {
+            // Save IDTypeLbl.Text;
+            // Save FirstNameLbl.Text;
+            // Save LastNameLbl.Text;
+            // Save IDLbl.Text;
+
+        }
 
         /// <summary>
         /// Browse system to upload an image (should be able to take a picture eventually)
@@ -120,5 +141,7 @@ namespace top_smartvision
             LostOrFound fm = new LostOrFound();
             fm.Show();
         }
+
+
     }
 }
