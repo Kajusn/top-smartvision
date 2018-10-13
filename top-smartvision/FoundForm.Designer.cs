@@ -108,7 +108,6 @@
             this.UploadImgToCompareButton.TabIndex = 3;
             this.UploadImgToCompareButton.Text = "Upload image to compare";
             this.UploadImgToCompareButton.UseVisualStyleBackColor = true;
-            this.UploadImgToCompareButton.Click += new System.EventHandler(this.UploadImgToCompareButton_Click);
             // 
             // CompareButton
             // 
@@ -201,7 +200,6 @@
             this.ImgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ImgBox.TabIndex = 2;
             this.ImgBox.TabStop = false;
-            this.ImgBox.LoadCompleted += new System.ComponentModel.AsyncCompletedEventHandler(this.ImgBox_LoadCompleted);
             // 
             // TypeLbl
             // 
@@ -325,6 +323,7 @@
             this.Name = "FoundForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Smart Vision";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FoundForm_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

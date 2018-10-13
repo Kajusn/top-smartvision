@@ -39,7 +39,7 @@ namespace top_smartvision
             FoundForm fm = new FoundForm();
             fm.Show();
 
-           Visible = false;
+            this.Dispose();
         }
     }
 }

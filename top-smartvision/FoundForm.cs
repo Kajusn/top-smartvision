@@ -24,14 +24,27 @@ namespace top_smartvision
             //test.Recognizer();
         }
 
-        #region Upload image
+        #region Buttons
 
         /// <summary>
-        /// Browse system for image to upload and display
+        /// "Takes a picture" when clicked
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void UploadImgButton_Click(object sender, EventArgs e)
+        {
+            Take_Picture();
+        }
+
+
+        #endregion
+
+        #region Helpers
+
+        /// <summary>
+        /// Browse system to upload an image (should be able to take a picture eventually)
+        /// </summary>
+        private void Take_Picture()
         {
             // Creates new file handling object
             IDB file = new FileIO();
@@ -46,8 +59,8 @@ namespace top_smartvision
             // Creates new bitmap object
             Bitmap Image = new Bitmap(img);
             Bitmap rec = test.Skeletonize(Image);
+
             // Loads and displays image
-            //ImgBox.LoadAsync (img);
             ImgBox.Image = rec;
 
             // Changes image box maximum size to uploaded image size
@@ -55,51 +68,6 @@ namespace top_smartvision
 
             // Displays image path
             ImageNameLabel.Text = img;
-        }
-
-        /// <summary>
-        /// Hides upload img prompt when img loads
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ImgBox_LoadCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-            // Hides "Upload image" prompt
-            //UploadImgLabel.Visible = false;
-            TakePicBtn.Text = "Upload another image";
-        }
-          
-        /// <summary>
-        /// Uploads image 2
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void UploadImgToCompareButton_Click(object sender, EventArgs e)
-        {
-            // Creates new file handling object
-            IDB file = new FileIO();
-
-            // Takes image from local storage
-            string img = file.PullImage();
-
-            // Quits method if no image was opened
-            if (img == null)
-                return;
-
-            // Loads and displays image
-            //ImgBox2.LoadAsync(img);
-
-            // Creates new bitmap object
-            Bitmap Image = new Bitmap(img);
-
-            // Displays image path
-            ImageNameLabel2.Text = img;
-
-            // Changes image box maximum size to uploaded image size
-            //ImgBox2.MaximumSize = Image.Size;
-
-            UploadImgToCompareButton.Text = "Upload another image";
-           
         }
 
         #endregion
@@ -124,6 +92,18 @@ namespace top_smartvision
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        /// <summary>
+        /// Opens up the main menu when form is closed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FoundForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Opens up the main menu
+            LostOrFound fm = new LostOrFound();
+            fm.Show();
         }
     }
 }
