@@ -16,39 +16,7 @@ namespace top_smartvision.recognition
 {
     public class Recognition
     {
-        /// <summary>
-        /// Enum for one method fits all EmguCV Option
-        /// </summary>
-        [Flags]
-        public enum Option { Skeletonize = 1, Other = 2};
-
-        // Point struct for Skeletonize method
-        PointStruct point = new PointStruct(-1, -1);
-
-        /// <summary>
-        /// 'One method fits all' for EmguCV rendering. Controls which methods to be called.
-        /// </summary>
-        /// <param name="bit"></param>
-        /// <param name="option"></param>
-        /// <returns></returns>
-        public Bitmap Recognizer(Bitmap bit, Option option)
-        {
-            switch (option)
-            {
-                case Option.Skeletonize:
-                    return Skeletonize(bit, point);
-
-                case Option.Other:
-                    return Other(bit);
-
-                case (Option.Skeletonize | Option.Other):
-                    Bitmap bitty = Other(bit);
-                    return Skeletonize(bitty, point);
-
-                default:
-                    return null;
-            }
-        }
+        
 
         private Bitmap Other(Bitmap image)
         {
@@ -144,7 +112,7 @@ namespace top_smartvision.recognition
             Image<Bgr, Byte> grayframe = new Image<Bgr, Byte>(image);
 
             // Here comes the face detection processing
-            var faces = _cascadeClassifier.DetectMultiScale(grayframe, 1.1, 10, Size.Empty); //the actual face detection happens here
+            var faces = _cascadeClassifier.DetectMultiScale(grayframe, 1.1, 10, Size.Empty);
 
             Bitmap BmpInput = grayframe.ToBitmap();
             Bitmap ExtractedFace;
@@ -153,10 +121,13 @@ namespace top_smartvision.recognition
 
             foreach (var face in faces)
             {
-                grayframe.Draw(face, new Bgr(Color.BurlyWood), 3); //the detected face(s) is highlighted here using a box that is drawn around it/them
-                ExtractedFace = new Bitmap(face.Width, face.Height);
-                //nextFrame.Save(Application.StartupPath + "/face/face" + ".bmp");
+                // the detected face is highlighted here using a box that is drawn around it
+                grayframe.Draw(face, new Bgr(Color.BurlyWood), 3);
 
+                // Creates extracted face blank Bitmap of face size
+                ExtractedFace = new Bitmap(face.Width, face.Height);
+
+                // Draws face to the extracted face bitmap
                 FaceCanvas = Graphics.FromImage(ExtractedFace);
                 FaceCanvas.DrawImage(BmpInput, 0, 0, face, GraphicsUnit.Pixel);
 
@@ -174,7 +145,7 @@ namespace top_smartvision.recognition
             public int x;
             public int y;
 
-            public PointStruct( int x, int y)
+            public PointStruct(int x, int y)
             {
                 this.x = x;
                 this.y = y;
