@@ -247,7 +247,8 @@ namespace top_smartvision
 
             FileIO file = new FileIO();
 
-            file.WriteToFile(newUser.name, newUser.lastName, newUser.username, newUser.email, newUser.password);
+            // Calls method to write registration info to file
+            file.Register(newUser.name, newUser.lastName, newUser.username, newUser.email, newUser.password);
 
             this.Close();
             LoginForm.GetInstance.Show();

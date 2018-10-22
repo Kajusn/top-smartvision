@@ -33,7 +33,7 @@ namespace top_smartvision.DB
         /// <param name="username"></param>
         /// <param name="email"></param>
         /// <param name="pass"></param>
-       void WriteToFile(string name, string lastname, string username, string email, string pass/*, string gender*/);
+       void Register(string name, string lastname, string username, string email, string pass/*, string gender*/);
 
         /// <summary>
         /// Checks if username or email is already taken
@@ -43,6 +43,19 @@ namespace top_smartvision.DB
         /// <returns></returns>
        bool CheckUsernameEmail(string username, string email);
 
+        /// <summary>
+        /// Checks Username and password and logs in user
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         bool Login(string username, string password);
+
+        /// <summary>
+        /// Hashes the password
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        String Hashing(string password);
     }
 }

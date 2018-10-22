@@ -139,12 +139,15 @@ namespace top_smartvision
 
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-            // TO-DO:
-            // Login button takes you to homescreen/main menu
+            
 
             NamePassNotEmpty();
+
             FileIO log = new FileIO();
+
+            // checks if the username and pass are written correctly
             if (!log.Login(UsernameText.Text, PasswordText.Text)) MessageBox.Show("The Username or Password is incorrect");
+
             else
             {
                 LostOrFound fm = new LostOrFound();

@@ -92,28 +92,35 @@ namespace top_smartvision.DB
         {
             // Not yet implemented
         }
-        public void WriteToFile(string name, string lastname, string username, string email, string pass /*string gender*/)
+
+        /// <summary>
+        /// Writes registration info to file
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="lastname"></param>
+        /// <param name="username"></param>
+        /// <param name="email"></param>
+        /// <param name="pass"></param>
+        public void Register(string name, string lastname, string username, string email, string pass /*string gender*/)
         {
             appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\users.txt";
 
+            // Creates file if it doesn't exist
              if ( File.Exists(appPath)==false)
-             {
-               
+             {             
                  File.Create(appPath);
-
              }
              
+             // calls method to check is username of email is not used
            if (!CheckUsernameEmail(username,email)) return;
 
-           using(MD5CryptoServiceProvider md5=new MD5CryptoServiceProvider())
-            {
-                UTF8Encoding utf8 = new UTF8Encoding();
-                byte[] data = md5.ComputeHash(utf8.GetBytes(pass));
-                pass = Convert.ToBase64String(data);
-            }
+            // Hashing the password
+            pass = Hashing(pass);
 
+            //Creating a line of all user info
             string line = $"{name },{lastname},{username},{email},{pass}\r\n";
            
+            //Writes the info into file
             File.AppendAllText (appPath, line);
    
         }
@@ -121,13 +128,18 @@ namespace top_smartvision.DB
         {
             appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\users.txt";
 
+            //Creates a list of users
             List<User> AllUsers = new List<User>();
+
+            //Creates a list of all lines in the text file
             List<string> Lines = File.ReadAllLines(appPath).ToList();
 
             foreach (var line in Lines)
             {
+                // splits every word - name , lastname , username , email , password
                 string[] info = line.Split(',');
               
+                //creates user object and fils the information
                 User newUser = new User();
 
                 newUser.name = info[0];
@@ -136,18 +148,24 @@ namespace top_smartvision.DB
                 newUser.email = info[3];
                 newUser.password = info[4];
 
+                //adds the object to list
                 AllUsers.Add(newUser);
             }
 
+            //new list for filtration
             List<User> Usernames = new List<User>();
 
+            //leaves the objects where username is the same as username of registering person
             Usernames = AllUsers.Where(x => x.username == username).ToList();
+
+            //if there at least one object in the list the username is taken
             if (Usernames.Count() >0)
             {
                 MessageBox.Show("The username is already taken");
                 return false;
             }
 
+            // Same with Email
             AllUsers = AllUsers.Where(x => x.email == email).ToList();
             if (AllUsers.Count()>0)
             {
@@ -159,23 +177,23 @@ namespace top_smartvision.DB
 
        public  bool Login(string username, string password)
         {
-
-            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
-            {
-                UTF8Encoding utf8 = new UTF8Encoding();
-                byte[] data = md5.ComputeHash(utf8.GetBytes(password));
-                password = Convert.ToBase64String(data);
-            }
+            //hashes the password
+            password = Hashing(password);
 
             appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\users.txt";
 
+            //Creates a list of users
             List<User> AllUsers = new List<User>();
+
+            //Creates a list of all lines in the text file
             List<string> Lines = File.ReadAllLines(appPath).ToList();
 
             foreach (var line in Lines)
             {
+                // splits every word - name , lastname , username , email , password
                 string[] info = line.Split(',');
 
+                //creates user object and fils the information
                 User newUser = new User();
 
                 newUser.name = info[0];
@@ -187,10 +205,28 @@ namespace top_smartvision.DB
                 AllUsers.Add(newUser);
             }
 
+            // checks if there is an account with written username and password
             AllUsers = AllUsers.Where(x => x.username == username && x.password == password).ToList();
+            
+            // if there is such an account user can login
             if (AllUsers.Count() == 1) return true;
 
             return false;
+        }
+
+        /// <summary>
+        /// Changes password into array of 16 bytes
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+       public  String Hashing(string password)
+        {
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                UTF8Encoding utf8 = new UTF8Encoding();
+                byte[] data = md5.ComputeHash(utf8.GetBytes(password));
+                return Convert.ToBase64String(data);
+            }
         }
     }
 }
