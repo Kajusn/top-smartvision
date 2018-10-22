@@ -30,6 +30,7 @@
         {
             this.TitleLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.UploadIDbtn = new System.Windows.Forms.Button();
             this.TakePicBtn = new System.Windows.Forms.Button();
             this.ImageNameLabel = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -48,7 +49,6 @@
             this.FirstNameLbl = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.IDTypeLbl = new System.Windows.Forms.Label();
-            this.UploadIDbtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImgBox)).BeginInit();
@@ -84,6 +84,17 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(665, 53);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // UploadIDbtn
+            // 
+            this.UploadIDbtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UploadIDbtn.Location = new System.Drawing.Point(445, 3);
+            this.UploadIDbtn.Name = "UploadIDbtn";
+            this.UploadIDbtn.Size = new System.Drawing.Size(217, 47);
+            this.UploadIDbtn.TabIndex = 3;
+            this.UploadIDbtn.Text = "Upload found ID";
+            this.UploadIDbtn.UseVisualStyleBackColor = true;
+            this.UploadIDbtn.Click += new System.EventHandler(this.UploadIDbtn_Click);
             // 
             // TakePicBtn
             // 
@@ -131,7 +142,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -274,19 +285,9 @@
             this.IDTypeLbl.TabIndex = 12;
             this.IDTypeLbl.Text = "-";
             // 
-            // UploadIDbtn
-            // 
-            this.UploadIDbtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UploadIDbtn.Location = new System.Drawing.Point(445, 3);
-            this.UploadIDbtn.Name = "UploadIDbtn";
-            this.UploadIDbtn.Size = new System.Drawing.Size(217, 47);
-            this.UploadIDbtn.TabIndex = 3;
-            this.UploadIDbtn.Text = "Upload found ID";
-            this.UploadIDbtn.UseVisualStyleBackColor = true;
-            this.UploadIDbtn.Click += new System.EventHandler(this.UploadIDbtn_Click);
-            // 
             // FoundForm
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 461);

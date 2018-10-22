@@ -11,6 +11,7 @@ using top_smartvision.recognition;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using top_smartvision.DB;
+using System.IO;
 
 namespace top_smartvision
 {
@@ -108,18 +109,6 @@ namespace top_smartvision
 
         #endregion
 
-        private void CompareButton_Click(object sender, EventArgs e)
-        {
-            // TO-DO: Runs Recognizer with opened image
-
-
-           /* if ()
-                MessageBox.Show ("Images are similar ");
-             else
-                MessageBox.Show ("Images are not similar");*/
-                
-        }
-
         /// <summary>
         /// exits application 
         /// </summary>
@@ -141,7 +130,6 @@ namespace top_smartvision
             LostOrFound fm = new LostOrFound();
             fm.Show();
         }
-
 
     }
 }
