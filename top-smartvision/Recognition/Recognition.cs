@@ -16,7 +16,39 @@ namespace top_smartvision.recognition
 {
     public class Recognition
     {
-        
+        /// <summary>
+        /// Enum for one method fits all EmguCV Option
+        /// </summary>
+        [Flags]
+        public enum Option { Skeletonize = 1, Other = 2 };
+
+        // Point struct for Skeletonize method
+        PointStruct point = new PointStruct(-1, -1);
+
+        /// <summary>
+        /// 'One method fits all' for EmguCV rendering. Controls which methods to be called.
+        /// </summary>
+        /// <param name="bit"></param>
+        /// <param name="option"></param>
+        /// <returns></returns>
+        public Bitmap Recognizer(Bitmap bit, Option option)
+        {
+            switch (option)
+            {
+                case Option.Skeletonize:
+                    return Skeletonize(bit, point);
+
+                case Option.Other:
+                    return Other(bit);
+
+                case (Option.Skeletonize | Option.Other):
+                    Bitmap bitty = Other(bit);
+                    return Skeletonize(bitty, point);
+
+                default:
+                    return null;
+            }
+        }
 
         private Bitmap Other(Bitmap image)
         {
