@@ -11,21 +11,31 @@ namespace top_smartvision
     /// </summary>
     class User
     {
-        private string name;
-        private string lastName;
-        private string username;
-        private string email;
-        private string password;
-        private string gender;
+        public string name;
+        public string lastName;
+        public string username;
+        public string email;
+        public string password;
+        // private string gender;
 
-        public User(string user, string Pass, string Email, string Name, string LastName, string gender)
+        public User()
         {
-            this.email = Email;
-            this.username = user;
-            this.password = Pass;
+            name = null;
+            lastName = null;
+            username = null;
+            email = null;
+            password = null;
+         
+        }
+
+        public User(string Name, string LastName, string Email, string User, string Pass/* string gender*/)
+        {
             this.name = Name;
             this.lastName = LastName;
-            this.gender = gender;
+            this.email = Email;
+            this.username = User;
+            this.password = Pass;
+           // this.gender = gender;
         }
         /// <summary>
         /// User setters and getters
@@ -66,14 +76,14 @@ namespace top_smartvision
         {
             this.password = password;
         }
-        public string getGender()
+      /*  public string getGender()
         {
             return gender;
         }
         public void setGender (string gender)
         {
             this.gender = gender;
-        }
+        }*/
         #endregion
     }
 }
