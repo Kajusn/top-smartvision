@@ -156,5 +156,41 @@ namespace top_smartvision.DB
             }
             return true;
         }
+
+       public  bool Login(string username, string password)
+        {
+
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                UTF8Encoding utf8 = new UTF8Encoding();
+                byte[] data = md5.ComputeHash(utf8.GetBytes(password));
+                password = Convert.ToBase64String(data);
+            }
+
+            appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\users.txt";
+
+            List<User> AllUsers = new List<User>();
+            List<string> Lines = File.ReadAllLines(appPath).ToList();
+
+            foreach (var line in Lines)
+            {
+                string[] info = line.Split(',');
+
+                User newUser = new User();
+
+                newUser.name = info[0];
+                newUser.lastName = info[1];
+                newUser.username = info[2];
+                newUser.email = info[3];
+                newUser.password = info[4];
+
+                AllUsers.Add(newUser);
+            }
+
+            AllUsers = AllUsers.Where(x => x.username == username && x.password == password).ToList();
+            if (AllUsers.Count() == 1) return true;
+
+            return false;
+        }
     }
 }

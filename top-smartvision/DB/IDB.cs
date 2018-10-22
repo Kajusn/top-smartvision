@@ -34,6 +34,15 @@ namespace top_smartvision.DB
         /// <param name="email"></param>
         /// <param name="pass"></param>
        void WriteToFile(string name, string lastname, string username, string email, string pass/*, string gender*/);
+
+        /// <summary>
+        /// Checks if username or email is already taken
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
        bool CheckUsernameEmail(string username, string email);
+
+        bool Login(string username, string password);
     }
 }

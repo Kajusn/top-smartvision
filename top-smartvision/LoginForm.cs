@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using top_smartvision.DB;
 
 namespace top_smartvision
 {
@@ -96,13 +97,7 @@ namespace top_smartvision
             else if (PasswordText.Text == "" || PasswordText.Text == "Password")
                 MessageBox.Show("Please enter your password");
 
-            else
-            {
-                LostOrFound fm = new LostOrFound();
-                fm.Show();
-
-                this.Visible=false;
-            }
+            
             return;
         }
 
@@ -148,6 +143,15 @@ namespace top_smartvision
             // Login button takes you to homescreen/main menu
 
             NamePassNotEmpty();
+            FileIO log = new FileIO();
+            if (!log.Login(UsernameText.Text, PasswordText.Text)) MessageBox.Show("The Username or Password is incorrect");
+            else
+            {
+                LostOrFound fm = new LostOrFound();
+                fm.Show();
+
+                this.Visible = false;
+            }
         }
 
         private void RegisterLabel_Click(object sender, EventArgs e)
