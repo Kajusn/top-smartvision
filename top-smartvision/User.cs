@@ -16,7 +16,17 @@ namespace top_smartvision
         public string username;
         public string email;
         public string password;
-       // private string gender;
+        // private string gender;
+
+        public User()
+        {
+            name = null;
+            lastName = null;
+            username = null;
+            email = null;
+            password = null;
+         
+        }
 
         public User(string Name, string LastName, string Email, string User, string Pass/* string gender*/)
         {

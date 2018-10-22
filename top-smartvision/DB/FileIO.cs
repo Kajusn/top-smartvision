@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace top_smartvision.DB
 {
@@ -102,14 +103,21 @@ namespace top_smartvision.DB
 
              }
              
-           if (!ReadFromFile(username,email)) return;
+           if (!CheckUsernameEmail(username,email)) return;
+
+           using(MD5CryptoServiceProvider md5=new MD5CryptoServiceProvider())
+            {
+                UTF8Encoding utf8 = new UTF8Encoding();
+                byte[] data = md5.ComputeHash(utf8.GetBytes(pass));
+                pass = Convert.ToBase64String(data);
+            }
 
             string line = $"{name },{lastname},{username},{email},{pass}\r\n";
            
             File.AppendAllText (appPath, line);
    
         }
-        public bool ReadFromFile(string username, string email)
+        public bool CheckUsernameEmail(string username, string email)
         {
             appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\users.txt";
 

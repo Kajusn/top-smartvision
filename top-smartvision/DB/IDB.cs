@@ -34,6 +34,6 @@ namespace top_smartvision.DB
         /// <param name="email"></param>
         /// <param name="pass"></param>
        void WriteToFile(string name, string lastname, string username, string email, string pass/*, string gender*/);
-       bool ReadFromFile(string username, string email);
+       bool CheckUsernameEmail(string username, string email);
     }
 }
