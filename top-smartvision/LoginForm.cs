@@ -83,22 +83,32 @@ namespace top_smartvision
         /// <summary>
         /// Makes sure Username and Password fields are not empty
         /// </summary>
-        private void NamePassNotEmpty()
+        private bool NamePassNotEmpty()
         {
             // Message box if Username and Password are not entered
             if ((UsernameText.Text == "" && PasswordText.Text == "") || (UsernameText.Text == "Username" && PasswordText.Text == "Password"))
+            {
                 MessageBox.Show("Please enter your username and password");
+                return false;
+            }
 
             // Message box if Username is not entered
             else if (UsernameText.Text == "" || UsernameText.Text == "Username")
+            {
                 MessageBox.Show("Please enter your username");
+                return false;
+            }
 
             // Message box if Password is not entered
             else if (PasswordText.Text == "" || PasswordText.Text == "Password")
+          
+            {
                 MessageBox.Show("Please enter your password");
+                return false;
+            }
 
-            
-            return;
+            else return true;
+
         }
 
         /// <summary>
@@ -137,12 +147,17 @@ namespace top_smartvision
 
         #endregion Helpers
 
+        /// <summary>
+        /// Logs the user in
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoginBtn_Click(object sender, EventArgs e)
         {
+
+    
+            while (NamePassNotEmpty() == false) return;
             
-
-            NamePassNotEmpty();
-
             FileIO log = new FileIO();
 
             // checks if the username and pass are written correctly
@@ -152,9 +167,10 @@ namespace top_smartvision
             {
                 LostOrFound fm = new LostOrFound();
                 fm.Show();
-
                 this.Visible = false;
+                fm.WelcomeMessage(this.UsernameText.Text);
             }
+
         }
 
         private void RegisterLabel_Click(object sender, EventArgs e)

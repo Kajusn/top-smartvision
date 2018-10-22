@@ -24,11 +24,12 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void Lost_Button_Click(object sender, EventArgs e)
         {
-            //TO-DO:
-            //Fill information about lost item 
+            LostForm fm = new LostForm();
+            fm.Show();
 
-
+            this.Dispose();
         }
+
         /// <summary>
         /// Opens form to upload found ID pictures
         /// </summary>
@@ -36,10 +37,20 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void Found_Button_Click(object sender, EventArgs e)
         {
-            Form1 fm = new Form1();
+            FoundForm fm = new FoundForm();
             fm.Show();
 
-           Visible = false;
+            this.Dispose();
         }
+
+        /// <summary>
+        /// Sets the welcome message to greet the logged in user
+        /// </summary>
+        /// <param name="name"></param>
+        public void WelcomeMessage(string name)
+        {
+            this.WelcomeLabel.Text = "Welcome, " + name + "!";
+        }
+
     }
 }
