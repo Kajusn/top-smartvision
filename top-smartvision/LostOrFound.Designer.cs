@@ -70,12 +70,13 @@
             // 
             // WelcomeLabel
             // 
+            this.WelcomeLabel.AutoEllipsis = true;
             this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WelcomeLabel.Location = new System.Drawing.Point(78, 119);
+            this.WelcomeLabel.Location = new System.Drawing.Point(17, 119);
             this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(128, 40);
+            this.WelcomeLabel.Size = new System.Drawing.Size(250, 65);
             this.WelcomeLabel.TabIndex = 3;
-            this.WelcomeLabel.Text = "Welcome!";
+            this.WelcomeLabel.Text = "Welcome!\r\n";
             this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LostOrFound

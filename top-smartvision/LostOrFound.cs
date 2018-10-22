@@ -43,5 +43,14 @@ namespace top_smartvision
             this.Dispose();
         }
 
+        /// <summary>
+        /// Sets the welcome message to greet the logged in user
+        /// </summary>
+        /// <param name="name"></param>
+        public void WelcomeMessage(string name)
+        {
+            this.WelcomeLabel.Text = "Welcome, " + name + "!";
+        }
+
     }
 }
