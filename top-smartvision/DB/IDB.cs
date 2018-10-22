@@ -25,7 +25,15 @@ namespace top_smartvision.DB
         /// <param name="image"></param>
         void PushImage(string image);
 
+        /// <summary>
+        /// Writes registering information to file
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="lastname"></param>
+        /// <param name="username"></param>
+        /// <param name="email"></param>
+        /// <param name="pass"></param>
        void WriteToFile(string name, string lastname, string username, string email, string pass/*, string gender*/);
-       void ReadFromFile(string username, string email);
+       bool ReadFromFile(string username, string email);
     }
 }

@@ -93,25 +93,60 @@ namespace top_smartvision.DB
         }
         public void WriteToFile(string name, string lastname, string username, string email, string pass /*string gender*/)
         {
-            appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\";
+            appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\users.txt";
 
-            /* if (Directory.Exists(appPath)==false || File.Exists(appPath)==false)
+             if ( File.Exists(appPath)==false)
              {
-                 Directory.CreateDirectory(appPath);
-                 appPath = appPath + @"users.txt";
+               
                  File.Create(appPath);
 
              }
-             */
-            appPath = appPath + @"users.txt";
+             
+           if (!ReadFromFile(username,email)) return;
+
             string line = $"{name },{lastname},{username},{email},{pass}\r\n";
            
             File.AppendAllText (appPath, line);
    
         }
-        public void ReadFromFile(string a, string b)
+        public bool ReadFromFile(string username, string email)
         {
+            appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\users.txt";
 
+            List<User> AllUsers = new List<User>();
+            List<string> Lines = File.ReadAllLines(appPath).ToList();
+
+            foreach (var line in Lines)
+            {
+                string[] info = line.Split(',');
+              
+                User newUser = new User();
+
+                newUser.name = info[0];
+                newUser.lastName = info[1];
+                newUser.username = info[2];
+                newUser.email = info[3];
+                newUser.password = info[4];
+
+                AllUsers.Add(newUser);
+            }
+
+            List<User> Usernames = new List<User>();
+
+            Usernames = AllUsers.Where(x => x.username == username).ToList();
+            if (Usernames.Count() >0)
+            {
+                MessageBox.Show("The username is already taken");
+                return false;
+            }
+
+            AllUsers = AllUsers.Where(x => x.email == email).ToList();
+            if (AllUsers.Count()>0)
+            {
+                MessageBox.Show("The email is already taken");
+                return false;
+            }
+            return true;
         }
     }
 }
