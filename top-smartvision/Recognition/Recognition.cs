@@ -14,8 +14,18 @@ using Tesseract;
 
 namespace top_smartvision.recognition
 {
-    public class Recognition
+    public class Recognition<T>
     {
+        // Declare an array to store the data elements.
+        private T[] arr = new T[2];
+
+        // Define the indexer to allow client code to use [] notation.
+        public T this[int i]
+        {
+            get => arr[i];
+            set => arr[i] = value;
+        }
+
         /// <summary>
         /// Enum for one method fits all EmguCV Option
         /// </summary>
@@ -24,6 +34,9 @@ namespace top_smartvision.recognition
 
         // Point struct for Skeletonize method
         PointStruct point = new PointStruct(-1, -1);
+
+        // Declare an array to store the data elements.
+        private Bitmap[] ExtFaces;
 
         /// <summary>
         /// 'One method fits all' for EmguCV rendering. Controls which methods to be called.
@@ -152,7 +165,7 @@ namespace top_smartvision.recognition
             Bitmap BmpInput = grayframe.ToBitmap();
             Bitmap ExtractedFace;
             Graphics FaceCanvas;
-            Bitmap[] ExtFaces = new Bitmap[faces.Length];
+            ExtFaces = new Bitmap[faces.Length];
 
             foreach (var face in faces)
             {
@@ -177,7 +190,7 @@ namespace top_smartvision.recognition
         /// </summary>
         public struct PointStruct
         {
-            public int x;
+            public int x { get; private set; }
             public int y;
 
             public PointStruct(int x, int y)

@@ -16,12 +16,15 @@ namespace top_smartvision
 {
     public partial class Form1 : Form
     {
-        Recognition test = new Recognition();
+        Recognition<string> test = new Recognition<string>();
+        
 
         public Form1()
         {
             InitializeComponent();
-            //test.Recognizer();
+
+            // Indexed class array item
+            test[1] = "Kam nors panaudotas klases masyvas";
         }
 
         #region Upload image
@@ -45,10 +48,18 @@ namespace top_smartvision
 
             // Creates new bitmap object
             Bitmap Image = new Bitmap(img);
-            Bitmap rec = test.Skeletonize(Image);
+
+            ImgBox2.Image = test.Recognizer(Image, Recognition<string>.Option.CropFace);
+
+            // Makes image easier to recognize
+            Bitmap rec = test.Recognizer(Image, Recognition<string>.Option.Skeletonize);
+
             // Loads and displays image
             //ImgBox.LoadAsync (img);
+            UploadImgLabel.Visible = false;
             ImgBox.Image = rec;
+
+            recognizedText.Text = test.OCR(rec);
 
             // Changes image box maximum size to uploaded image size
             ImgBox.MaximumSize = Image.Size;
