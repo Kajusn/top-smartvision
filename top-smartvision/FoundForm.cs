@@ -17,12 +17,15 @@ namespace top_smartvision
 {
     public partial class FoundForm : Form
     {
-        Recognition test = new Recognition();
+        Recognition<string> test = new Recognition<string>();
+        
 
         public FoundForm()
         {
             InitializeComponent();
-            //test.Recognizer();
+
+            // Indexed class array item
+            test[1] = "Kam nors panaudotas klases masyvas";
         }
 
         #region Buttons
@@ -83,7 +86,12 @@ namespace top_smartvision
 
             // Creates new bitmap object
             Bitmap Image = new Bitmap(img);
-            Bitmap rec = test.Skeletonize(Image);
+
+            // Named arguments mixed 
+            ImgBox2.Image = test.Recognizer(option: Recognition<string>.Option.CropFace, bit: Image);
+
+            // Makes image easier to recognize; second argument is default
+            Bitmap rec = test.Recognizer(Image);
 
             // Loads and displays image
             ImgBox.Image = rec;
@@ -93,6 +101,8 @@ namespace top_smartvision
 
             // Displays image path
             ImageNameLabel.Text = img;
+
+            //recognizedText.Text = test.OCR(rec);
         }
 
         /// <summary>

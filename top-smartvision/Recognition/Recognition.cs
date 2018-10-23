@@ -10,81 +10,99 @@ using System.Text;
 using System.Threading.Tasks;
 using Emgu.CV.OCR;
 using System.Windows.Forms;
+using Tesseract;
 
 namespace top_smartvision.recognition
 {
-    public class Recognition
+    public class Recognition<T>
     {
-        public void Recognizer()
+        // Declare an array to store the data elements.
+        private T[] arr = new T[2];
+
+        // Define the indexer to allow client code to use [] notation.
+        public T this[int i]
         {
-            Image<Hsv, byte> bitmap = new Image<Hsv, byte>(@"C:\Users\Deividas\source\plate.bmp");
+            get => arr[i];
+            set => arr[i] = value;
+        }
+
+        /// <summary>
+        /// Enum for one method fits all EmguCV Option
+        /// </summary>
+        [Flags]
+        public enum Option { Skeletonize = 1, CropFace = 2, Other = 4};
+
+        // Point struct for Skeletonize method
+        PointStruct point = new PointStruct(-1, -1);
+
+        // Declare an array to store the data elements.
+        private Bitmap[] ExtFaces;
+
+        /// <summary>
+        /// 'One method fits all' for EmguCV rendering. Controls which methods to be called.
+        /// </summary>
+        /// <param name="bit"></param>
+        /// <param name="option"></param>
+        /// <returns></returns>
+        public Bitmap Recognizer(Bitmap bit, Option option = Option.Skeletonize)
+        {
+            switch (option)
+            {
+                case Option.Skeletonize:
+                    return Skeletonize(bit, point);
+
+                case Option.CropFace:
+                    return CropFace(bit);
+
+                case Option.Other:
+                    return Other(bit);
+
+                case (Option.Skeletonize | Option.Other):
+                    Bitmap bitty = Other(bit);
+                    return Skeletonize(bitty, point);
+
+                default:
+                    return null;
+            }
+        }
+
+        private Bitmap Other(Bitmap image)
+        {
+            Image<Hsv, byte> bitmap = new Image<Hsv, byte>(image);
 
             Hsv lowerLimit = new Hsv(0, 0, 200);
             Hsv upperLimit = new Hsv(5, 255, 255);
 
             var imageHSVDest = bitmap.InRange(lowerLimit, upperLimit);
 
-            CvInvoke.Imshow("imageHSVDest", imageHSVDest);
-            CvInvoke.WaitKey(1000);
+            return imageHSVDest.Bitmap;
         }
 
         /// <summary>
-        /// Not yet realized. Finds text in a picture
+        /// Finds text in a picture
         /// </summary>
-        public void OCR()
+        /// <param name="imageName"></param>
+        /// <returns></returns>
+        public string OCR(Bitmap image)
         {
-            Tesseract _ocr;
-            _ocr = new Tesseract(@"C:\Emgu\emgucv-windows-universal 3.0.0.2157\Emgu.CV.OCR\tessdata", "eng", OcrEngineMode.TesseractLstmCombined);//first Parameter set your path ..complete path like i did
-            _ocr.SetVariable("tessedit_char_whitelist", "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopkrstuvwxyz");
-            
+                // Creates a tesseract object
+                var ocr = new TesseractEngine("./tessdata", "lit", EngineMode.Default);
+                
+                // Processes bitmap image
+                var page = ocr.Process(image, Tesseract.PageSegMode.Auto);
+
+                // Returns text from processed image
+                return page.GetText();
         }
 
-        /*public List<Rectangle> detectLetters(Image<Bgr, Byte> img)
-        {
-            List<Rectangle> rects = new List<Rectangle>();
-            Image<Gray, Single> img_sobel;
-            Image<Gray, Byte> img_gray, img_threshold;
-            img_gray = img.Convert<Gray, Byte>();
-            img_sobel = img_gray.Sobel(1, 0, 3);
-            img_threshold = new Image<Gray, byte>(img_sobel.Size);
-            CvInvoke.Threshold(img_sobel.Convert<Gray, Byte>(), img_threshold, 0, 255, Emgu.CV.CvEnum.ThresholdType.Otsu);
-            Mat element = CvInvoke.GetStructuringElement(Emgu.CV.CvEnum.ElementShape.Rectangle, new Size(3,17), new Point(1, 6));
-            //StructuringElementEx element = new StructuringElementEx(3, 17, 1, 6, Emgu.CV.CvEnum.ElementShape.Rectangle);
-            //CvInvoke.MorphologyEx(img_threshold, img_threshold, IntPtr.Zero, element, BorderType.Isolated, 1);
 
-            for (Contour<System.Drawing.Point> contours = img_threshold.FindContours(); contours != null; contours = contours.HNext)
-            {
-                if (contours.Area > 100)
-                {
-                    Contour<System.Drawing.Point> contours_poly = contours.ApproxPoly(3);
-                    rects.Add(new Rectangle(contours_poly.BoundingRectangle.X, contours_poly.BoundingRectangle.Y, contours_poly.BoundingRectangle.Width, contours_poly.BoundingRectangle.Height));
-                }
-            }
-            return rects;
-        }*/
-        /*
-        private CascadeClassifier _cascadeClassifier = new CascadeClassifier(Application.StartupPath + "/haarcascade_frontalface_alt_tree.xml");
-        using (var imageFrame = _capture.QueryFrame().ToImage())
-        {
-            if (imageFrame != null)
-            {
-                var grayframe = imageFrame.Convert();
-                var faces = _cascadeClassifier.DetectMultiScale(grayframe, 1.1, 10, Size.Empty); //the actual face detection happens here
-                foreach (var face in faces)
-                {
-                    imageFrame.Draw(face, new Bgr(Color.BurlyWood), 3); //the detected face(s) is highlighted here using a box that is drawn around it/them
-
-                }
-            }
-            imgCamUser.Image = imageFrame;                    
-        }*/
 
         /// <summary>
         /// Converts image to white contours in a black background
         /// </summary>
         /// <param name="image">Bitmap</param>
         /// <returns>Bitmap</returns>
-        public Bitmap Skeletonize(Bitmap image)
+        private Bitmap Skeletonize(Bitmap image, PointStruct point)
         {
             // Makes bunch of image objects for futher execution
             Image<Gray, byte> imgOld = new Image<Gray, byte>(image);
@@ -100,7 +118,7 @@ namespace top_smartvision.recognition
             CvInvoke.Threshold(img2, img2, 127, 256, 0);
 
             // Makes structuring element for morphological operations
-            var element = CvInvoke.GetStructuringElement(ElementShape.Cross, new Size(3, 3), new Point(-1, -1));
+            var element = CvInvoke.GetStructuringElement(ElementShape.Cross, new Size(3, 3), new Point(point.x, point.y));
 
             // Check if done in while loop
             bool done = false;
@@ -108,10 +126,10 @@ namespace top_smartvision.recognition
             while (!done)
             {
                 // Erodes the img2 image
-                CvInvoke.Erode(img2, eroded, element, new Point(-1, -1), 1, BorderType.Reflect, default(MCvScalar));
+                CvInvoke.Erode(img2, eroded, element, new Point(point.x, point.y), 1, BorderType.Reflect, default(MCvScalar));
 
                 // Dilates the eroded image
-                CvInvoke.Dilate(eroded, temp, element, new Point(-1, -1), 1, BorderType.Reflect, default(MCvScalar));
+                CvInvoke.Dilate(eroded, temp, element, new Point(point.x, point.y), 1, BorderType.Reflect, default(MCvScalar));
 
                 // Subtracts proccessed temp image from binary img2 image
                 CvInvoke.Subtract(img2, temp, temp);
@@ -126,6 +144,60 @@ namespace top_smartvision.recognition
                 if (CvInvoke.CountNonZero(img2) == 0) done = true;
             }
             return skel.Bitmap;
+        }
+
+        /// <summary>
+        /// Crops face from image
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        private Bitmap CropFace(Bitmap image)
+        {
+            // Creates CascadeClassifier from trained file for face detection
+            CascadeClassifier _cascadeClassifier = new CascadeClassifier("./haarcascades/haarcascade_frontalface_alt.xml");
+
+            // Concerts Bitmap to Image<Bgr, Byte>
+            Image<Bgr, Byte> grayframe = new Image<Bgr, Byte>(image);
+
+            // Here comes the face detection processing
+            var faces = _cascadeClassifier.DetectMultiScale(grayframe, 1.1, 10, Size.Empty);
+
+            Bitmap BmpInput = grayframe.ToBitmap();
+            Bitmap ExtractedFace;
+            Graphics FaceCanvas;
+            ExtFaces = new Bitmap[faces.Length];
+
+            foreach (var face in faces)
+            {
+                // the detected face is highlighted here using a box that is drawn around it
+                grayframe.Draw(face, new Bgr(Color.BurlyWood), 3);
+
+                // Creates extracted face blank Bitmap of face size
+                ExtractedFace = new Bitmap(face.Width, face.Height);
+
+                // Draws face to the extracted face bitmap
+                FaceCanvas = Graphics.FromImage(ExtractedFace);
+                FaceCanvas.DrawImage(BmpInput, 0, 0, face, GraphicsUnit.Pixel);
+
+                ExtFaces[0] = ExtractedFace;
+            }
+        
+            return ExtFaces[0];
+        }
+
+        /// <summary>
+        /// Point struct for default point value
+        /// </summary>
+        public struct PointStruct
+        {
+            public int x { get; private set; }
+            public int y;
+
+            public PointStruct(int x, int y)
+            {
+                this.x = x;
+                this.y = y;
+            }
         }
     }
 }
