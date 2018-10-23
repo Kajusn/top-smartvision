@@ -49,10 +49,11 @@ namespace top_smartvision
             // Creates new bitmap object
             Bitmap Image = new Bitmap(img);
 
-            ImgBox2.Image = test.Recognizer(Image, Recognition<string>.Option.CropFace);
+            // Named arguments mixed 
+            ImgBox2.Image = test.Recognizer(option: Recognition<string>.Option.CropFace, bit: Image);
 
-            // Makes image easier to recognize
-            Bitmap rec = test.Recognizer(Image, Recognition<string>.Option.Skeletonize);
+            // Makes image easier to recognize; second argument is default
+            Bitmap rec = test.Recognizer(Image);
 
             // Loads and displays image
             //ImgBox.LoadAsync (img);

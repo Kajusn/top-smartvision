@@ -44,7 +44,7 @@ namespace top_smartvision.recognition
         /// <param name="bit"></param>
         /// <param name="option"></param>
         /// <returns></returns>
-        public Bitmap Recognizer(Bitmap bit, Option option)
+        public Bitmap Recognizer(Bitmap bit, Option option = Option.Skeletonize)
         {
             switch (option)
             {
