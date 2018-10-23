@@ -10,7 +10,7 @@ using System.Security.Cryptography;
 
 namespace top_smartvision.DB
 {
-    class FileIO : IDB
+    public class FileIO : IDB
     {
         private string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\References\Images\";
 
@@ -90,7 +90,32 @@ namespace top_smartvision.DB
         /// <param name="image"></param>
         public void PushImage(string image)
         {
-            // Not yet implemented
+            if (Directory.Exists(appPath) == false)
+            {
+                Directory.CreateDirectory(appPath);
+            }
+
+            string fileName = System.IO.Path.GetRandomFileName();
+
+            var pathString = System.IO.Path.Combine(appPath, fileName);
+
+            if (!System.IO.File.Exists(pathString))
+            {
+                using (System.IO.FileStream fs = System.IO.File.Create(pathString))
+                {
+                    for (byte i = 0; i < 100; i++)
+                    {
+                        fs.WriteByte(i);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("File \"{0}\" already exists.", fileName);
+                return;
+            }
+
+
         }
 
         /// <summary>
@@ -181,6 +206,16 @@ namespace top_smartvision.DB
             password = Hashing(password);
 
             appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\users.txt";
+
+            if (Directory.Exists(Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\") == false)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\");
+            }
+            // Creates file if it doesn't exist
+            if (File.Exists(appPath) == false)
+            {
+                File.Create(appPath);
+            }
 
             //Creates a list of users
             List<User> AllUsers = new List<User>();

@@ -49,10 +49,15 @@
             this.FirstNameLbl = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.IDTypeLbl = new System.Windows.Forms.Label();
+            this.FaceImg = new System.Windows.Forms.PictureBox();
+            this.FaceLabel = new System.Windows.Forms.Label();
+            this.RecognizedText = new System.Windows.Forms.TextBox();
+            this.TextLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImgBox)).BeginInit();
             this.ID_InfoLbl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FaceImg)).BeginInit();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -122,12 +127,13 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(689, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(689, 27);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "File";
             // 
@@ -136,13 +142,13 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(41, 23);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -152,19 +158,19 @@
             this.updatesToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(49, 23);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // updatesToolStripMenuItem
             // 
             this.updatesToolStripMenuItem.Name = "updatesToolStripMenuItem";
-            this.updatesToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.updatesToolStripMenuItem.Size = new System.Drawing.Size(133, 24);
             this.updatesToolStripMenuItem.Text = "Updates";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 24);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // ImgBox
@@ -175,7 +181,7 @@
             this.ImgBox.Location = new System.Drawing.Point(24, 46);
             this.ImgBox.Name = "ImgBox";
             this.ImgBox.Size = new System.Drawing.Size(321, 316);
-            this.ImgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ImgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ImgBox.TabIndex = 2;
             this.ImgBox.TabStop = false;
             // 
@@ -226,7 +232,7 @@
             this.ID_InfoLbl.Controls.Add(this.label4, 0, 1);
             this.ID_InfoLbl.Controls.Add(this.label3, 0, 3);
             this.ID_InfoLbl.Controls.Add(this.IDTypeLbl, 1, 0);
-            this.ID_InfoLbl.Location = new System.Drawing.Point(396, 121);
+            this.ID_InfoLbl.Location = new System.Drawing.Point(396, 219);
             this.ID_InfoLbl.Name = "ID_InfoLbl";
             this.ID_InfoLbl.RowCount = 4;
             this.ID_InfoLbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -281,9 +287,46 @@
             this.IDTypeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IDTypeLbl.Location = new System.Drawing.Point(98, 0);
             this.IDTypeLbl.Name = "IDTypeLbl";
-            this.IDTypeLbl.Size = new System.Drawing.Size(12, 16);
+            this.IDTypeLbl.Size = new System.Drawing.Size(13, 18);
             this.IDTypeLbl.TabIndex = 12;
             this.IDTypeLbl.Text = "-";
+            // 
+            // FaceImg
+            // 
+            this.FaceImg.Location = new System.Drawing.Point(574, 62);
+            this.FaceImg.Name = "FaceImg";
+            this.FaceImg.Size = new System.Drawing.Size(100, 100);
+            this.FaceImg.TabIndex = 12;
+            this.FaceImg.TabStop = false;
+            // 
+            // FaceLabel
+            // 
+            this.FaceLabel.AutoSize = true;
+            this.FaceLabel.Location = new System.Drawing.Point(571, 46);
+            this.FaceLabel.Name = "FaceLabel";
+            this.FaceLabel.Size = new System.Drawing.Size(34, 13);
+            this.FaceLabel.TabIndex = 13;
+            this.FaceLabel.Text = "Face:";
+            this.FaceLabel.Visible = false;
+            // 
+            // RecognizedText
+            // 
+            this.RecognizedText.Location = new System.Drawing.Point(351, 62);
+            this.RecognizedText.Multiline = true;
+            this.RecognizedText.Name = "RecognizedText";
+            this.RecognizedText.Size = new System.Drawing.Size(217, 151);
+            this.RecognizedText.TabIndex = 14;
+            this.RecognizedText.Visible = false;
+            // 
+            // TextLabel
+            // 
+            this.TextLabel.AutoSize = true;
+            this.TextLabel.Location = new System.Drawing.Point(351, 46);
+            this.TextLabel.Name = "TextLabel";
+            this.TextLabel.Size = new System.Drawing.Size(31, 13);
+            this.TextLabel.TabIndex = 15;
+            this.TextLabel.Text = "Text:";
+            this.TextLabel.Visible = false;
             // 
             // FoundForm
             // 
@@ -291,6 +334,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 461);
+            this.Controls.Add(this.TextLabel);
+            this.Controls.Add(this.RecognizedText);
+            this.Controls.Add(this.FaceLabel);
+            this.Controls.Add(this.FaceImg);
             this.Controls.Add(this.ID_InfoLbl);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.menuStrip1);
@@ -309,6 +356,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ImgBox)).EndInit();
             this.ID_InfoLbl.ResumeLayout(false);
             this.ID_InfoLbl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FaceImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,6 +385,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label IDTypeLbl;
         private System.Windows.Forms.Button UploadIDbtn;
+        private System.Windows.Forms.PictureBox FaceImg;
+        private System.Windows.Forms.Label FaceLabel;
+        private System.Windows.Forms.TextBox RecognizedText;
+        private System.Windows.Forms.Label TextLabel;
     }
 }
 
