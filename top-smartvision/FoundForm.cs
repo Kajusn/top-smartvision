@@ -11,15 +11,16 @@ using top_smartvision.recognition;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using top_smartvision.DB;
+using System.IO;
 
 namespace top_smartvision
 {
-    public partial class Form1 : Form
+    public partial class FoundForm : Form
     {
         Recognition<string> test = new Recognition<string>();
         
 
-        public Form1()
+        public FoundForm()
         {
             InitializeComponent();
 
@@ -27,14 +28,48 @@ namespace top_smartvision
             test[1] = "Kam nors panaudotas klases masyvas";
         }
 
-        #region Upload image
+        #region Buttons
 
         /// <summary>
-        /// Browse system for image to upload and display
+        /// "Takes a picture" when clicked
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void UploadImgButton_Click(object sender, EventArgs e)
+        {
+            Take_Picture();
+        }
+
+        /// <summary>
+        /// Calls method to upload the ID and its information to the database/filesystem
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UploadIDbtn_Click(object sender, EventArgs e)
+        {
+            UploadData();
+        }
+
+        #endregion
+
+        #region Helpers
+
+        /// <summary>
+        /// Uploads ID data to database/filesystem
+        /// </summary>
+        private void UploadData()
+        {
+            // Save IDTypeLbl.Text;
+            // Save FirstNameLbl.Text;
+            // Save LastNameLbl.Text;
+            // Save IDLbl.Text;
+
+        }
+
+        /// <summary>
+        /// Browse system to upload an image (should be able to take a picture eventually)
+        /// </summary>
+        private void Take_Picture()
         {
             // Creates new file handling object
             IDB file = new FileIO();
@@ -45,6 +80,9 @@ namespace top_smartvision
             // Quits method if no image was opened
             if (img == null)
                 return;
+
+            // Displays information about the ID
+            Show_Info();
 
             // Creates new bitmap object
             Bitmap Image = new Bitmap(img);
@@ -56,77 +94,30 @@ namespace top_smartvision
             Bitmap rec = test.Recognizer(Image);
 
             // Loads and displays image
-            //ImgBox.LoadAsync (img);
-            UploadImgLabel.Visible = false;
             ImgBox.Image = rec;
-
-            recognizedText.Text = test.OCR(rec);
 
             // Changes image box maximum size to uploaded image size
             ImgBox.MaximumSize = Image.Size;
 
             // Displays image path
             ImageNameLabel.Text = img;
+
+            //recognizedText.Text = test.OCR(rec);
         }
 
         /// <summary>
-        /// Hides upload img prompt when img loads
+        /// Displays information about the ID
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ImgBox_LoadCompleted(object sender, AsyncCompletedEventArgs e)
+        private void Show_Info()
         {
-            // Hides "Upload image" prompt
-            UploadImgLabel.Visible = false;
-            UploadImgButton.Text = "Upload another image";
-        }
-          
-        /// <summary>
-        /// Uploads image 2
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void UploadImgToCompareButton_Click(object sender, EventArgs e)
-        {
-            // Creates new file handling object
-            IDB file = new FileIO();
+            ID_InfoLbl.Visible = true;
 
-            // Takes image from local storage
-            string img = file.PullImage();
-
-            // Quits method if no image was opened
-            if (img == null)
-                return;
-
-            // Loads and displays image
-            ImgBox2.LoadAsync(img);
-
-            // Creates new bitmap object
-            Bitmap Image = new Bitmap(img);
-
-            // Displays image path
-            ImageNameLabel2.Text = img;
-
-            // Changes image box maximum size to uploaded image size
-            ImgBox2.MaximumSize = Image.Size;
-
-            UploadImgToCompareButton.Text = "Upload another image";
-           
+            // TODO: Takes the information from the image and displays it in the appropriate fields
         }
 
         #endregion
-
-        private void CompareButton_Click(object sender, EventArgs e)
-        {
-            // TO-DO: Runs Recognizer with opened image
-
-
-           /* if ()
-                MessageBox.Show ("Images are similar ");
-             else
-                MessageBox.Show ("Images are not similar");*/
-                
-        }
 
         /// <summary>
         /// exits application 
@@ -137,5 +128,18 @@ namespace top_smartvision
         {
             Application.Exit();
         }
+
+        /// <summary>
+        /// Opens up the main menu when form is closed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FoundForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Opens up the main menu
+            LostOrFound fm = new LostOrFound();
+            fm.Show();
+        }
+
     }
 }

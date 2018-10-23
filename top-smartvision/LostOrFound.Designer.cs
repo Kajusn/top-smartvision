@@ -53,6 +53,7 @@
             this.Lost_Button.TabIndex = 1;
             this.Lost_Button.Text = "I lost something";
             this.Lost_Button.UseVisualStyleBackColor = true;
+            this.Lost_Button.Click += new System.EventHandler(this.Lost_Button_Click);
             // 
             // TitleLabel
             // 
@@ -69,12 +70,13 @@
             // 
             // WelcomeLabel
             // 
+            this.WelcomeLabel.AutoEllipsis = true;
             this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WelcomeLabel.Location = new System.Drawing.Point(78, 119);
+            this.WelcomeLabel.Location = new System.Drawing.Point(17, 119);
             this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(128, 40);
+            this.WelcomeLabel.Size = new System.Drawing.Size(250, 65);
             this.WelcomeLabel.TabIndex = 3;
-            this.WelcomeLabel.Text = "Welcome!";
+            this.WelcomeLabel.Text = "Welcome!\r\n";
             this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LostOrFound
@@ -86,9 +88,12 @@
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.Lost_Button);
             this.Controls.Add(this.Found_Button);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "LostOrFound";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Smart Vision";
+            this.Text = "Lost&Found";
             this.ResumeLayout(false);
 
         }
