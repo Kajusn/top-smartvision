@@ -20,7 +20,7 @@ namespace top_smartvision.recognition
         /// Enum for one method fits all EmguCV Option
         /// </summary>
         [Flags]
-        public enum Option { Skeletonize = 1, Other = 2 };
+        public enum Option { Skeletonize = 1, CropFace = 2, Other = 4};
 
         // Point struct for Skeletonize method
         PointStruct point = new PointStruct(-1, -1);
@@ -37,6 +37,9 @@ namespace top_smartvision.recognition
             {
                 case Option.Skeletonize:
                     return Skeletonize(bit, point);
+
+                case Option.CropFace:
+                    return CropFace(bit);
 
                 case Option.Other:
                     return Other(bit);
@@ -135,7 +138,7 @@ namespace top_smartvision.recognition
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public Bitmap GetFace(Bitmap image)
+        private Bitmap CropFace(Bitmap image)
         {
             // Creates CascadeClassifier from trained file for face detection
             CascadeClassifier _cascadeClassifier = new CascadeClassifier("./haarcascades/haarcascade_frontalface_alt.xml");
