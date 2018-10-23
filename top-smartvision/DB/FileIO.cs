@@ -10,7 +10,7 @@ using System.Security.Cryptography;
 
 namespace top_smartvision.DB
 {
-    class FileIO : IDB
+    public class FileIO : IDB
     {
         private string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\References\Images\";
 
@@ -181,6 +181,16 @@ namespace top_smartvision.DB
             password = Hashing(password);
 
             appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\users.txt";
+
+            if (Directory.Exists(Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\") == false)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\");
+            }
+            // Creates file if it doesn't exist
+            if (File.Exists(appPath) == false)
+            {
+                File.Create(appPath);
+            }
 
             //Creates a list of users
             List<User> AllUsers = new List<User>();
