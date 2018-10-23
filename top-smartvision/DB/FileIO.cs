@@ -90,7 +90,32 @@ namespace top_smartvision.DB
         /// <param name="image"></param>
         public void PushImage(string image)
         {
-            // Not yet implemented
+            if (Directory.Exists(appPath) == false)
+            {
+                Directory.CreateDirectory(appPath);
+            }
+
+            string fileName = System.IO.Path.GetRandomFileName();
+
+            var pathString = System.IO.Path.Combine(appPath, fileName);
+
+            if (!System.IO.File.Exists(pathString))
+            {
+                using (System.IO.FileStream fs = System.IO.File.Create(pathString))
+                {
+                    for (byte i = 0; i < 100; i++)
+                    {
+                        fs.WriteByte(i);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("File \"{0}\" already exists.", fileName);
+                return;
+            }
+
+
         }
 
         /// <summary>

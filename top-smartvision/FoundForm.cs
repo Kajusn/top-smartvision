@@ -12,6 +12,7 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using top_smartvision.DB;
 using System.IO;
+using System.Drawing.Imaging;
 
 namespace top_smartvision
 {
@@ -64,6 +65,11 @@ namespace top_smartvision
             // Save LastNameLbl.Text;
             // Save IDLbl.Text;
 
+            FaceImg.Image.Save(
+                Path.GetDirectoryName(Application.ExecutablePath) + @"\References\Images\" + 
+                System.IO.Path.GetRandomFileName() + 
+                ".jpg", 
+                ImageFormat.Jpeg);
         }
 
         /// <summary>
@@ -88,7 +94,7 @@ namespace top_smartvision
             Bitmap Image = new Bitmap(img);
 
             // Named arguments mixed 
-            //ImgBox.Image = test.Recognizer(option: Recognition<string>.Option.CropFace, bit: Image);
+            FaceImg.Image = test.Recognizer(option: Recognition<string>.Option.CropFace, bit: Image);
 
             // Makes image easier to recognize; second argument is default
             Bitmap rec = test.Recognizer(Image);
@@ -102,7 +108,7 @@ namespace top_smartvision
             // Displays image path
             ImageNameLabel.Text = img;
 
-            //recognizedText.Text = test.OCR(rec);
+            RecognizedText.Text = test.OCR(Image);
         }
 
         /// <summary>
@@ -113,6 +119,9 @@ namespace top_smartvision
         private void Show_Info()
         {
             ID_InfoLbl.Visible = true;
+            FaceLabel.Visible = true;
+            TextLabel.Visible = true;
+            RecognizedText.Visible = true;
 
             // TODO: Takes the information from the image and displays it in the appropriate fields
         }
@@ -140,6 +149,5 @@ namespace top_smartvision
             LostOrFound fm = new LostOrFound();
             fm.Show();
         }
-
     }
 }
