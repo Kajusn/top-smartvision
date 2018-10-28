@@ -16,6 +16,65 @@ namespace UnitTestProject
         }
 
         [TestMethod]
+        public void LoginIsFalse()
+        {
+            StringList<string> listStrings = new StringList<string>();
+
+            listStrings.Add(" , ");
+            listStrings.Add("uss,pass");
+            listStrings.Add("55555,666");
+            listStrings.Add("xxx,xxxx");
+
+
+            foreach(string a in listStrings)
+            {
+                string[] split = a.Split(',');
+
+                var rez = _fileIO.Login(split[0], split[1]);
+                Assert.IsFalse(rez);
+            }
+        }
+        [TestMethod]
+        public void LoginIsTrue()
+        {
+            StringList<string> listStrings = new StringList<string>();
+
+            listStrings.Add("a,a");
+            listStrings.Add("c,c");
+            listStrings.Add("h,h");
+            listStrings.Add("asdf,asdf");
+
+
+            foreach (string a in listStrings)
+            {
+                string[] split = a.Split(',');
+
+                var rez = _fileIO.Login(split[0], split[1]);
+                Assert.IsTrue(rez);
+            }
+        }
+        [TestMethod]
+        public void LoginIsNotNull()
+        {
+            StringList<string> listStrings = new StringList<string>();
+
+            listStrings.Add(" , ");
+            listStrings.Add("uss,pass");
+            listStrings.Add("55555,666");
+            listStrings.Add("xxx,xxxx");
+
+
+            foreach (string a in listStrings)
+            {
+                string[] split = a.Split(',');
+
+                var rez = _fileIO.Login(split[0], split[1]);
+                Assert.IsNotNull(rez);
+            }
+        }
+
+
+        [TestMethod]
         public void HashingNotNull()
         {
             // Creates Enumerable string list for testing

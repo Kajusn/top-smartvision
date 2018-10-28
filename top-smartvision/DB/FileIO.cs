@@ -131,7 +131,7 @@ namespace top_smartvision.DB
             appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\users.txt";
 
             // Creates file if it doesn't exist
-             if ( File.Exists(appPath)==false)
+            if ( File.Exists(appPath)==false)
              {             
                  File.Create(appPath);
              }
@@ -205,7 +205,7 @@ namespace top_smartvision.DB
             //hashes the password
             password = Hashing(password);
 
-            appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\users.txt";
+           appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\users.txt";
 
             if (Directory.Exists(Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\") == false)
             {
