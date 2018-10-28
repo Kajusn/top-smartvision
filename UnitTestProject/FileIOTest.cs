@@ -15,6 +15,7 @@ namespace UnitTestProject
             _fileIO = new FileIO();
         }
 
+        #region LoginTests
         [TestMethod]
         public void LoginIsFalse()
         {
@@ -72,8 +73,71 @@ namespace UnitTestProject
                 Assert.IsNotNull(rez);
             }
         }
+        #endregion
+
+        #region CheckUsernameEmail Tests
+
+        [TestMethod]
+
+        public void CheckingIsFalse()
+        {
+            StringList<string> listStrings = new StringList<string>();
+
+            listStrings.Add("abc,abc@abc.com");
+            listStrings.Add("uss,uss@a.com");
+            listStrings.Add("55555,666@a.com");
+            listStrings.Add("xxx,xxxx@c.com");
 
 
+            foreach (string a in listStrings)
+            {
+                string[] split = a.Split(',');
+
+                var rez = _fileIO.CheckUsernameEmail(split[0], split[1]);
+                Assert.IsFalse(rez);
+            }
+        }
+        [TestMethod]
+        public void CheckingIsTrue()
+        {
+            StringList<string> listStrings = new StringList<string>();
+
+            listStrings.Add("a,a@a.com");
+            listStrings.Add("c,c@c.com");
+            listStrings.Add("asdf,asdf@asdf.com");
+
+            foreach (string a in listStrings)
+            {
+                string[] split = a.Split(',');
+
+                var rez = _fileIO.CheckUsernameEmail(split[0], split[1]);
+                Assert.IsTrue(rez);
+            }
+
+        }
+        [TestMethod]
+
+        public void CheckingIsNotNull()
+        {
+            StringList<string> listStrings = new StringList<string>();
+
+            listStrings.Add("abc,abc@abc.com");
+            listStrings.Add("uss,uss@a.com");
+            listStrings.Add("55555,666@a.com");
+            listStrings.Add("xxx,xxxx@c.com");
+
+
+            foreach (string a in listStrings)
+            {
+                string[] split = a.Split(',');
+
+                var rez = _fileIO.CheckUsernameEmail(split[0], split[1]);
+                Assert.IsNotNull(rez);
+            }
+        }
+        #endregion
+
+        #region HashingTests
         [TestMethod]
         public void HashingNotNull()
         {
@@ -145,7 +209,7 @@ namespace UnitTestProject
                 Assert.IsInstanceOfType(result, typeof(String));
             }
         }
-
+        #endregion
         class StringList<T>: IEnumerable<T>
         {
             T[] strings = null;
