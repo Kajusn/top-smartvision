@@ -156,7 +156,7 @@ namespace top_smartvision
         private void EmailText_Leave(object sender, EventArgs e)
         {
             WatermarkHelper(EmailText, "Email");
-            EmailValidation();
+            EmailValidation(EmailText.Text);
         }
 
         #endregion
@@ -202,27 +202,29 @@ namespace top_smartvision
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void FieldsFilledOut()
+        public bool FieldsFilledOut(string username, string firstname, string lastname, string password, string password2, string email)
         {
             // Checks if all fields have been filled out, message box if false
-            if (UsernameText.Text == "Username" || FirstNameText.Text == "First Name" || LastNameText.Text == "Last Name" || PasswordText.Text == "Password" || PasswordText2.Text == "Re-enter Password" || EmailText.Text == "Email")
+            if (username == "Username" || firstname == "First Name" || lastname == "Last Name" || password == "Password" || password2 == "Re-enter Password" || email == "Email")
             {
                 MessageBox.Show("Please fill out all fields");
+                return false;
             }
+            return true;
         }
 
         /// <summary>
         /// Validates email address using regular expressions
         /// </summary>
         /// <returns></returns>
-        private bool EmailValidation()
+        public bool EmailValidation(String email)
         {
             // Regular expressions email pattern
             String EmailPattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
                                   + "@"
                                   + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
             // If email doesn't match pattern, background color of text box is changed to red
-            if (!Regex.IsMatch(EmailText.Text, EmailPattern))
+            if (!Regex.IsMatch(email, EmailPattern))
             {
                 EmailText.BackColor = Color.LightCoral;
                 return false;
@@ -238,12 +240,12 @@ namespace top_smartvision
         private void RegisterButton_Click(object sender, EventArgs e)
         {
             // Makes sure all fields are filled out
-            FieldsFilledOut();
+            FieldsFilledOut(UsernameText.Text, FirstNameText.Text, LastNameText.Text, PasswordText.Text, PasswordText2.Text, EmailText.Text);
 
             // Will return if Email is invalid
-            if (!EmailValidation()) return;
+            if (!EmailValidation(EmailText.Text)) return;
 
-            User newUser = new User ( FirstNameText.Text,LastNameText.Text, EmailText.Text, UsernameText.Text, PasswordText.Text);
+            User newUser = new User(FirstNameText.Text, LastNameText.Text, EmailText.Text, UsernameText.Text, PasswordText.Text);
 
             FileIO file = new FileIO();
 
