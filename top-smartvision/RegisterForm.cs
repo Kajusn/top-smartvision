@@ -253,15 +253,14 @@ namespace top_smartvision
             file.Register(newUser.name, newUser.lastName, newUser.username, newUser.email, newUser.password);
 
             this.Close();
-            LoginForm.GetInstance.Show();
+           // LoginForm.GetInstance.Show();
 
-            // TO-DO:
-            // Actually registering the person with specified info
+            
         }
 
         private void RegisterForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            LoginForm.GetInstance.Show();
+            //LoginForm.GetInstance.Show();
         }
     }
 

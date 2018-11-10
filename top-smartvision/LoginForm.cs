@@ -11,18 +11,53 @@ using top_smartvision.DB;
 
 namespace top_smartvision
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : Form , IView
     {
+        private Presenter presenter = null;
+        private readonly Model _model;
+
+        private User _user = new User();
+       
         private static LoginForm instance;
-        public LoginForm()
+        public LoginForm(Model model)
         {
+            _model = model;
             InitializeComponent();
+            presenter = new Presenter(this, _model);
         }
+
+        public User user
+        {
+            get
+            {
+                _user.name = "a";
+                _user.username = UsernameText.Text;
+                _user.password = PasswordText.Text;
+
+
+                return _user;
+            }
+            set
+            {
+                _user = value;
+                UsernameText.Text = _user.username;
+                PasswordText.Text = _user.password;
+
+            }
+        }
+
+
+
+
+
+
+
+       
 
         /// <summary>
         /// Singleton Instance of form
         /// </summary>
-        public static LoginForm GetInstance
+       /*public static LoginForm GetInstance
         {
             get
             {
@@ -32,7 +67,7 @@ namespace top_smartvision
                 }
                 return instance;
             }
-        }
+        }*/
 
         #region Username/Password text
 
@@ -154,11 +189,13 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-
+            
     
             while (NamePassNotEmpty() == false) return;
+            presenter.log();
+
             
-            FileIO log = new FileIO();
+         /*   FileIO log = new FileIO();
 
             // checks if the username and pass are written correctly
             if (!log.Login(UsernameText.Text, PasswordText.Text)) MessageBox.Show("The Username or Password is incorrect");
@@ -170,7 +207,7 @@ namespace top_smartvision
                 this.Visible = false;
                 fm.WelcomeMessage(this.UsernameText.Text);
             }
-
+            */
         }
 
         private void RegisterLabel_Click(object sender, EventArgs e)

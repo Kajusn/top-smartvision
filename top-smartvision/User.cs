@@ -9,7 +9,7 @@ namespace top_smartvision
     /// <summary>
     /// User information for future database
     /// </summary>
-    class User
+    public class User
     {
         public string name;
         public string lastName;
