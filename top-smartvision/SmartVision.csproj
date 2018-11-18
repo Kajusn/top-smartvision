@@ -63,8 +63,8 @@
   <ItemGroup>
     <Compile Include="DB\FileIO.cs" />
     <Compile Include="DB\IDB.cs" />
-    <Compile Include="IModel.cs" />
-    <Compile Include="IView.cs" />
+    <Compile Include="Models\IModel.cs" />
+    <Compile Include="Views\ILoginForm.cs" />
     <Compile Include="LostForm.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -84,8 +84,8 @@
     <Compile Include="LostOrFound.Designer.cs">
       <DependentUpon>LostOrFound.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model.cs" />
-    <Compile Include="Presenter.cs" />
+    <Compile Include="Models\LoginUserModel.cs" />
+    <Compile Include="Presenters\LoginFormPresenter.cs" />
     <Compile Include="RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>

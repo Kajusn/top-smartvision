@@ -11,29 +11,27 @@ using top_smartvision.DB;
 
 namespace top_smartvision
 {
-    public partial class LoginForm : Form , IView
+    public partial class LoginForm : Form , ILoginForm
     {
-        private Presenter presenter = null;
-        private readonly Model _model;
+        private LoginFormPresenter presenter = null;
+        private readonly LoginUserModel _model;
 
-        private User _user = new User();
+        private LoginUserModel _user;
        
         private static LoginForm instance;
-        public LoginForm(Model model)
+        public LoginForm(LoginUserModel model)
         {
             _model = model;
             InitializeComponent();
-            presenter = new Presenter(this, _model);
+            presenter = new LoginFormPresenter(this, _model);
         }
 
-        public User user
+        public LoginUserModel user
         {
             get
             {
-                _user.name = "a";
                 _user.username = UsernameText.Text;
                 _user.password = PasswordText.Text;
-
 
                 return _user;
             }
@@ -42,7 +40,6 @@ namespace top_smartvision
                 _user = value;
                 UsernameText.Text = _user.username;
                 PasswordText.Text = _user.password;
-
             }
         }
 

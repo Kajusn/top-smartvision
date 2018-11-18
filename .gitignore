@@ -261,3 +261,4 @@ __pycache__/
 *.pyc
 
 top-smartvision/tessdata/
+top-smartvision/camera.png

@@ -18,7 +18,7 @@ namespace top_smartvision
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Model model = new Model();
+            LoginUserModel model = new LoginUserModel();
             LoginForm view = new LoginForm(model);
             Application.Run(view);
             //Application.Run(LoginForm.GetInstance);

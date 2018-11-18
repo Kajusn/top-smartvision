@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace top_smartvision
 {
-    public interface IView
+    public interface ILoginForm
     {
-        User user { get; set; }
+        LoginUserModel user { get; set; }
     }
 }
