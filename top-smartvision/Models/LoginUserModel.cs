@@ -16,6 +16,7 @@ namespace top_smartvision
         private string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\References\Images\";
 
         public string username { get; set; }
+
         public string password { get; set; }
 
         public void Register(string name, string lastname, string username, string email, string pass /*string gender*/)

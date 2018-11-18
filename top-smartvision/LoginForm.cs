@@ -13,17 +13,29 @@ namespace top_smartvision
 {
     public partial class LoginForm : Form , ILoginForm
     {
-        private LoginFormPresenter presenter = null;
-        private readonly LoginUserModel _model;
-
         private LoginUserModel _user;
        
         private static LoginForm instance;
-        public LoginForm(LoginUserModel model)
+
+        private Action _onPropertyChanged;
+
+        public Action OnPropertyChanged
         {
-            _model = model;
+            get
+            {
+                return _onPropertyChanged;
+            }
+            set
+            {
+                _onPropertyChanged = value;
+            }
+        }
+
+        public LoginForm()
+        {
+            //_user = model;
             InitializeComponent();
-            presenter = new LoginFormPresenter(this, _model);
+            //presenter = new LoginFormPresenter(this, _user);
         }
 
         public LoginUserModel user
@@ -42,13 +54,6 @@ namespace top_smartvision
                 PasswordText.Text = _user.password;
             }
         }
-
-
-
-
-
-
-
        
 
         /// <summary>
@@ -186,25 +191,8 @@ namespace top_smartvision
         /// <param name="e"></param>
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-            
-    
             while (NamePassNotEmpty() == false) return;
-            presenter.log();
-
-            
-         /*   FileIO log = new FileIO();
-
-            // checks if the username and pass are written correctly
-            if (!log.Login(UsernameText.Text, PasswordText.Text)) MessageBox.Show("The Username or Password is incorrect");
-
-            else
-            {
-                LostOrFound fm = new LostOrFound();
-                fm.Show();
-                this.Visible = false;
-                fm.WelcomeMessage(this.UsernameText.Text);
-            }
-            */
+            _onPropertyChanged();
         }
 
         private void RegisterLabel_Click(object sender, EventArgs e)

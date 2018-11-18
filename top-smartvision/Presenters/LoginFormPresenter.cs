@@ -9,13 +9,19 @@ namespace top_smartvision
 {
     class LoginFormPresenter
     {
-        private ILoginForm _view;
+        public ILoginForm _view;
         private IModel _model;
 
-        public LoginFormPresenter(ILoginForm view, IModel model)
+        public LoginFormPresenter(IModel model)
         {
-            this._view = view;
             this._model = model;
+            _view = new LoginForm();
+            _view.OnPropertyChanged += log;
+        }
+
+        public void Start()
+        {
+            Application.Run((Form)_view);
         }
 
         /*public void Registr()
@@ -40,6 +46,9 @@ namespace top_smartvision
                 fm.Show();
                 fm.WelcomeMessage(username);
             }
+
+            
+
            // _model.Login(username, pass);
         }
     }

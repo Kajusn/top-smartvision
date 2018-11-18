@@ -13,6 +13,7 @@ namespace top_smartvision
         bool CheckUsernameEmail(string uss, string email);
         string Hashing(string pass);
 
-        
+        //string username { get; set; }
+        //string password { get; set; }
     }
 }

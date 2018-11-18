@@ -14,13 +14,14 @@ namespace top_smartvision
         [STAThread]
         static void Main()
         {
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             LoginUserModel model = new LoginUserModel();
-            LoginForm view = new LoginForm(model);
-            Application.Run(view);
+            LoginFormPresenter presenter = new LoginFormPresenter(model);
+            presenter.Start();
+
+            //LoginForm view = new LoginForm(model);
             //Application.Run(LoginForm.GetInstance);
         }
     }
