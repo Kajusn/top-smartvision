@@ -8,7 +8,9 @@ namespace top_smartvision
 {
     public interface ILoginForm
     {
-        LoginUserModel user { get; set; }
+        //LoginUserModel user { get; set; }
         Action OnPropertyChanged { get; set; }
+        string username { get; set; }
+        string password { get; set; }
     }
 }

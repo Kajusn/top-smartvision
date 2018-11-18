@@ -1,22 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using top_smartvision.DB;
 
 namespace top_smartvision
 {
     public partial class LoginForm : Form , ILoginForm
     {
-        private LoginUserModel _user;
-       
-        private static LoginForm instance;
-
         private Action _onPropertyChanged;
 
         public Action OnPropertyChanged
@@ -33,43 +22,32 @@ namespace top_smartvision
 
         public LoginForm()
         {
-            //_user = model;
             InitializeComponent();
-            //presenter = new LoginFormPresenter(this, _user);
         }
 
-        public LoginUserModel user
+        public string username
         {
             get
             {
-                _user.username = UsernameText.Text;
-                _user.password = PasswordText.Text;
-
-                return _user;
+                return UsernameText.Text;
             }
             set
             {
-                _user = value;
-                UsernameText.Text = _user.username;
-                PasswordText.Text = _user.password;
+                UsernameText.Text = value;
             }
         }
-       
 
-        /// <summary>
-        /// Singleton Instance of form
-        /// </summary>
-       /*public static LoginForm GetInstance
+        public string password
         {
             get
             {
-                if (instance == null || instance.IsDisposed)
-                {
-                    instance = new LoginForm();
-                }
-                return instance;
+                return PasswordText.Text;
             }
-        }*/
+            set
+            {
+                PasswordText.Text = value;
+            }
+        }
 
         #region Username/Password text
 
@@ -184,11 +162,6 @@ namespace top_smartvision
 
         #endregion Helpers
 
-        /// <summary>
-        /// Logs the user in
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void LoginBtn_Click(object sender, EventArgs e)
         {
             while (NamePassNotEmpty() == false) return;

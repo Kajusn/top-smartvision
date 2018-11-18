@@ -20,9 +20,6 @@ namespace top_smartvision
             LoginUserModel model = new LoginUserModel();
             LoginFormPresenter presenter = new LoginFormPresenter(model);
             presenter.Start();
-
-            //LoginForm view = new LoginForm(model);
-            //Application.Run(LoginForm.GetInstance);
         }
     }
 }
