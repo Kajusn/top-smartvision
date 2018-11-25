@@ -8,10 +8,7 @@ namespace top_smartvision
 {
     interface IModel
     {
-        void Register(string name, string lastname, string username, string email, string password);
-        bool Login(string uss, string pass);
-        bool CheckUsernameEmail(string uss, string email);
-        string Hashing(string pass);
+       
 
         string username { get; set; }
         string password { get; set; }

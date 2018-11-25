@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using top_smartvision.DB;
+using top_smartvision.Presenters;
 
 namespace top_smartvision
 {
@@ -22,6 +23,7 @@ namespace top_smartvision
             this._model = model;
             _view = new LoginForm();
             _view.OnLoginBtnClicked += log;
+            _view.RegButtonClicked += reg;
         }
 
         /*public void Registr()
@@ -35,6 +37,10 @@ namespace top_smartvision
             _model.Register(name, lastname, username, email, pass);
         }*/
 
+        public void reg()
+        {
+            RegisterFormPresenter regPresenter = new RegisterFormPresenter();
+        }
         
         /// <summary>
         /// Logs the user in if the username and password are entered correctly and opens up the main menu form

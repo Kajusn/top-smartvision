@@ -10,7 +10,7 @@ namespace top_smartvision
     {
         //LoginUserModel user { get; set; }
         Action OnLoginBtnClicked { get; set; }
-        Action OnRegisterBtnClicked { get; set; }
+        Action RegButtonClicked { get; set; }
         string username { get; set; }
         string password { get; set; }
     }

@@ -7,7 +7,9 @@ namespace top_smartvision
     public partial class LoginForm : Form , ILoginForm
     {
         private Action _onLoginBtnClicked;
-        private Action _
+        private Action _RegButtonClicked;
+
+        #region Action setters/getters
 
         public Action OnLoginBtnClicked
         {
@@ -20,6 +22,20 @@ namespace top_smartvision
                 _onLoginBtnClicked = value;
             }
         }
+
+        public Action RegButtonClicked
+        {
+            get
+            {
+                return _RegButtonClicked;
+            }
+            set
+            {
+                _RegButtonClicked = value;
+            }
+        }
+
+        #endregion
 
         public LoginForm()
         {
@@ -171,8 +187,9 @@ namespace top_smartvision
 
         private void RegisterLabel_Click(object sender, EventArgs e)
         {
-            RegisterForm.GetInstance.Show();
+            //RegisterForm.GetInstance.Show();
             this.Hide();
+            _RegButtonClicked();
         }
     }
 }
