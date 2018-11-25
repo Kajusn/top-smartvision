@@ -9,12 +9,53 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using top_smartvision.DB;
+using top_smartvision.Views;
 
 namespace top_smartvision
 {
-    public partial class RegisterForm : Form
+    public partial class RegisterForm : Form, IRegisterForm
     {
-        private static RegisterForm instance;
+        //private static RegisterForm instance;
+        private User _newUser;
+
+        public User newUser
+        {
+            get
+            {
+                _newUser.name = FirstNameText.Text;
+                _newUser.lastName = LastNameText.Text;
+                _newUser.username = UsernameText.Text;
+                _newUser.email = EmailText.Text;
+                _newUser.password = PasswordText.Text;
+
+                return _newUser;
+            }
+
+            set
+            {
+                _newUser = value;
+
+                FirstNameText.Text = _newUser.name;
+                LastNameText.Text = _newUser.name;
+                UsernameText.Text = _newUser.name;
+                EmailText.Text = _newUser.email;
+                PasswordText.Text = _newUser.password;
+            }
+        }
+
+        private Action _onRegFormClosed;
+        public Action OnRegFormClosed
+        {
+            get
+            {
+                return _onRegFormClosed;
+            }
+            set
+            {
+                _onRegFormClosed = value;
+            }
+        }
+
         public RegisterForm()
         {
             InitializeComponent();
@@ -23,7 +64,7 @@ namespace top_smartvision
         /// <summary>
         /// Singleton Instance of form
         /// </summary>
-        public static RegisterForm GetInstance
+        /*public static RegisterForm GetInstance
         {
             get
             {
@@ -33,7 +74,7 @@ namespace top_smartvision
                 }
                 return instance;
             }
-        }
+        }*/
 
         #region Text watermarks
 
@@ -260,7 +301,7 @@ namespace top_smartvision
 
         private void RegisterForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //LoginForm.GetInstance.Show();
+            _onRegFormClosed();
         }
     }
 

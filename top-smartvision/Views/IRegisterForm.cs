@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace top_smartvision.Views
 {
-    class IRegisterForm
+    interface IRegisterForm
     {
+        User newUser { get; set; }
+        Action OnRegFormClosed { get; set; }
     }
 }

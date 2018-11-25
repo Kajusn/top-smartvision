@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using top_smartvision.DB;
@@ -13,6 +14,7 @@ namespace top_smartvision
 {
     class LoginFormPresenter
     {
+        Thread th;
         private string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\References\Images\";
 
         public ILoginForm _view;
@@ -37,11 +39,21 @@ namespace top_smartvision
             _model.Register(name, lastname, username, email, pass);
         }*/
 
+        #region Opens Register form
         public void reg()
         {
-            RegisterFormPresenter regPresenter = new RegisterFormPresenter();
+            /*th = new Thread(OpenRegisterForm);
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();*/
+            RegisterFormPresenter regPresenter = new RegisterFormPresenter(_view);
         }
-        
+
+        private void OpenRegisterForm()
+        {
+            RegisterFormPresenter regPresenter = new RegisterFormPresenter(_view);
+        }
+        #endregion
+
         /// <summary>
         /// Logs the user in if the username and password are entered correctly and opens up the main menu form
         /// </summary>

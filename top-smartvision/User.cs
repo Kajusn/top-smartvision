@@ -3,31 +3,94 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using top_smartvision.Models;
 
 namespace top_smartvision
 {
     /// <summary>
     /// User information for future database
     /// </summary>
-    public class User
+    public class User : IUserModel
     {
-        public string name;
+        /*public string name;
         public string lastName;
         public string username;
         public string email;
-        public string password;
+        public string password;*/
+
+        public string name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
+        public string lastName
+        {
+            get
+            {
+                return lastName;
+            }
+
+            set
+            {
+                lastName = value;
+            }
+        }
+        public string username
+        {
+            get
+            {
+                return username;
+            }
+
+            set
+            {
+                username = value;
+            }
+        }
+        public string email
+        {
+            get
+            {
+                return email;
+            }
+
+            set
+            {
+                email = value;
+            }
+        }
+        public string password
+        {
+            get
+            {
+                return password;
+            }
+
+            set
+            {
+                password = value;
+            }
+        }
+
         // private string gender;
 
         public User()
         {
-            name = null;
+            /*name = null;
             lastName = null;
             username = null;
             email = null;
-            password = null;
-         
+            password = null;*/
         }
 
+        
         public User(string Name, string LastName, string Email, string User, string Pass/* string gender*/)
         {
             this.name = Name;
@@ -85,5 +148,6 @@ namespace top_smartvision
             this.gender = gender;
         }*/
         #endregion
+        
     }
 }

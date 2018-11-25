@@ -187,7 +187,6 @@ namespace top_smartvision
 
         private void RegisterLabel_Click(object sender, EventArgs e)
         {
-            //RegisterForm.GetInstance.Show();
             this.Hide();
             _RegButtonClicked();
         }
