@@ -15,8 +15,7 @@ namespace top_smartvision
 {
     public partial class RegisterForm : Form, IRegisterForm
     {
-        //private static RegisterForm instance;
-        private User _newUser;
+        private User _newUser = new User();
 
         public User newUser
         {
@@ -44,6 +43,10 @@ namespace top_smartvision
         }
 
         private Action _onRegFormClosed;
+        private Action _onRegisterClicked;
+
+        #region Action setters/getters
+
         public Action OnRegFormClosed
         {
             get
@@ -56,25 +59,24 @@ namespace top_smartvision
             }
         }
 
+        public Action OnRegisterClicked
+        {
+            get
+            {
+                return _onRegisterClicked;
+            }
+            set
+            {
+                _onRegisterClicked = value;
+            }
+        }
+
+        #endregion
+
         public RegisterForm()
         {
             InitializeComponent();
         }
-
-        /// <summary>
-        /// Singleton Instance of form
-        /// </summary>
-        /*public static RegisterForm GetInstance
-        {
-            get
-            {
-                if (instance == null || instance.IsDisposed)
-                {
-                    instance = new RegisterForm();
-                }
-                return instance;
-            }
-        }*/
 
         #region Text watermarks
 
@@ -286,17 +288,10 @@ namespace top_smartvision
             // Will return if Email is invalid
             if (!EmailValidation(EmailText.Text)) return;
 
-            User newUser = new User(FirstNameText.Text, LastNameText.Text, EmailText.Text, UsernameText.Text, PasswordText.Text);
+            _onRegisterClicked();
 
-            FileIO file = new FileIO();
-
-            // Calls method to write registration info to file
-            file.Register(newUser.name, newUser.lastName, newUser.username, newUser.email, newUser.password);
-
-            this.Close();
-           // LoginForm.GetInstance.Show();
-
-            
+            MessageBox.Show("User registered successfully!");
+            this.Hide();
         }
 
         private void RegisterForm_FormClosed(object sender, FormClosedEventArgs e)

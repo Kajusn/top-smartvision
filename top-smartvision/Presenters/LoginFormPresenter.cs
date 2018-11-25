@@ -14,7 +14,6 @@ namespace top_smartvision
 {
     class LoginFormPresenter
     {
-        Thread th;
         private string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\References\Images\";
 
         public ILoginForm _view;
@@ -44,9 +43,6 @@ namespace top_smartvision
         /// </summary>
         public void reg()
         {
-            /*th = new Thread(OpenRegisterForm);
-            th.SetApartmentState(ApartmentState.STA);
-            th.Start();*/
             RegisterFormPresenter regPresenter = new RegisterFormPresenter(_view);
         }
 
@@ -62,7 +58,6 @@ namespace top_smartvision
                 fm.Show();
                 fm.WelcomeMessage(_view.username);
                 UpdateData();
-                //Presenter sasdasd = new Presenter(_model)
             }
         }
 

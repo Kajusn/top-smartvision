@@ -10,5 +10,6 @@ namespace top_smartvision.Views
     {
         User newUser { get; set; }
         Action OnRegFormClosed { get; set; }
+        Action OnRegisterClicked { get; set; }
     }
 }

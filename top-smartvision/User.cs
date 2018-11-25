@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using top_smartvision.Models;
 
 namespace top_smartvision
@@ -18,66 +19,11 @@ namespace top_smartvision
         public string email;
         public string password;*/
 
-        public string name
-        {
-            get
-            {
-                return name;
-            }
-
-            set
-            {
-                name = value;
-            }
-        }
-        public string lastName
-        {
-            get
-            {
-                return lastName;
-            }
-
-            set
-            {
-                lastName = value;
-            }
-        }
-        public string username
-        {
-            get
-            {
-                return username;
-            }
-
-            set
-            {
-                username = value;
-            }
-        }
-        public string email
-        {
-            get
-            {
-                return email;
-            }
-
-            set
-            {
-                email = value;
-            }
-        }
-        public string password
-        {
-            get
-            {
-                return password;
-            }
-
-            set
-            {
-                password = value;
-            }
-        }
+        public string name { get; set; }
+        public string lastName { get; set; }
+        public string username { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
 
         // private string gender;
 
