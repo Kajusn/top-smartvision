@@ -39,7 +39,9 @@ namespace top_smartvision
             _model.Register(name, lastname, username, email, pass);
         }*/
 
-        #region Opens Register form
+        /// <summary>
+        /// Opens Register form
+        /// </summary>
         public void reg()
         {
             /*th = new Thread(OpenRegisterForm);
@@ -47,12 +49,6 @@ namespace top_smartvision
             th.Start();*/
             RegisterFormPresenter regPresenter = new RegisterFormPresenter(_view);
         }
-
-        private void OpenRegisterForm()
-        {
-            RegisterFormPresenter regPresenter = new RegisterFormPresenter(_view);
-        }
-        #endregion
 
         /// <summary>
         /// Logs the user in if the username and password are entered correctly and opens up the main menu form

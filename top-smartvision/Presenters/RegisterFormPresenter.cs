@@ -29,17 +29,8 @@ namespace top_smartvision.Presenters
 
         public void LoginOpen()
         {
-            /*th = new Thread(OpenLoginForm);
-            th.SetApartmentState(ApartmentState.STA);
-            th.Start();*/
-            //LoginFormPresenter presenter = new LoginFormPresenter(model);
             login.Show();
         }
 
-        public void OpenLoginForm()
-        {
-            LoginUserModel model = new LoginUserModel();
-            LoginFormPresenter presenter = new LoginFormPresenter(model);
-        }
     }
 }
