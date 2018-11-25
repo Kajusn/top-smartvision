@@ -7,6 +7,19 @@ namespace top_smartvision
     public partial class LoginForm : Form , ILoginForm
     {
         private Action _onPropertyChanged;
+        private Action _RegButtonClicked;
+
+        public Action RegButtonClicked
+        {
+            get
+            {
+                return _RegButtonClicked;
+            }
+            set
+            {
+                _RegButtonClicked = value;
+            }
+        }
 
         public Action OnPropertyChanged
         {
@@ -170,7 +183,7 @@ namespace top_smartvision
 
         private void RegisterLabel_Click(object sender, EventArgs e)
         {
-            RegisterForm.GetInstance.Show();
+            _RegButtonClicked();
             this.Hide();
         }
     }
