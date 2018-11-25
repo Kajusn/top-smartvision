@@ -13,12 +13,6 @@ namespace top_smartvision
     /// </summary>
     public class User : IUserModel
     {
-        /*public string name;
-        public string lastName;
-        public string username;
-        public string email;
-        public string password;*/
-
         public string name { get; set; }
         public string lastName { get; set; }
         public string username { get; set; }
@@ -27,15 +21,7 @@ namespace top_smartvision
 
         // private string gender;
 
-        public User()
-        {
-            /*name = null;
-            lastName = null;
-            username = null;
-            email = null;
-            password = null;*/
-        }
-
+        public User(){}
         
         public User(string Name, string LastName, string Email, string User, string Pass/* string gender*/)
         {
@@ -46,54 +32,5 @@ namespace top_smartvision
             this.password = Pass;
            // this.gender = gender;
         }
-        /// <summary>
-        /// User setters and getters
-        /// </summary>
-        /// <returns></returns>
-        #region get/set
-
-        public string getEmail()
-        {
-            return email;
-        }
-        public void setEmail (string email)
-        {
-            this.email = email;
-        }
-        public string getUsername()
-        {
-            return username;
-        }
-        public void setUserName(string username)
-        {
-            this.username = username;
-        }
-
-        public string getName()
-        {
-            return name;
-        }
-        public string getLastName()
-        {
-            return lastName;
-        }
-        public string getPassword()
-        {
-            return password;
-        }
-        public void setPassword(string password)
-        {
-            this.password = password;
-        }
-      /*  public string getGender()
-        {
-            return gender;
-        }
-        public void setGender (string gender)
-        {
-            this.gender = gender;
-        }*/
-        #endregion
-        
     }
 }
