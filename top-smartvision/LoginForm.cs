@@ -6,17 +6,18 @@ namespace top_smartvision
 {
     public partial class LoginForm : Form , ILoginForm
     {
-        private Action _onPropertyChanged;
+        private Action _onLoginBtnClicked;
+        private Action _
 
-        public Action OnPropertyChanged
+        public Action OnLoginBtnClicked
         {
             get
             {
-                return _onPropertyChanged;
+                return _onLoginBtnClicked;
             }
             set
             {
-                _onPropertyChanged = value;
+                _onLoginBtnClicked = value;
             }
         }
 
@@ -165,7 +166,7 @@ namespace top_smartvision
         private void LoginBtn_Click(object sender, EventArgs e)
         {
             while (NamePassNotEmpty() == false) return;
-            _onPropertyChanged();
+            _onLoginBtnClicked();
         }
 
         private void RegisterLabel_Click(object sender, EventArgs e)

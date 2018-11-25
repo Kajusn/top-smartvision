@@ -21,7 +21,7 @@ namespace top_smartvision
         {
             this._model = model;
             _view = new LoginForm();
-            _view.OnPropertyChanged += log;
+            _view.OnLoginBtnClicked += log;
         }
 
         /*public void Registr()
@@ -81,8 +81,6 @@ namespace top_smartvision
             password = Hashing(password);
 
             appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\users.txt";
-            
-            MessageBox.Show(appPath);
 
             if (Directory.Exists(Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\") == false)
             {

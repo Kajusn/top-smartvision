@@ -64,6 +64,7 @@
     <Compile Include="DB\FileIO.cs" />
     <Compile Include="DB\IDB.cs" />
     <Compile Include="Models\IModel.cs" />
+    <Compile Include="Presenters\RegisterFormPresenter.cs" />
     <Compile Include="Views\ILoginForm.cs" />
     <Compile Include="LostForm.cs">
       <SubType>Form</SubType>

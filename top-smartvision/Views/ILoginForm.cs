@@ -9,7 +9,8 @@ namespace top_smartvision
     public interface ILoginForm
     {
         //LoginUserModel user { get; set; }
-        Action OnPropertyChanged { get; set; }
+        Action OnLoginBtnClicked { get; set; }
+        Action OnRegisterBtnClicked { get; set; }
         string username { get; set; }
         string password { get; set; }
     }
