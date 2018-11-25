@@ -9,30 +9,73 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using top_smartvision.DB;
+using top_smartvision.Views;
 
 namespace top_smartvision
 {
-    public partial class RegisterForm : Form
+    public partial class RegisterForm : Form, IRegisterForm
     {
-        private static RegisterForm instance;
-        public RegisterForm()
-        {
-            InitializeComponent();
-        }
+        private User _newUser = new User();
 
-        /// <summary>
-        /// Singleton Instance of form
-        /// </summary>
-        public static RegisterForm GetInstance
+        public User newUser
         {
             get
             {
-                if (instance == null || instance.IsDisposed)
-                {
-                    instance = new RegisterForm();
-                }
-                return instance;
+                _newUser.name = FirstNameText.Text;
+                _newUser.lastName = LastNameText.Text;
+                _newUser.username = UsernameText.Text;
+                _newUser.email = EmailText.Text;
+                _newUser.password = PasswordText.Text;
+
+                return _newUser;
             }
+
+            set
+            {
+                _newUser = value;
+
+                FirstNameText.Text = _newUser.name;
+                LastNameText.Text = _newUser.name;
+                UsernameText.Text = _newUser.name;
+                EmailText.Text = _newUser.email;
+                PasswordText.Text = _newUser.password;
+            }
+        }
+
+        private Action _onRegFormClosed;
+        private Action _onRegisterClicked;
+
+        #region Action setters/getters
+
+        public Action OnRegFormClosed
+        {
+            get
+            {
+                return _onRegFormClosed;
+            }
+            set
+            {
+                _onRegFormClosed = value;
+            }
+        }
+
+        public Action OnRegisterClicked
+        {
+            get
+            {
+                return _onRegisterClicked;
+            }
+            set
+            {
+                _onRegisterClicked = value;
+            }
+        }
+
+        #endregion
+
+        public RegisterForm()
+        {
+            InitializeComponent();
         }
 
         #region Text watermarks
@@ -245,23 +288,15 @@ namespace top_smartvision
             // Will return if Email is invalid
             if (!EmailValidation(EmailText.Text)) return;
 
-            User newUser = new User(FirstNameText.Text, LastNameText.Text, EmailText.Text, UsernameText.Text, PasswordText.Text);
+            _onRegisterClicked();
 
-            FileIO file = new FileIO();
-
-            // Calls method to write registration info to file
-            file.Register(newUser.name, newUser.lastName, newUser.username, newUser.email, newUser.password);
-
-            this.Close();
-            LoginForm.GetInstance.Show();
-
-            // TO-DO:
-            // Actually registering the person with specified info
+            MessageBox.Show("User registered successfully!");
+            this.Hide();
         }
 
         private void RegisterForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            LoginForm.GetInstance.Show();
+            _onRegFormClosed();
         }
     }
 

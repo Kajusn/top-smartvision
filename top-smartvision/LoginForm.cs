@@ -1,36 +1,68 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using top_smartvision.DB;
 
 namespace top_smartvision
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : Form , ILoginForm
     {
-        private static LoginForm instance;
+        private Action _onLoginBtnClicked;
+        private Action _RegButtonClicked;
+
+        #region Action setters/getters
+
+        public Action OnLoginBtnClicked
+        {
+            get
+            {
+                return _onLoginBtnClicked;
+            }
+            set
+            {
+                _onLoginBtnClicked = value;
+            }
+        }
+
+        public Action RegButtonClicked
+        {
+            get
+            {
+                return _RegButtonClicked;
+            }
+            set
+            {
+                _RegButtonClicked = value;
+            }
+        }
+
+        #endregion
+
         public LoginForm()
         {
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Singleton Instance of form
-        /// </summary>
-        public static LoginForm GetInstance
+        public string username
         {
             get
             {
-                if (instance == null || instance.IsDisposed)
-                {
-                    instance = new LoginForm();
-                }
-                return instance;
+                return UsernameText.Text;
+            }
+            set
+            {
+                UsernameText.Text = value;
+            }
+        }
+
+        public string password
+        {
+            get
+            {
+                return PasswordText.Text;
+            }
+            set
+            {
+                PasswordText.Text = value;
             }
         }
 
@@ -147,36 +179,16 @@ namespace top_smartvision
 
         #endregion Helpers
 
-        /// <summary>
-        /// Logs the user in
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-
-    
             while (NamePassNotEmpty() == false) return;
-            
-            FileIO log = new FileIO();
-
-            // checks if the username and pass are written correctly
-            if (!log.Login(UsernameText.Text, PasswordText.Text)) MessageBox.Show("The Username or Password is incorrect");
-
-            else
-            {
-                LostOrFound fm = new LostOrFound();
-                fm.Show();
-                this.Visible = false;
-                fm.WelcomeMessage(this.UsernameText.Text);
-            }
-
+            _onLoginBtnClicked();
         }
 
         private void RegisterLabel_Click(object sender, EventArgs e)
         {
-            RegisterForm.GetInstance.Show();
             this.Hide();
+            _RegButtonClicked();
         }
     }
 }
