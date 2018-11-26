@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("App1.Droid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("LostAndFound.Droid.Resource", IsApplication=true)]
 
-namespace App1.Droid
+namespace LostAndFound.Droid
 {
 	
 	
@@ -26,7 +26,7 @@ namespace App1.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::App1.Droid.Resource.Attribute.actionBarSize;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::LostAndFound.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation

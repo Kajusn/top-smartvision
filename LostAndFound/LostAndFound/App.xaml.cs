@@ -3,7 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace LostAndFoundApp
+namespace LostAndFound
 {
     public partial class App : Application
     {

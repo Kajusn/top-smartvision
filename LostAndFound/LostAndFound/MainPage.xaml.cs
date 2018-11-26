@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using top_smartvision;
 
-
-namespace LostAndFoundApp
+namespace LostAndFound
 {
     public partial class MainPage : ContentPage //, ILoginForm
     {
-        private Action _onLoginBtnClicked;
-        private Action _RegButtonClicked;
+
         public MainPage()
         {
             InitializeComponent();
         }
+
+        private Action _onLoginBtnClicked;
+        private Action _RegButtonClicked;
         #region setters getters
 
         public Action OnLoginBtnClicked
@@ -43,7 +44,7 @@ namespace LostAndFoundApp
             }
         }
 
-      public string username
+        public string username
         {
             get
             {
@@ -51,7 +52,7 @@ namespace LostAndFoundApp
             }
             set
             {
-               Username.Text = value;
+                Username.Text = value;
             }
         }
 
@@ -75,14 +76,14 @@ namespace LostAndFoundApp
 
             //_onLoginBtnClicked();
 
-           
-            await DisplayAlert("clicke", ""+Username.Text, "ok");
+
+            await DisplayAlert("clicke", "" + Username.Text, "ok");
         }
-        
+
 
         private void RegisterLabel_Click(object sender, EventArgs e)
         {
-           // this.Hide();
+            // this.Hide();
             _RegButtonClicked();
         }
     }

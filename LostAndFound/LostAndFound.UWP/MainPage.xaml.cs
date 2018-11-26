@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace LostAndFoundApp.UWP
+namespace LostAndFound.UWP
 {
     public sealed partial class MainPage
     {
@@ -21,7 +21,7 @@ namespace LostAndFoundApp.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new LostAndFoundApp.App());
+            LoadApplication(new LostAndFound.App());
         }
     }
 }

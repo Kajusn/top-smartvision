@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace LostAndFoundApp.iOS
+namespace LostAndFound.iOS
 {
     public class Application
     {

@@ -5,13 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BC35FEEA-52A6-448D-A65E-FEEA7D255B43}</ProjectGuid>
+    <ProjectGuid>{C64BD2A6-BD37-48F9-B9B0-8D2E6FFC70B7}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>App1.iOS</RootNamespace>
+    <RootNamespace>LostAndFound.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>App1.iOS</AssemblyName>
+    <AssemblyName>LostAndFound.iOS</AssemblyName>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -152,9 +152,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\App1\App1.csproj">
-      <Project>{411EF4F6-9C3F-493B-8056-9FD97B12CB0B}</Project>
-      <Name>App1</Name>
+    <ProjectReference Include="..\LostAndFound\LostAndFound.csproj">
+      <Project>{6E2EBBAC-48EC-4B4C-98D0-46C6C6646554}</Project>
+      <Name>LostAndFound</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
