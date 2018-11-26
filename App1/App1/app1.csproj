@@ -10,10 +10,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="App.xaml.cs" />
+    <Compile Remove="MainPage.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="App.xaml.cs" />
+    <EmbeddedResource Include="MainPage.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\top-smartvision\SmartVision.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

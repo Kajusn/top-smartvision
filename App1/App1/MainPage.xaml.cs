@@ -9,7 +9,7 @@ using top_smartvision;
 
 namespace LostAndFoundApp
 {
-    public partial class MainPage : ContentPage , ILoginForm
+    public partial class MainPage : ContentPage //, ILoginForm
     {
         private Action _onLoginBtnClicked;
         private Action _RegButtonClicked;
