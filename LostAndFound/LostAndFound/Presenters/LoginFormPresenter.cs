@@ -89,14 +89,22 @@ namespace LostAndFound.Presenters
             //hashes the password
             password = Hashing(password);
 
-            string appPath = @"C:\Users\Dovydas\Documents\GitHub\top-smartvision\top-smartvision\bin\Debug\Users\users.txt";
+
+            var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "users.txt");
+
+            if (backingFile == null || !File.Exists(backingFile))
+            {
+                File.Create(backingFile);
+            }
+
+            //string appPath = @"C:\Users\Dovydas\Documents\GitHub\top-smartvision\top-smartvision\bin\Debug\Users\users.txt";
           
 
             //Creates a list of users
             List<User> AllUsers = new List<User>();
 
             //Creates a list of all lines in the text file
-            List<string> Lines = File.ReadAllLines(appPath).ToList();
+            List<string> Lines = File.ReadAllLines(backingFile).ToList();
 
             foreach (var line in Lines)
             {
