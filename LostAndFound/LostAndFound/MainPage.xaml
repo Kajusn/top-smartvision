@@ -6,30 +6,43 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
+        <Label Text="Lost and found" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
 
 
         <Entry x:Name="Username"
                Text="{Binding Username}"
-            Placeholder="Your Username"
+           Placeholder="Username"
                HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+               WidthRequest="200"
+           VerticalOptions="EndAndExpand" />
 
         <Entry x:Name="Password"
                Text="{Binding Password}"
             IsPassword="true"
-            Placeholder="Your Password" 
+            Placeholder="Password" 
+               WidthRequest="200"
                HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+           VerticalOptions="Center" />
 
         <Button Text="Login"
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" 
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="CenterAndExpand"
+                WidthRequest="200"
+                HeightRequest="60"
                 Command="{Binding LoginCommand}"
                 Clicked="ButtonClicked"
                 ></Button>
+
+        <Button Text="Register"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="StartAndExpand" 
+                WidthRequest="200"
+                Command="{}"
+                Clicked="ButtonClicked"
+                ></Button>
+        
 
 
     </StackLayout>

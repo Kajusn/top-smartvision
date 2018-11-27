@@ -18,9 +18,6 @@ namespace LostAndFound.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            //LoginUserModel model = new LoginUserModel();
-            //Presenters.LoginFormPresenter presenter = new Presenters.LoginFormPresenter(model);
-
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

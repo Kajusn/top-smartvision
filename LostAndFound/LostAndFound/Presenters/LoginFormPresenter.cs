@@ -25,43 +25,18 @@ namespace LostAndFound.Presenters
         public Command LoginCommand { get; }
         private MainPage instance;
 
-        public LoginFormPresenter(IModel model)
+        /*public LoginFormPresenter(IModel model)
         {
             this._model = model;
             _view = new MainPage();
-
             LoginCommand = new Command(() => log());
-
-            //_view.OnLoginBtnClicked += log;
-            //_view.RegButtonClicked += reg;
-
-            
-        }
+        }*/
 
         public LoginFormPresenter()
         {
             instance = MainPage.instance;
-            //this._model = model;
-            //_view = new MainPage();
-
             LoginCommand = new Command(() => log());
-
-            //_view.OnLoginBtnClicked += log;
-            //_view.RegButtonClicked += reg;
-
-
         }
-
-        /*public void Registr()
-        {
-            string name = _view.user.name;
-            string lastname = _view.user.lastName;
-            string username = _view.user.username;
-            string email = _view.user.email;
-            string pass = _view.user.password;
-
-            _model.Register(name, lastname, username, email, pass);
-        }*/
 
         /// <summary>
         /// Opens Register form
@@ -76,7 +51,7 @@ namespace LostAndFound.Presenters
         /// </summary>
         public void log()
         {
-            if (!Login(instance.username, instance.password)) instance.DisplayAlert("Alert", "The Username or Password is incorrect", "okayblet");
+            if (!Login(instance.username, instance.password)) instance.DisplayAlert("Alert", "The Username or Password is incorrect", "OK");
             else
             {
                 /* LostOrFound fm = new LostOrFound();
