@@ -10,6 +10,7 @@ using LostAndFound;
 using Xamarin.Forms;
 using LostAndFound.Views;
 using LostAndFound.Presenters;
+using System.Windows.Input;
 
 namespace LostAndFound.Presenters
 {
@@ -19,16 +20,36 @@ namespace LostAndFound.Presenters
 
         public ILoginForm _view;
         private IModel _model;
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public Command LoginCommand { get; }
+        private MainPage instance;
 
         public LoginFormPresenter(IModel model)
         {
             this._model = model;
             _view = new MainPage();
 
-            _view.OnLoginBtnClicked += log;
-            _view.RegButtonClicked += reg;
+            LoginCommand = new Command(() => log());
+
+            //_view.OnLoginBtnClicked += log;
+            //_view.RegButtonClicked += reg;
 
             
+        }
+
+        public LoginFormPresenter()
+        {
+            instance = MainPage.instance;
+            //this._model = model;
+            //_view = new MainPage();
+
+            LoginCommand = new Command(() => log());
+
+            //_view.OnLoginBtnClicked += log;
+            //_view.RegButtonClicked += reg;
+
+
         }
 
         /*public void Registr()
@@ -55,7 +76,7 @@ namespace LostAndFound.Presenters
         /// </summary>
         public void log()
         {
-            if (!Login(_view.username, _view.password)) _view.displayblet();
+            if (!Login(instance.username, instance.password)) instance.DisplayAlert("Alert", "The Username or Password is incorrect", "okayblet");
             else
             {
                 /* LostOrFound fm = new LostOrFound();

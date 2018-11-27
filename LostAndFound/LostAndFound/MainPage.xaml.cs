@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using LostAndFound.Views;
+using LostAndFound.Presenters;
 
 //using top_smartvision;
 
@@ -12,10 +13,13 @@ namespace LostAndFound
 {
     public partial class MainPage : ContentPage , ILoginForm
     {
-
+        public static MainPage instance;
         public MainPage()
         {
             InitializeComponent();
+            //LoginUserModel model = new LoginUserModel();
+            instance = this;
+            BindingContext = new LoginFormPresenter();
         }
 
         private Action _onLoginBtnClicked;
@@ -76,7 +80,7 @@ namespace LostAndFound
             Button button = sender as Button;
 
 
-            _onLoginBtnClicked();
+            //_onLoginBtnClicked();
 
 
             await DisplayAlert("clicke", "" + Username.Text, "ok");
