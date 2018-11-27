@@ -6,14 +6,16 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using top_smartvision.Presenters;
+using LostAndFound;
+using Xamarin.Forms;
+using LostAndFound.Views;
+using LostAndFound.Presenters;
 
-namespace top_smartvision
+namespace LostAndFound.Presenters
 {
-    class LoginFormPresenter
+    public class LoginFormPresenter
     {
-        private string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\References\Images\";
+       // private string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\References\Images\";
 
         public ILoginForm _view;
         private IModel _model;
@@ -21,9 +23,8 @@ namespace top_smartvision
         public LoginFormPresenter(IModel model)
         {
             this._model = model;
-            _view = new LoginForm();
+            _view = new MainPage();
 
-          
             _view.OnLoginBtnClicked += log;
             _view.RegButtonClicked += reg;
 
@@ -46,7 +47,7 @@ namespace top_smartvision
         /// </summary>
         public void reg()
         {
-            RegisterFormPresenter regPresenter = new RegisterFormPresenter(_view);
+           // RegisterFormPresenter regPresenter = new RegisterFormPresenter(_view);
         }
 
         /// <summary>
@@ -54,13 +55,13 @@ namespace top_smartvision
         /// </summary>
         public void log()
         {
-            if (!Login(_view.username, _view.password)) MessageBox.Show("The Username or Password is incorrect");
+            if (!Login(_view.username, _view.password)) _view.displayblet();
             else
             {
-                LostOrFound fm = new LostOrFound();
-                fm.Show();
-                fm.WelcomeMessage(_view.username);
-                UpdateData();
+                /* LostOrFound fm = new LostOrFound();
+                 fm.Show();
+                 fm.WelcomeMessage(_view.username);
+                 UpdateData();*/
             }
         }
 
@@ -71,7 +72,7 @@ namespace top_smartvision
         /// </summary>
         public void Start()
         {
-            Application.Run((Form)_view);
+            //Application.Run((Form)_view);
         }
 
         /// <summary>
@@ -92,17 +93,8 @@ namespace top_smartvision
             //hashes the password
             password = Hashing(password);
 
-            appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\users.txt";
-
-            if (Directory.Exists(Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\") == false)
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(Application.ExecutablePath) + @"\Users\");
-            }
-            // Creates file if it doesn't exist
-            if (File.Exists(appPath) == false)
-            {
-                //File.Create(appPath);
-            }
+            string appPath = @"C:\Users\Dovydas\Documents\GitHub\top-smartvision\top-smartvision\bin\Debug\Users\users.txt";
+          
 
             //Creates a list of users
             List<User> AllUsers = new List<User>();

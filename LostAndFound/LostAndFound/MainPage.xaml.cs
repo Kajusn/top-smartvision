@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using top_smartvision;
+using LostAndFound.Views;
+
+//using top_smartvision;
 
 namespace LostAndFound
 {
-    public partial class MainPage : ContentPage //, ILoginForm
+    public partial class MainPage : ContentPage , ILoginForm
     {
 
         public MainPage()
@@ -74,12 +76,16 @@ namespace LostAndFound
             Button button = sender as Button;
 
 
-            //_onLoginBtnClicked();
+            _onLoginBtnClicked();
 
 
             await DisplayAlert("clicke", "" + Username.Text, "ok");
         }
 
+       public async void displayblet()
+        {
+            await DisplayAlert("Alert" ,"The Username or Password is incorrect","okayblet");
+        }
 
         private void RegisterLabel_Click(object sender, EventArgs e)
         {
