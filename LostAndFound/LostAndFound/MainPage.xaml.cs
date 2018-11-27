@@ -19,7 +19,7 @@ namespace LostAndFound
             InitializeComponent();
             //LoginUserModel model = new LoginUserModel();
             instance = this;
-            BindingContext = new LoginFormPresenter();
+            BindingContext = new LoginFormPresenter(); // CIA GERIAU PER INTERFACE O NE PER PATI PRESENTERI
         }
 
         private Action _onLoginBtnClicked;

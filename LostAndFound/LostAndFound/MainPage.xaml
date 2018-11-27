@@ -31,16 +31,15 @@
            VerticalOptions="CenterAndExpand"
                 WidthRequest="200"
                 HeightRequest="60"
+                BackgroundColor="DodgerBlue"
                 Command="{Binding LoginCommand}"
-                Clicked="ButtonClicked"
                 ></Button>
 
         <Button Text="Register"
            HorizontalOptions="CenterAndExpand"
            VerticalOptions="StartAndExpand" 
                 WidthRequest="200"
-                Command="{}"
-                Clicked="ButtonClicked"
+                Command="{Binding RegOpenCommand}"
                 ></Button>
         
 

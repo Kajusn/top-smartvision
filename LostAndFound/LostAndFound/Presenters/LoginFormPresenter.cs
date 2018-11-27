@@ -23,6 +23,7 @@ namespace LostAndFound.Presenters
         public string Username { get; set; }
         public string Password { get; set; }
         public Command LoginCommand { get; }
+        public Command RegOpenCommand { get; }
         private MainPage instance;
 
         /*public LoginFormPresenter(IModel model)
@@ -36,6 +37,7 @@ namespace LostAndFound.Presenters
         {
             instance = MainPage.instance;
             LoginCommand = new Command(() => log());
+            RegOpenCommand = new Command(() => reg());
         }
 
         /// <summary>
@@ -43,7 +45,7 @@ namespace LostAndFound.Presenters
         /// </summary>
         public void reg()
         {
-           // RegisterFormPresenter regPresenter = new RegisterFormPresenter(_view);
+            instance.Navigation.PushModalAsync(new RegisterPage(), true); // TURETU BUT KAZKOKS MASTER CONTROLLERIS KURIS KURIA FORMAS, O NE IS FORMOS I FORMA
         }
 
         /// <summary>
@@ -54,10 +56,7 @@ namespace LostAndFound.Presenters
             if (!Login(instance.username, instance.password)) instance.DisplayAlert("Alert", "The Username or Password is incorrect", "OK");
             else
             {
-                /* LostOrFound fm = new LostOrFound();
-                 fm.Show();
-                 fm.WelcomeMessage(_view.username);
-                 UpdateData();*/
+                instance.DisplayAlert("", "Login complete", "OK");
             }
         }
 
@@ -84,11 +83,10 @@ namespace LostAndFound.Presenters
 
         #region Login
 
-        public bool Login(string username, string password)
+        public bool Login(string username, string password) // CIA BUTU GERIAU PERKELTI LOGIN I PVZ LOGIN KLASE AR KAZKA PANASAUS
         {
             //hashes the password
             password = Hashing(password);
-
 
             var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "users.txt");
 
