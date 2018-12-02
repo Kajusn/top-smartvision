@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
-
+using Xamarin.Forms;
 
 namespace LostAndFound
 {
@@ -71,7 +71,7 @@ namespace LostAndFound
         /// <param name="username"></param>
         /// <param name="email"></param>
         /// <param name="pass"></param>
-        public static void Register(string name, string lastname, string username, string email, string pass /*string gender*/)
+        public static void Register(string name, string lastname, string username, string email, string pass, ContentPage instance /*string gender*/)
         {
             var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "users.txt");
 
@@ -81,7 +81,7 @@ namespace LostAndFound
             }
 
             // calls method to check is username of email is not used
-            if (!CheckUsernameEmail(username, email)) return;
+            if (!CheckUsernameEmail(username, email, instance)) return;
 
             // Hashing the password
             pass = Hashing(pass);
@@ -100,7 +100,7 @@ namespace LostAndFound
         /// <param name="username"></param>
         /// <param name="email"></param>
         /// <returns></returns>
-        public static bool CheckUsernameEmail(string username, string email)
+        public static bool CheckUsernameEmail(string username, string email, ContentPage instance)
         {
             var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "users.txt");
 

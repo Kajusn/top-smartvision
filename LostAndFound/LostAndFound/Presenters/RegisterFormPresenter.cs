@@ -55,7 +55,7 @@ namespace LostAndFound.Presenters
         public void Reg()
         {
             // Calls method to write registration info to file
-            LoginController.Register(Name, LastName, Username, Email, Password);
+            LoginController.Register(Name, LastName, Username, Email, Password, instance);
             LoginOpen();
         }
         

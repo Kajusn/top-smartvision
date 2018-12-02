@@ -13,6 +13,5 @@ namespace LostAndFound.Views
         Action RegButtonClicked { get; set; }
         string username { get; set; }
         string password { get; set; }
-        void displayblet();
     }
 }

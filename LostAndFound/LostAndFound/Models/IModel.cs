@@ -8,8 +8,6 @@ namespace LostAndFound
 {
     public interface IModel
     {
-       
-
         string username { get; set; }
         string password { get; set; }
     }

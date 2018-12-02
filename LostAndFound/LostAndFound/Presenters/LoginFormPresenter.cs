@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using LostAndFound;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using LostAndFound.Views;
-using LostAndFound.Presenters;
-using System.Windows.Input;
 
 namespace LostAndFound.Presenters
 {
     public class LoginFormPresenter
     {
-       // private string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\References\Images\";
-
         public ILoginForm _view;
         private IModel _model;
         public string Username { get; set; }
@@ -37,15 +24,15 @@ namespace LostAndFound.Presenters
         {
             instance = MainPage.instance;
             LoginCommand = new Command(() => log());
-            RegOpenCommand = new Command(() => reg());
+            RegOpenCommand = new Command(() => openReg());
         }
 
         /// <summary>
         /// Opens Register form
         /// </summary>
-        public void reg()
+        public void openReg()
         {
-            instance.Navigation.PushModalAsync(new RegisterPage(), true); // TURETU BUT KAZKOKS MASTER CONTROLLERIS KURIS KURIA FORMAS, O NE IS FORMOS I FORMA
+            FormController.OpenRegister(instance);
         }
 
         /// <summary>
@@ -53,7 +40,7 @@ namespace LostAndFound.Presenters
         /// </summary>
         public void log()
         {
-            if (!LoginController.Login(instance.username, instance.password)) instance.DisplayAlert("Alert", "The Username or Password is incorrect", "OK");
+            if (!LoginController.Login(instance.username, instance.password)) instance.DisplayAlert("", "The Username or Password is incorrect", "OK");
             else
             {
                 instance.DisplayAlert("", "Login complete", "OK");

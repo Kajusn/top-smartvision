@@ -11,7 +11,7 @@ using LostAndFound.Presenters;
 
 namespace LostAndFound
 {
-    public partial class MainPage : ContentPage , ILoginForm
+    public partial class MainPage : ContentPage
     {
         public static MainPage instance;
         public MainPage()
@@ -22,33 +22,7 @@ namespace LostAndFound
             BindingContext = new LoginFormPresenter(); // CIA GERIAU PER INTERFACE O NE PER PATI PRESENTERI
         }
 
-        private Action _onLoginBtnClicked;
-        private Action _RegButtonClicked;
-        #region setters getters
-
-        public Action OnLoginBtnClicked
-        {
-            get
-            {
-                return _onLoginBtnClicked;
-            }
-            set
-            {
-                _onLoginBtnClicked = value;
-            }
-        }
-
-        public Action RegButtonClicked
-        {
-            get
-            {
-                return _RegButtonClicked;
-            }
-            set
-            {
-                _RegButtonClicked = value;
-            }
-        }
+        #region Setters; Getters
 
         public string username
         {
@@ -74,27 +48,5 @@ namespace LostAndFound
             }
         }
         #endregion
-
-        async void ButtonClicked(object sender, EventArgs e)
-        {
-            Button button = sender as Button;
-
-
-            //_onLoginBtnClicked();
-
-
-            await DisplayAlert("clicke", "" + Username.Text, "ok");
-        }
-
-       public async void displayblet()
-        {
-            await DisplayAlert("Alert" ,"The Username or Password is incorrect","okayblet");
-        }
-
-        private void RegisterLabel_Click(object sender, EventArgs e)
-        {
-            // this.Hide();
-            _RegButtonClicked();
-        }
     }
 }
