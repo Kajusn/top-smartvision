@@ -5,9 +5,7 @@ namespace LostAndFound.Presenters
 {
     public class RegisterFormPresenter : IRegisterFormPresenter
     {
-        //public IRegisterForm _view;
         private IUserModel _model;
-        //private LoginForm login;
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Username { get; set; }
@@ -38,7 +36,7 @@ namespace LostAndFound.Presenters
 
         public void LoginOpen()
         {
-            instance.Navigation.PushModalAsync(new MainPage(), true);
+            FormController.OpenLogin(instance);
         }
 
         public void Reg()
