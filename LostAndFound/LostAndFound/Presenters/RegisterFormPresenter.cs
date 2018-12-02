@@ -1,20 +1,9 @@
 ﻿using LostAndFound.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using top_smartvision.DB;
-using top_smartvision.Models;
-using top_smartvision.Views;
 using Xamarin.Forms;
 
 namespace LostAndFound.Presenters
 {
-    class RegisterFormPresenter
+    public class RegisterFormPresenter : IRegisterFormPresenter
     {
         //public IRegisterForm _view;
         private IUserModel _model;

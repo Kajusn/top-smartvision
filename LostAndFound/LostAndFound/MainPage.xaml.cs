@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using LostAndFound.Views;
+﻿using Xamarin.Forms;
 using LostAndFound.Presenters;
-
-//using top_smartvision;
 
 namespace LostAndFound
 {
@@ -19,7 +11,8 @@ namespace LostAndFound
             InitializeComponent();
             //LoginUserModel model = new LoginUserModel();
             instance = this;
-            BindingContext = new LoginFormPresenter(); // CIA GERIAU PER INTERFACE O NE PER PATI PRESENTERI
+            ILoginFormPresenter presenter = new LoginFormPresenter();
+            BindingContext = presenter;
         }
 
         #region Setters; Getters

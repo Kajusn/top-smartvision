@@ -3,7 +3,7 @@ using LostAndFound.Views;
 
 namespace LostAndFound.Presenters
 {
-    public class LoginFormPresenter
+    public class LoginFormPresenter : ILoginFormPresenter
     {
         public ILoginForm _view;
         private IModel _model;
