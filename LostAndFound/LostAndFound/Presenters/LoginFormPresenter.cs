@@ -40,7 +40,7 @@ namespace LostAndFound.Presenters
         /// </summary>
         public void log()
         {
-            if (!LoginController.Login(instance.username, instance.password)) instance.DisplayAlert("", "The Username or Password is incorrect", "OK");
+            if (!LoginController.Login(instance.username, instance.password)) FormController.OpenMenu(instance); //instance.DisplayAlert("", "The Username or Password is incorrect", "OK");
             else
             {
                 instance.DisplayAlert("", "Login complete", "OK");

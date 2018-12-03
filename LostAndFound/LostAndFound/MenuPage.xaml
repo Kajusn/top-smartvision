@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LostAndFound.MenuPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="10" x:Name="layout" VerticalOptions="Center">
+            <Button BorderRadius="30" HeightRequest="60" WidthRequest="60"
+                BackgroundColor="Gray" HorizontalOptions="Center" VerticalOptions="Start" />
+            <StackLayout HeightRequest="80" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="20">
+                <Label Text="Vardas" FontSize="28" HorizontalOptions="Center"
+                VerticalOptions="Center" FontAttributes="Bold" />
+            </StackLayout>
+            <Button Text="I'm looking for something"
+                 />
+            <Button Text="I found something" 
+                HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
