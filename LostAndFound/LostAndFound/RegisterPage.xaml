@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LostAndFound.RegisterPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Create a new account"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Entry x:Name="Name"
+               Text="{Binding Name}"
+               Placeholder="Name"
+               HorizontalOptions="Center"
+               WidthRequest="200"
+               VerticalOptions="Center" />
+
+            <Entry x:Name="LastName"
+               Text="{Binding LastName}"
+               Placeholder="Surname"
+               HorizontalOptions="Center"
+               WidthRequest="200"
+               VerticalOptions="Center" />
+
+            <Entry x:Name="Username"
+               Text="{Binding Password}"
+               Placeholder="Username"
+               HorizontalOptions="Center"
+               WidthRequest="200"
+               VerticalOptions="Center" />
+
+            <Entry x:Name="Password"
+               Text="{Binding Password}"
+               Placeholder="Password"
+               HorizontalOptions="Center"
+               WidthRequest="200"
+               VerticalOptions="Center" />
+
+            <Entry x:Name="Password2"
+               Text="{}"
+               Placeholder="Re-type password"
+               HorizontalOptions="Center"
+               WidthRequest="200"
+               VerticalOptions="Center" />
+
+            <Entry x:Name="Email"
+               Text="{Binding Email}"
+               Placeholder="Email"
+               HorizontalOptions="Center"
+               WidthRequest="200"
+               VerticalOptions="Center" />
+
+            <Button Text="Sign up"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="StartAndExpand" 
+               WidthRequest="200"
+               BackgroundColor="DodgerBlue"
+               Command="{Binding RegisterCommand}"
+                ></Button>
+
+            <Button Text="Cancel"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="Center" 
+               WidthRequest="200"
+               Command="{Binding CancelCommand}"
+                ></Button>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

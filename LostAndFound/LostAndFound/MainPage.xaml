@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:LostAndFound"
+             x:Class="LostAndFound.MainPage">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+        <Label Text="Lost and found" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+
+
+        <Entry x:Name="Username"
+               Text="{Binding Username}"
+           Placeholder="Username"
+               HorizontalOptions="Center"
+               WidthRequest="200"
+           VerticalOptions="EndAndExpand" />
+
+        <Entry x:Name="Password"
+               Text="{Binding Password}"
+            IsPassword="true"
+            Placeholder="Password" 
+               WidthRequest="200"
+               HorizontalOptions="Center"
+           VerticalOptions="Center" />
+
+        <Button Text="Login"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="CenterAndExpand"
+                WidthRequest="200"
+                HeightRequest="60"
+                BackgroundColor="DodgerBlue"
+                Command="{Binding LoginCommand}"
+                ></Button>
+
+        <Button Text="Register"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="StartAndExpand" 
+                WidthRequest="200"
+                Command="{Binding RegOpenCommand}"
+                ></Button>
+        
+
+
+    </StackLayout>
+
+</ContentPage>

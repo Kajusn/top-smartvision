@@ -12,7 +12,7 @@ namespace UnitTestProject
 
         public FormTests()
         {
-            _regForm = RegisterForm.GetInstance;
+            _regForm = new RegisterForm();
         }
 
         [TestMethod]
