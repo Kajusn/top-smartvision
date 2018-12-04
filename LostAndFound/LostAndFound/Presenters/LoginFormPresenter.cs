@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using LostAndFound.Views;
+using System;
 
 namespace LostAndFound.Presenters
 {
@@ -12,6 +13,7 @@ namespace LostAndFound.Presenters
         public Command LoginCommand { get; }
         public Command RegOpenCommand { get; }
         private MainPage instance;
+        Func<string, string, bool> anon = delegate (string a, string b) { return LoginController.Login; };
 
         /*public LoginFormPresenter(IModel model)
         {
@@ -41,7 +43,7 @@ namespace LostAndFound.Presenters
         public void log()
         {
             if (FieldsEmpty()) return;
-            if (!LoginController.Login(instance.username, instance.password)) FormController.OpenMenu(instance); //instance.InvalidUsernameOrPassword();
+            if (!anon(instance.username, instance.password))  FormController.OpenMenu(instance); //instance.InvalidUsernameOrPassword();
             else
             {
                 FormController.OpenMenu(instance);

@@ -20,5 +20,10 @@ namespace LostAndFound
             page.Navigation.PushModalAsync(new MenuPage(), true);
         }
 
+        public static void OpenLostItems(ContentPage page)
+        {
+            page.Navigation.PushModalAsync(new LostItemsPage(), true);
+        }
+
     }
 }

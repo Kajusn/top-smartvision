@@ -25,7 +25,7 @@ namespace LostAndFound.Presenters
 
         private void OpenLost()
         {
-            //throw new NotImplementedException();
+            FormController.OpenLostItems(instance);
         }
 
         private void OpenFound()

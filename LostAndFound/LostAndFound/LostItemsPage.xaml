@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LostAndFound.LostItemsPage">
+    <ListView x:Name="MyListView"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement">
+        <ListView.ItemsSource>
+            <x:Array Type="{x:Type x:String}">
+                <x:String>Document1</x:String>
+                <x:String>Document2</x:String>
+                <x:String>Document3</x:String>
+                <x:String>Document4</x:String>
+                <x:String>Document5</x:String>
+                <x:String>Document6</x:String>
+                <x:String>Document7</x:String>
+                <x:String>Document8</x:String>
+                <x:String>Document9</x:String>
+            </x:Array>
+        </ListView.ItemsSource>
+
+    <!--Built in Cells-->
+        <!--
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <TextCell Text="{Binding .}" />
+        </DataTemplate>
+    </ListView.ItemTemplate>
+      -->
+    
+    <!--Custom View Cells-->
+        
+
+                <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout>
+            <Label Text="{Binding Text}" 
+                   Style="{DynamicResource ListItemTextStyle}" />
+            <Label Text="{Binding Detail}" 
+                   Style="{DynamicResource ListItemDetailTextStyle}"/>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    
+  </ListView>
+</ContentPage>
