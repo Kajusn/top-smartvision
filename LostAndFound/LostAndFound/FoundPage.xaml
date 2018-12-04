@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LostAndFound.FoundPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="I Found a Document"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Picker x:Name="TypeID" 
+                    Title="Select a Type"
+                    HorizontalOptions="Center"
+                    WidthRequest="200"
+                    VerticalOptions="Center">
+                <Picker.Items>
+                    <x:String>Pick one</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Entry x:Name="FirstName"
+               Text="{Binding FirstName}"
+               Placeholder="First Name"
+               HorizontalOptions="Center"
+               WidthRequest="200"
+               VerticalOptions="Center" />
+
+            <Entry x:Name="LastName"
+               Text="{Binding LastName}"
+               Placeholder="Last Name"
+               HorizontalOptions="Center"
+               WidthRequest="200"
+               VerticalOptions="Center" />
+
+            <Entry x:Name="PersCode"
+               Text="{Binding PersCode}"
+               Placeholder="Personal Code"
+               HorizontalOptions="Center"
+               WidthRequest="200"
+               VerticalOptions="Center" />
+
+            <Image ></Image>
+            
+            <Button Text="Pick Image"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="StartAndExpand" 
+               WidthRequest="200"
+               BackgroundColor="DodgerBlue"
+               Command="{Binding PickPicCommand}"
+                ></Button>
+
+            <Button Text="Cancel"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="Center" 
+               WidthRequest="200"
+               Command="{Binding CancelCommand}"
+                ></Button>
+            
+            
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
