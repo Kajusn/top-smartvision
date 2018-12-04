@@ -4,16 +4,23 @@
              x:Class="LostAndFound.MenuPage">
     <ContentPage.Content>
         <StackLayout Spacing="10" x:Name="layout" VerticalOptions="Center">
-            <Button BorderRadius="30" HeightRequest="60" WidthRequest="60"
+            <Button 
+                BorderRadius="30" HeightRequest="60" WidthRequest="60"
                 BackgroundColor="Gray" HorizontalOptions="Center" VerticalOptions="Start" />
             <StackLayout HeightRequest="80" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="20">
-                <Label Text="Vardas" FontSize="28" HorizontalOptions="Center"
-                VerticalOptions="Center" FontAttributes="Bold" />
+                <Label 
+                    Text="Vardas" FontSize="28" HorizontalOptions="Center"
+                    VerticalOptions="Center" FontAttributes="Bold" />
             </StackLayout>
-            <Button Text="I'm looking for something"
+            <Button 
+                Text="I'm looking for something"
+                HorizontalOptions="FillAndExpand"
+                Command="{Binding openLostCommand}"
                  />
-            <Button Text="I found something" 
-                HorizontalOptions="FillAndExpand" />
+            <Button 
+                Text="I found something" 
+                HorizontalOptions="FillAndExpand"
+                Command="{Binding openFoundCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
