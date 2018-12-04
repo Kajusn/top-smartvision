@@ -44,12 +44,27 @@ namespace LostAndFound.Presenters
 
         public void Reg()
         {
+            if (FieldsEmpty()) return;
+            if (!LoginController.EmailValidation(Email)) { instance.InvalidEmail(); return; }
             // Calls method to write registration info to file
             LoginController Logs = lazy.Value;
 
             Logs.Register(Name, LastName, Username, Email, Password, instance);
             LoginOpen();
         }
+
+        /// <summary>
+        /// Checks to make sure none of the fields are empty
+        /// </summary>
+        /// <returns></returns>
+        bool FieldsEmpty()
+        {
+            if (!string.IsNullOrWhiteSpace(Username) && !string.IsNullOrWhiteSpace(Password) && !string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(LastName) && !string.IsNullOrWhiteSpace(Email)) return false;
+            instance.FillOutFields();
+            return true;
+        }
+
         
+
     }
 }

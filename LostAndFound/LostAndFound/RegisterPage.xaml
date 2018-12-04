@@ -23,7 +23,7 @@
                VerticalOptions="Center" />
 
             <Entry x:Name="Username"
-               Text="{Binding Password}"
+               Text="{Binding Username}"
                Placeholder="Username"
                HorizontalOptions="Center"
                WidthRequest="200"
@@ -31,6 +31,7 @@
 
             <Entry x:Name="Password"
                Text="{Binding Password}"
+               IsPassword="true"
                Placeholder="Password"
                HorizontalOptions="Center"
                WidthRequest="200"
@@ -38,6 +39,7 @@
 
             <Entry x:Name="Password2"
                Text="{}"
+               IsPassword="true"
                Placeholder="Re-type password"
                HorizontalOptions="Center"
                WidthRequest="200"

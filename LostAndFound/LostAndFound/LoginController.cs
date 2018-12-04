@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 using Xamarin.Forms;
+using System.Text.RegularExpressions;
 
 namespace LostAndFound
 {
@@ -167,6 +168,22 @@ namespace LostAndFound
                 return Convert.ToBase64String(data);
             }
         }
- 
+
+        /// <summary>
+        /// Validates email pattern using Regex
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public static bool EmailValidation(String email)
+        {
+            // Regular expressions email pattern
+            String EmailPattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+                                  + "@"
+                                  + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
+
+            if (!Regex.IsMatch(email, EmailPattern)) return false;
+            return true;
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using LostAndFound.Views;
+using System;
 
 namespace LostAndFound.Presenters
 {
@@ -12,6 +13,7 @@ namespace LostAndFound.Presenters
         public Command LoginCommand { get; }
         public Command RegOpenCommand { get; }
         private MainPage instance;
+        Func<string, string, bool> anon = delegate (string a, string b) { return LoginController.Login; };
 
         /*public LoginFormPresenter(IModel model)
         {
@@ -40,11 +42,23 @@ namespace LostAndFound.Presenters
         /// </summary>
         public void log()
         {
-            if (!LoginController.Login(instance.username, instance.password)) instance.DisplayAlert("", "The Username or Password is incorrect", "OK");
+            if (FieldsEmpty()) return;
+            if (!anon(instance.username, instance.password))  FormController.OpenMenu(instance); //instance.InvalidUsernameOrPassword();
             else
             {
-                instance.DisplayAlert("", "Login complete", "OK");
+                FormController.OpenMenu(instance);
             }
+        }
+
+        /// <summary>
+        /// Checks to make sure Username and Password fields are not empty
+        /// </summary>
+        /// <returns></returns>
+        bool FieldsEmpty()
+        {
+            if (!string.IsNullOrWhiteSpace(Username) && !string.IsNullOrWhiteSpace(Password)) return false;
+            instance.InvalidUsernameOrPassword();
+            return true;
         }
 
     }

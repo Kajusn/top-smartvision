@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using LostAndFound.Presenters;
+using System;
 
 namespace LostAndFound
 {
@@ -13,6 +14,11 @@ namespace LostAndFound
             instance = this;
             ILoginFormPresenter presenter = new LoginFormPresenter();
             BindingContext = presenter;
+        }
+
+        public void InvalidUsernameOrPassword()
+        {
+            DisplayAlert("", "Invalid username or password.", "OK");
         }
 
         #region Setters; Getters
