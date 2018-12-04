@@ -49,6 +49,19 @@
                Command="{Binding PickPicCommand}"
                 ></Button>
 
+            <Button Text="Read text from this image"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="StartAndExpand" 
+               WidthRequest="200"
+               BackgroundColor="DodgerBlue"
+               Command="{Binding OcrCommand}"
+                ></Button>
+
+            <Label x:Name="OcrText"
+                Text=""
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
             <Button Text="Cancel"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="Center" 

@@ -8,22 +8,25 @@ namespace LostAndFound.Presenters
     class FoundFormPresenter: IFoundFormPresenter
     {
         //private IUserModel _model;
-        public string Name { get; set; }
+        public string TypeID { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
+        public string PersCode { get; set; }
+        public string OcrText { get; set; }
         public Command PickPicCommand { get; }
+        public Command SaveCommand { get; }
+        public Command OcrCommand { get; }
         public Command CancelCommand { get; }
-        private RegisterPage instance;
+        private FoundPage instance;
 
 
         public FoundFormPresenter()
         {
-            instance = RegisterPage.instance;
+            instance = FoundPage.instance;
             PickPicCommand = new Command(() => PickPic());
+            SaveCommand = new Command(() => Save());
+            OcrCommand = new Command(() => OCR());
             CancelCommand = new Command(() => LoginOpen());
-            //_model = new User();
         }
 
         public void LoginOpen()
@@ -34,7 +37,18 @@ namespace LostAndFound.Presenters
         public void PickPic()
         {
             // Calls method to write registration info to file
-            LoginController.Register(Name, LastName, Username, Email, Password, instance);
+            FoundController.PickPic(instance);
+        }
+
+        public void Save()
+        {
+            // Calls method to write registration info to file
+            FoundController.Save(TypeID, FirstName, LastName, PersCode, instance);
+        }
+
+        public void OCR()
+        {
+
         }
     }
 }
