@@ -15,7 +15,7 @@ namespace LostAndFound
             page.Navigation.PushModalAsync(new MainPage(), true);
         }
 
-        public static void OpenFound(ContentPage page)
+        public static void OpenFoundPage(ContentPage page)
         {
             page.Navigation.PushModalAsync(new FoundPage(), true);
         }
