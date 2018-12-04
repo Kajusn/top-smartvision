@@ -15,5 +15,18 @@ namespace LostAndFound
             IRegisterFormPresenter presenter = new RegisterFormPresenter();
             BindingContext = presenter;
         }
-	}
+
+        /// <summary>
+        /// Prompts the user to fill out all fields
+        /// </summary>
+        public void FillOutFields()
+        {
+            DisplayAlert("", "Please fill out all fields", "OK");
+        }
+
+        public void InvalidEmail()
+        {
+            DisplayAlert("", "Invalid email address", "OK");
+        }
+    }
 }

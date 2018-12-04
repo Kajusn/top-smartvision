@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 using Xamarin.Forms;
+using System.Text.RegularExpressions;
 
 namespace LostAndFound
 {
-    static class LoginController
+     class LoginController
     {
         /// <summary>
         /// User Login
@@ -16,6 +17,8 @@ namespace LostAndFound
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
+        /// 
+        
         public static bool Login(string username, string password)
         {
             //hashes the password
@@ -71,7 +74,7 @@ namespace LostAndFound
         /// <param name="username"></param>
         /// <param name="email"></param>
         /// <param name="pass"></param>
-        public static void Register(string name, string lastname, string username, string email, string pass, ContentPage instance /*string gender*/)
+        public void Register(string name, string lastname, string username, string email, string pass, ContentPage instance /*string gender*/)
         {
             var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "users.txt");
 
@@ -165,6 +168,22 @@ namespace LostAndFound
                 return Convert.ToBase64String(data);
             }
         }
- 
+
+        /// <summary>
+        /// Validates email pattern using Regex
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public static bool EmailValidation(String email)
+        {
+            // Regular expressions email pattern
+            String EmailPattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+                                  + "@"
+                                  + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
+
+            if (!Regex.IsMatch(email, EmailPattern)) return false;
+            return true;
+        }
+
     }
 }
