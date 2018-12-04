@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LostAndFound.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -7,7 +8,7 @@ namespace LostAndFound.Presenters
 {
     class FoundFormPresenter: IFoundFormPresenter
     {
-        //private IUserModel _model;
+        private IFoundModel _model;
         public string TypeID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -22,6 +23,7 @@ namespace LostAndFound.Presenters
 
         public FoundFormPresenter()
         {
+            _model = new FoundModel();
             instance = FoundPage.instance;
             PickPicCommand = new Command(() => PickPic());
             SaveCommand = new Command(() => Save());
@@ -42,8 +44,12 @@ namespace LostAndFound.Presenters
 
         public void Save()
         {
+            _model.TypeID = TypeID;
+            _model.FirstName = FirstName;
+            _model.LastName = LastName;
+            _model.PersCode = PersCode;
             // Calls method to write registration info to file
-            FoundController.Save(TypeID, FirstName, LastName, PersCode, instance);
+            FoundController.Save(_model, instance);
         }
 
         public void OCR()

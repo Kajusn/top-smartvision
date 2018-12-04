@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LostAndFound.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -12,7 +13,7 @@ namespace LostAndFound
 
         }
 
-        public static void Save(string TypeID, string FirstName, string LastName, string PersCode, ContentPage instance)
+        public static void Save(IFoundModel model, ContentPage instance)
         {
 
         }
