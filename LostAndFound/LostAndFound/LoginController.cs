@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace LostAndFound
 {
-    static class LoginController
+     class LoginController
     {
         /// <summary>
         /// User Login
@@ -16,6 +16,8 @@ namespace LostAndFound
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
+        /// 
+        
         public static bool Login(string username, string password)
         {
             //hashes the password
@@ -71,7 +73,7 @@ namespace LostAndFound
         /// <param name="username"></param>
         /// <param name="email"></param>
         /// <param name="pass"></param>
-        public static void Register(string name, string lastname, string username, string email, string pass, ContentPage instance /*string gender*/)
+        public void Register(string name, string lastname, string username, string email, string pass, ContentPage instance /*string gender*/)
         {
             var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "users.txt");
 

@@ -1,4 +1,5 @@
 ﻿using LostAndFound.Models;
+using System;
 using Xamarin.Forms;
 
 namespace LostAndFound.Presenters
@@ -14,6 +15,7 @@ namespace LostAndFound.Presenters
         public Command RegisterCommand { get; }
         public Command CancelCommand { get; }
         private RegisterPage instance;
+        Lazy<LoginController> lazy = new Lazy<LoginController>();
 
         public RegisterFormPresenter(object obj)
         {
@@ -32,6 +34,7 @@ namespace LostAndFound.Presenters
             RegisterCommand = new Command(() => Reg());
             CancelCommand = new Command(() => LoginOpen());
             _model = new User();
+       
         }
 
         public void LoginOpen()
@@ -42,7 +45,9 @@ namespace LostAndFound.Presenters
         public void Reg()
         {
             // Calls method to write registration info to file
-            LoginController.Register(Name, LastName, Username, Email, Password, instance);
+            LoginController Logs = lazy.Value;
+
+            Logs.Register(Name, LastName, Username, Email, Password, instance);
             LoginOpen();
         }
         
