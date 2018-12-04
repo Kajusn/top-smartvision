@@ -30,7 +30,7 @@ namespace LostAndFound.Presenters
 
         private void OpenFound()
         {
-            //throw new NotImplementedException();
+            FormController.OpenFoundPage(instance);
         }
     }
 }
