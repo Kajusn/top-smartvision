@@ -13,7 +13,7 @@ namespace LostAndFound.Presenters
         public Command LoginCommand { get; }
         public Command RegOpenCommand { get; }
         private MainPage instance;
-        Func<string, string, bool> anon = delegate (string a, string b) { return LoginController.Login; };
+        Func<string, string, bool> anon = delegate (string a, string b) { return LoginController.Login(a, b); };
 
         /*public LoginFormPresenter(IModel model)
         {
