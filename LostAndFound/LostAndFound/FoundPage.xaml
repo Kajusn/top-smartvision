@@ -39,7 +39,7 @@
                WidthRequest="200"
                VerticalOptions="Center" />
 
-            <Image ></Image>
+            <Image x:Name="image"></Image>
             
             <Button Text="Pick Image"
                HorizontalOptions="CenterAndExpand"
