@@ -21,9 +21,9 @@ namespace LostAndFound.Presenters
         private FoundPage instance;
 
 
-        public FoundFormPresenter()
+        public FoundFormPresenter(IFoundModel model)
         {
-            _model = new FoundModel();
+            _model = model;
             instance = FoundPage.instance;
             PickPicCommand = new Command(() => PickPic());
             SaveCommand = new Command(() => Save());

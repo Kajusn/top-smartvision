@@ -1,4 +1,5 @@
-﻿using LostAndFound.Presenters;
+﻿using LostAndFound.Models;
+using LostAndFound.Presenters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace LostAndFound
 		{
 			InitializeComponent ();
             instance = this;
-            IFoundFormPresenter presenter = new FoundFormPresenter();
+            IFoundFormPresenter presenter = new FoundFormPresenter(new FoundModel());
             BindingContext = presenter;
         }
 	}
